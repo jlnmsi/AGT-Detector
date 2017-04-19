@@ -4,4 +4,15 @@
   <artifactId>AGT</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>AGT</name>
+  
+    <dependencies>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+
+	</dependencies>
 </project>
