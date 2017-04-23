@@ -131,7 +131,8 @@ public class UserTweetDownloadThread extends Thread {
     		
     		Paging paging = new Paging(page, pageSize);
     		List<Status> statuses = twitter.getUserTimeline(id,paging);
-    		//System.out.print(" "+pageCount);
+    		
+    		System.out.print(" "+pageCount);
     		sz = statuses.size();
     		if (sz > 0) {
     			allStatuses.addAll(statuses);

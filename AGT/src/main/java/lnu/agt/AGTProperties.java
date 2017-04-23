@@ -43,6 +43,7 @@ public class AGTProperties {
 	public static void main(String[] args) {
 		Properties agtProps = getAGTProperties();
 		System.out.println(agtProps);
+		System.out.println("Project name: "+agtProps.getProperty("project") );
 		
 		Properties localProps = getLocalProperties();
 		System.out.println(localProps);

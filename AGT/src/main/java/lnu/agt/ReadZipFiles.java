@@ -14,6 +14,7 @@ import java.util.Scanner;
 import java.util.zip.ZipInputStream;
 
 import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -49,24 +50,23 @@ public class ReadZipFiles {
 			ObjectMapper mapper = new ObjectMapper();
 			while (sc.hasNextLine()) {
 				String tweet = sc.nextLine();
-				JsonNode jsonTweet = mapper.readTree(tweet);
-
+				JsonNode jsonTweet = null;
+				try {
+					jsonTweet = mapper.readTree(tweet);
+				}
+				catch (JsonParseException e) {
+					System.err.println("Unable to parse Json string in file: "+f.getName());
+					System.err.println(tweet);
+					System.err.println("Drops it!!");
+					continue;
+				}
 				toReturn.add(jsonTweet);
 			}
 			sc.close();
 
 			// Prepare summary print
 			String fName = f.getName();
-
-			JsonNode first = toReturn.get(0);
-			long timeStamp = getTimeStamp(first);
-			String fTime = format.format(timeStamp);
-
-			JsonNode last = toReturn.get(toReturn.size()-1);
-			timeStamp = getTimeStamp(last);
-			String lTime = format.format(timeStamp);
-
-			System.out.println("\t"+fName+", Count: "+toReturn.size()+", First: "+ fTime+", Last: "+ lTime);
+			System.out.println("\t"+fName+", Count: "+toReturn.size());
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -74,8 +74,8 @@ public class ReadZipFiles {
 		return toReturn;
 	}
 	
-	public static long getTimeStamp(JsonNode tweet) {
-		String text = tweet.get("timestamp_ms").asText();
-		return Long.parseLong(text);
-	}
+//	public static long getTimeStamp(JsonNode tweet) {
+//		String text = tweet.get("timestamp_ms").asText();
+//		return Long.parseLong(text);
+//	}
 }
