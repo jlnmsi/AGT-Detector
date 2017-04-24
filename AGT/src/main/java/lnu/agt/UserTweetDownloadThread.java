@@ -44,6 +44,12 @@ public class UserTweetDownloadThread extends Thread {
 					List<Status> tweets = null;
 					try {
 						tweets = getAvailableStatuses(twitter,user);
+						
+						for (Status s : tweets) {
+							AGTStatus aStatus = AGTStatus.createFromStatus(s);
+							System.out.println(aStatus);
+						}
+						
 					} catch (TwitterException e) {
 						String msg = e.getMessage();
 						

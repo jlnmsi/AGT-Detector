@@ -23,7 +23,7 @@ public class UserLookup {
 	private final ConcurrentHashMap<Long,UserProfile>user2profile = new ConcurrentHashMap<Long, UserProfile>();
 	private final LinkedBlockingQueue<Long> downloadQueue = new LinkedBlockingQueue<Long>();
 	
-	private final UserProfile dontknow;
+	private UserProfile dontknow = null;
 	private final int CountToStartDownload = 5; // Tweets to be seen before Tweet download start. 
 	private final UserTweetDownloadThread downloadThread;
 	
@@ -33,7 +33,7 @@ public class UserLookup {
 		 * 2. Create "Don't know" user profile
 		 * 
 		 */
-		dontknow = new UserProfile(0,"Don't Know!");
+//		dontknow = new UserProfile(0,"Don't Know!");
 		
 		
 		

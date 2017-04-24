@@ -1,4 +1,5 @@
-﻿Twitter for iPhone	1
+﻿
+Twitter for iPhone	1
 Twitter Web Client	2
 Twitter for Android	1
 Instagram	3
@@ -131,7 +132,7 @@ Xstrologyscopes 	5
 Sports Tracker	3
 Flamingo for Android	1
 Finnish Population	5
-  HTC Peep	1
+ HTC Peep	1
 Tweekly.fm	4
 Twitter	2
 Twitpic	3

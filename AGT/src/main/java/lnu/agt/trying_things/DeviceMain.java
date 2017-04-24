@@ -77,7 +77,7 @@ public class DeviceMain {
 		int firstLT = name.indexOf("<");
 		name = name.substring(0,firstLT);
 		//System.out.println(name);
-		return name;
+		return name.toString();
 		}
 		catch(Exception e) {
 			//System.err.println("Problem to parse name from "+sourceUrlTag);
