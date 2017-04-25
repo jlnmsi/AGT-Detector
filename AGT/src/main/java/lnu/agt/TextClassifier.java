@@ -33,7 +33,7 @@ public class TextClassifier {
 		ArffReader arff = new ArffReader(reader);
 		data = arff.getData();
 		reader.close();
-
+		//
 		
 		formatter = new DecimalFormat("#0.00");     
 
