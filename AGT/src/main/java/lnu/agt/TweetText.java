@@ -108,46 +108,7 @@ public class TweetText {
 					.replaceAll("[0-9][(k|m)?mh?]?[ms]?", "");		
 		
 		
-		String stemLang; 
-		if(lang.equals("sv")){
-			stemLang = "swedish";
-		} else {
-			stemLang = "english";
-		}
-
-		//Stemming
-		Class<?> stemClass = Class.forName("org.tartarus.snowball.ext." +
-				stemLang + "Stemmer");
-		SnowballStemmer stemmer = (SnowballStemmer) stemClass.newInstance();
-				
-		String tmpCleanTweet = "";
-		
-		Reader reader;
-		
-		InputStream stream = new ByteArrayInputStream(tmp.getBytes(StandardCharsets.UTF_8));
-		reader = new InputStreamReader(stream);
-		reader = new BufferedReader(reader);
-		StringBuffer input = new StringBuffer();
-		int repeat = 1;
-
-		int character;
-		while ((character = reader.read()) != -1) {
-			char ch = (char) character;
-		    if (Character.isWhitespace((char) ch)) {
-				if (input.length() > 0) {
-				    stemmer.setCurrent(input.toString());
-				    for (int j = repeat; j != 0; j--) {
-				    	stemmer.stem();
-				    }
-				    tmpCleanTweet+=stemmer.getCurrent() + " ";
-				    input.delete(0, input.length());
-				    
-				}
-		    } else {
-		    	input.append(Character.toLowerCase(ch));
-		    }  
-		}
-		cleanText = tmpCleanTweet;		
+		cleanText = tmp;
 	}
 
 	
