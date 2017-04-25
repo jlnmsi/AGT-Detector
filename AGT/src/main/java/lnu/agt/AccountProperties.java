@@ -44,9 +44,16 @@ public class AccountProperties {
 		}
 		
 		retweetRatio = retweetRatio/tweets.size();
-		hashRatio = hashRatio/ownTweets;
-		mentionRatio = mentionRatio/ownTweets;
-		URLRatio = URLRatio/ownTweets;
+		if (ownTweets > 0) {			
+			hashRatio = hashRatio/ownTweets;
+			mentionRatio = mentionRatio/ownTweets;
+			URLRatio = URLRatio/ownTweets;
+		}
+		else {
+			hashRatio = 0;
+			mentionRatio = 0;
+			URLRatio = 0;
+		}
 		
 		accountProperties[1] = URLRatio;
 		accountProperties[2] = hashRatio;
