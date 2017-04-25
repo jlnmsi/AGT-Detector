@@ -32,17 +32,19 @@ public class ProfileGeneratorMain {
 		
 		// Prepare to store profiles in config
 		Properties agtProps = AGTProperties.getAGTProperties();
-		File profileFile = new File( agtProps.getProperty("userProfiles") );
+		File profileFile = new File( agtProps.getProperty("userProfiles1") );
 		PrintWriter output = new PrintWriter(profileFile);
 		System.out.println(profileFile.getAbsolutePath());
 		
 		
 		ArrayList<File> ntsFiles = ReadZipFiles.findZipFiles( userTweetsDir );
 		long before = System.currentTimeMillis();
+		int userCount = 0;
 		for (File f : ntsFiles) {
-			if (!f.getName().startsWith("1002"))   // A few zip files
+			if (!f.getName().startsWith("100"))   // A few zip files
 				continue;
 			
+			userCount++;
 			ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(f);
 			
 			// Convert from JsonNode to AGTStatus
@@ -66,7 +68,8 @@ public class ProfileGeneratorMain {
 		}
 		output.close();
 		long ellapsed = System.currentTimeMillis() - before;
-		System.out.println("Minutes: " + (0.0+ellapsed)/(60*1000));
+		System.out.println("User profiles saved in: "+profileFile.getAbsolutePath());
+		System.out.println("User Count: " + userCount+", Minutes: " + (0.0+ellapsed)/(60*1000));
 
 	}
 	

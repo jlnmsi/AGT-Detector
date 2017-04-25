@@ -15,9 +15,19 @@ import java.util.List;
 public class UserProfile {
 //	private StringBuilder userProperties = new StringBuilder();
 	
+	private static int MAX_TWEETS = 3200;  // Used to normalize tweet count
+	
 	private long userID;
 	private String userName;
 	private double[] userProperties;
+	
+	
+	
+	public UserProfile(long uID, String uName, double[] props) {
+		userID = uID;
+		userName = uName;
+		userProperties = props;
+	}
 
 	public UserProfile(List<AGTStatus> tweets){
 		AGTStatus latestTweet = tweets.get(0);
@@ -26,8 +36,12 @@ public class UserProfile {
 		
 		//Start collecting numeric profile properties
 		ArrayList<Double> profile = new ArrayList<Double>();
+		
+		// Profile tweet count
+		double tweetCount = (0.0+tweets.size())/MAX_TWEETS;
+		profile.add(tweetCount);
 
-		//appending all the other properties
+		// Appending all the other properties
 		ChiSquared chiSquared = new ChiSquared(tweets);
 		double[] pValues = chiSquared.getpValues(); // minutes followed by seconds
 		append(profile,pValues);

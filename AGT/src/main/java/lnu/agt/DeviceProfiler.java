@@ -59,7 +59,7 @@ public class DeviceProfiler {
 		double[] ratios = new double[6];
 		int[] counts = {0,0,0,0,0,0};
 		
-		for (AGTStatus tweet : tweets) {
+		for (AGTStatus tweet : tweets) {		
 			String deviceName = getDeviceName( tweet.source );
 			Integer code = deviceClassifier.get(deviceName);
 			if (code == null)  { // Unknown

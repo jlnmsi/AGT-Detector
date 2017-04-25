@@ -8,14 +8,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Properties;
-import java.util.Scanner;
-
-import org.codehaus.jackson.JsonNode;
 
 import lnu.agt.AGTProperties;
-import lnu.agt.UserLookup;
+import lnu.agt.ProfileGenerator;
 import lnu.agt.ReadZipFiles;
 import lnu.agt.UserProfile;
+
+import org.codehaus.jackson.JsonNode;
 
 /**
  * @author jlnmsi
@@ -32,24 +31,24 @@ public class UserTweetsMain {
 		
 		
 		ArrayList<File> ntsFiles = ReadZipFiles.findZipFiles( ntsDir );
-		UserLookup userLookup = new UserLookup();
+		ProfileGenerator profileGenerator = new ProfileGenerator(true);
 		for (File f : ntsFiles) {
-			if (!f.getName().startsWith("2017-03-15"))   // Ten days in February
+			if (!f.getName().startsWith("2017-03-15"))   
 				continue;
 			
 			ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(f);
+			
 			for (JsonNode tweet : tweets) {
-				
 				// Select users from English tweets
 				JsonNode user = tweet.get("user");
 				long userID = user.get("id").asLong();
 				String lang = tweet.get("lang").asText();
 				if ( lang.equals("en")) {
-					UserProfile uProfile = userLookup.getUserProfile(userID);	
+					UserProfile uProfile = profileGenerator.getUserProfile(userID);	
 				}
 				//System.out.println(userID);
 			}
-			System.out.println("DownloadCount: "+userLookup.getDownloadCount());
+			System.out.println("DownloadCount: "+profileGenerator.getDownloadCount());
 			
 		}
 
