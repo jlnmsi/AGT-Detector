@@ -35,7 +35,7 @@ public class TextClassifier {
 		reader.close();
 		//ghjg
 		
-		formatter = new DecimalFormat("#0.00");     
+		formatter = new DecimalFormat("#0.00000");     
 
 
 		//get entities from Twitter
