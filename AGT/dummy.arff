@@ -1,8 +1,0 @@
-@relation tweet
-
-@attribute Text string
-@attribute class-att {0,1}
-
-@data
-
-'- ', 0
