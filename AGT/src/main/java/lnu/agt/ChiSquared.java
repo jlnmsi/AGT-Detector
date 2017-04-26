@@ -7,6 +7,8 @@ import java.util.List;
 import org.apache.commons.math3.stat.inference.ChiSquareTest;
 
 public class ChiSquared {
+	
+	private final int BIN_SIZE = 15;
 
 	// p-value for minute, p-value for seconds
 	private double[] pValues = new double[2];
@@ -23,8 +25,8 @@ public class ChiSquared {
 		int numOfTweets = tweets.size();
 
 		/* putting the data into bins */
-		long[] minutesBins = putIntoBins(minutes, 0, 60, 60);
-		long[] secondsBins = putIntoBins(seconds, 0, 60, 60);
+		long[] minutesBins = putIntoBins(minutes, 0, 60, BIN_SIZE);
+		long[] secondsBins = putIntoBins(seconds, 0, 60, BIN_SIZE);
 
 		/* getting the expected normal distributions */
 		double[] expectedMinutes = expectedDistribution(numOfTweets, minutesBins);

@@ -41,8 +41,8 @@ public class ProfileGeneratorMain {
 		long before = System.currentTimeMillis();
 		int userCount = 0;
 		for (File f : ntsFiles) {
-			if (!f.getName().startsWith("100"))   // A few zip files
-				continue;
+//			if (!f.getName().startsWith("100"))   // A few zip files
+//				continue;
 			
 			userCount++;
 			ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(f);

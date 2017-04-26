@@ -43,15 +43,15 @@ public class UserProfile {
 
 		// Appending all the other properties
 		ChiSquared chiSquared = new ChiSquared(tweets);
-		double[] pValues = chiSquared.getpValues(); // minutes followed by seconds
+		double[] pValues = chiSquared.getpValues(); // 2 values, minutes followed by seconds
 		append(profile,pValues);
 		
 		Entropy entropy = new Entropy(tweets);
-		double[] entropyData = entropy.getEntropies();
+		double[] entropyData = entropy.getEntropies(); // 3 values
 		append(profile,entropyData);
 		
 		AccountProperties accProp = new AccountProperties(tweets);
-		double[] props = accProp.getProperties();
+		double[] props = accProp.getProperties();  // 5 values
 		append(profile,props);
 		
 		double[] deviceProfile = DeviceProfiler.getDeviceProfile(tweets);
