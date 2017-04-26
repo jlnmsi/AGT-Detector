@@ -91,7 +91,7 @@ public class TextClassifier {
 	public double getClassification() throws Exception{
 		String model;
 		if(newModel.equals("")){
-			model  = "filtrandfor1.0.model";
+			model  = "filtRF.model";
 		} else {
 			model = newModel;
 		}
