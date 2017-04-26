@@ -8,7 +8,10 @@ import java.util.regex.Pattern;
 
 import org.codehaus.jackson.JsonNode;
 
-
+/**
+ * @author jofrab
+ *
+ */
 
 public class TweetText {
 
