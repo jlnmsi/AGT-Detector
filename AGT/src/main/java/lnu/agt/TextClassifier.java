@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Properties;
 
 import org.codehaus.jackson.JsonNode;
@@ -22,16 +20,22 @@ public class TextClassifier {
 	JsonNode tweet;
 	DecimalFormat formatter;
 	Classifier cls;
+	Properties agtProps;
 	
 	//model params
-	String path = "models/";
 	String newModel = "";
+	
+	public static void main(String[] args){
+		
+	}
+	
 	
 	public TextClassifier(JsonNode tweet) throws Exception {
 		this.tweet = tweet;
 		
-		Properties agtProps = AGTProperties.getAGTProperties();
-		File path = new File((String) agtProps.get("dummy"));
+		agtProps = AGTProperties.getAGTProperties();
+		String path = agtProps.getProperty("dummy");
+		
 		//load dummy dataset to get correct format of Instances data
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		ArffReader arff = new ArffReader(reader);
@@ -40,50 +44,10 @@ public class TextClassifier {
 		
 		formatter = new DecimalFormat("#0.00000");     
 
-		
-		//get entities from Twitter
-		ArrayList<Integer> hashtag = null;
-		ArrayList<Integer> url = null;
-		ArrayList<Integer> user = null;
-		ArrayList<Integer> symbols = null;
-		ArrayList<Integer> media = null;
-		JsonNode rootNode = tweet.get("entities");
-		Iterator<JsonNode> entityIterator = rootNode.getElements();
-		int i = 0;
-		while (entityIterator.hasNext()) {
-		    JsonNode entnode = entityIterator.next();
-		    int index = entnode.toString().indexOf("\"indices\":");
-		    int indexEnd =-1;
-		    String s;
-		    ArrayList<Integer> list = new ArrayList<Integer>();
-		    if(index>=0){indexEnd = entnode.toString().substring(index).indexOf("]");}
-		    while (index >= 0) {
-		        s = entnode.toString().substring(index+11, index+indexEnd);
-		        int innerIndex = s.indexOf(",");
-		        int start = Integer.parseInt(s.substring(0, innerIndex));
-		        int end = Integer.parseInt(s.substring(innerIndex+1));
-		        list.add(start);
-		        list.add(end);
-		        index = entnode.toString().indexOf("\"indices\":", index + 1);
-		        if(index>=0){indexEnd = entnode.toString().substring(index).indexOf("]");}
-		    }
-		    if(i==0){
-		    	hashtag = list;
-		    }else if (i==1){
-		    	url = list;
-		    }else if (i==2){
-		    	user = list;
-		    }else if (i==3){
-		    	symbols = list;
-		    }else if (i==4){
-		    	media = list;
-		    }
-		    i++;
-		}
 		Instance inst = new DenseInstance(data.numAttributes());
-		TweetText t = new TweetText(tweet.get("text").asText(), tweet.get("id").asText(), tweet.get("lang").asText(), -1, hashtag, url, user, symbols, media);
+		TweetText tweetText = new TweetText(tweet);
 
-		inst.setValue(data.attribute(0), data.attribute(0).addStringValue(t.getCleanText()));
+		inst.setValue(data.attribute(0), data.attribute(0).addStringValue(tweetText.getCleanText()));
 		data.add(0, inst);
 		
 	}
@@ -93,14 +57,14 @@ public class TextClassifier {
 	}
 	
 	public double getClassification() throws Exception{
-		String model;
+		String modelPath;
 		if(newModel.equals("")){
-			model  = "filtRF.model";
+			modelPath  = agtProps.getProperty("modelRF");
 		} else {
-			model = newModel;
+			modelPath = newModel;
 		}
 		//load model
-		cls = (Classifier) weka.core.SerializationHelper.read(path + model);
+		cls = (Classifier) weka.core.SerializationHelper.read(modelPath);
 		return cls.distributionForInstance(data.instance(0))[1];
 	}
 	

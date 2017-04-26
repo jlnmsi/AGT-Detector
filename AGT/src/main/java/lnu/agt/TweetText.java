@@ -1,17 +1,12 @@
 package lnu.agt;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.regex.Pattern;
 
-import weka.core.stemmers.SnowballStemmer;
+import org.codehaus.jackson.JsonNode;
 
 
 
@@ -21,6 +16,7 @@ public class TweetText {
 	String text;
 	String lang;
 	String cleanText;
+	JsonNode tweet;
 	ArrayList<Integer> userMentions;
 	ArrayList<Integer> hashtagMentions;
 	ArrayList<Integer> symbolMentions;
@@ -28,30 +24,67 @@ public class TweetText {
 	ArrayList<Integer> mediaMentions;
 	int classification;
 	
-	public TweetText(String text, String id, String lang, int classification, ArrayList<Integer> hashtagMentions, ArrayList<Integer> urlMentions, ArrayList<Integer> userMentions, ArrayList<Integer> symbolMentions, ArrayList<Integer> mediaMentions) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException{
-		this.text = text;
-		this.id = id;
-		this.lang = lang;
+	public TweetText(int classification, JsonNode tweet) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException{
+		text = tweet.get("text").asText();
+		id = tweet.get("id").asText();
+		lang = tweet.get("lang").asText();
+		this.tweet = tweet;
 		this.classification = classification;
-		this.userMentions = userMentions;
-		this.hashtagMentions = hashtagMentions;
-		this.symbolMentions = symbolMentions;
-		this.urlMentions = urlMentions;
-		this.mediaMentions = mediaMentions;
+		setEntities();
 		cleanTweet();
 	}
 	
-	public TweetText(String text, String id, String lang, ArrayList<Integer> hashtagMentions, ArrayList<Integer> urlMentions, ArrayList<Integer> userMentions, ArrayList<Integer> symbolMentions, ArrayList<Integer> mediaMentions) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException{
-		this.text = text;
-		this.id = id;
-		this.lang = lang;
-		this.userMentions = userMentions;
-		this.hashtagMentions = hashtagMentions;
-		this.symbolMentions = symbolMentions;
-		this.urlMentions = urlMentions;
-		this.mediaMentions = mediaMentions;
+	public TweetText(JsonNode tweet) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException{
+		text = tweet.get("text").asText();
+		id = tweet.get("id").asText();
+		lang = tweet.get("lang").asText();
+		this.tweet = tweet;
+		setEntities();
 		cleanTweet();
 	}
+	
+	public void setEntities(){
+		//get entities from Twitter
+		hashtagMentions = null;
+		urlMentions = null;
+		userMentions = null;
+		symbolMentions = null;
+		mediaMentions = null;
+		JsonNode rootNode = tweet.get("entities");
+		Iterator<JsonNode> entityIterator = rootNode.getElements();
+		int i = 0;
+		while (entityIterator.hasNext()) {
+		    JsonNode entnode = entityIterator.next();
+		    int index = entnode.toString().indexOf("\"indices\":");
+		    int indexEnd =-1;
+		    String s;
+		    ArrayList<Integer> list = new ArrayList<Integer>();
+		    if(index>=0){indexEnd = entnode.toString().substring(index).indexOf("]");}
+		    while (index >= 0) {
+		        s = entnode.toString().substring(index+11, index+indexEnd);
+		        int innerIndex = s.indexOf(",");
+		        int start = Integer.parseInt(s.substring(0, innerIndex));
+		        int end = Integer.parseInt(s.substring(innerIndex+1));
+		        list.add(start);
+		        list.add(end);
+		        index = entnode.toString().indexOf("\"indices\":", index + 1);
+		        if(index>=0){indexEnd = entnode.toString().substring(index).indexOf("]");}
+		    }
+		    if(i==0){
+		    	hashtagMentions = list;
+		    }else if (i==1){
+		    	urlMentions = list;
+		    }else if (i==2){
+		    	userMentions = list;
+		    }else if (i==3){
+		    	symbolMentions = list;
+		    }else if (i==4){
+		    	mediaMentions = list;
+		    }
+		    i++;
+		}	
+	}
+	
 
 	public void cleanTweet() throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
 		if(text.equals("")) {
