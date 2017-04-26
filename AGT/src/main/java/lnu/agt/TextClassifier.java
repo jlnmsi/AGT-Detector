@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Properties;
+import java.util.Random;
 
 import org.codehaus.jackson.JsonNode;
 
@@ -21,12 +23,35 @@ public class TextClassifier {
 	DecimalFormat formatter;
 	Classifier cls;
 	Properties agtProps;
-	
-	//model params
 	String newModel = "";
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception {
+		System.out.println("Working Directory: "+System.getProperty("user.dir"));
 		
+		Properties props = AGTProperties.getLocalProperties();
+		File ntsDir = new File( props.getProperty("ntsDir") );
+		TextClassifier tc;
+		Random rand = new Random();
+		
+		ArrayList<File> ntsFiles = ReadZipFiles.findZipFiles( ntsDir );
+		ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(ntsFiles.get(rand.nextInt(ntsFiles.size())));
+		
+		int i = 0;
+		while(i < 3) {		
+			int r  = rand.nextInt(tweets.size());
+			tc = new TextClassifier(tweets.get(r));
+			//tc.setClassifier("modelNB"); uncomment for Naive Bayesian instead
+			//tc.setClassifier("modelSMO"); uncomment for support vector machine instead
+			TweetText tweetText = new TweetText(tweets.get(r));
+			if(tweetText.getLang().equals("en")) {
+				i++;
+				System.out.println(tweetText.getText()
+					+"\n"+tweetText.getCleanText() 
+					+"\nP(AGT) = "+tc.getClassification()
+					);
+			}
+		}
+
 	}
 	
 	
@@ -61,7 +86,7 @@ public class TextClassifier {
 		if(newModel.equals("")){
 			modelPath  = agtProps.getProperty("modelRF");
 		} else {
-			modelPath = newModel;
+			modelPath = agtProps.getProperty(newModel);
 		}
 		//load model
 		cls = (Classifier) weka.core.SerializationHelper.read(modelPath);

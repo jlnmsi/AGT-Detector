@@ -88,7 +88,7 @@ public class TweetText {
 
 	public void cleanTweet() throws ClassNotFoundException, InstantiationException, IllegalAccessException, IOException {
 		if(text.equals("")) {
-			System.out.println("No text to clean");
+			System.out.println("Empty string");
 			return;
 		}
 		String tmp = text;
@@ -133,15 +133,16 @@ public class TweetText {
 				tmp = tmp.replaceAll(newString, " MEDIA ");
 			}
 		}
-		//RegEx cleaning
+		//regex cleaning
 		tmp = tmp.replaceAll("[()\\[\\]/%\\\\:#]", "")
 					.replaceAll("^[(]?^[-+]?\\d+([.,][\\d]+)?\\w*", "number ")
 					.replaceAll("[^a-zA-Z0-9_]+$", "")
 					.replaceAll("[°'´\"`.,’!?]", "")
-					.replaceAll("[0-9][(k|m)?mh?]?[ms]?", "");		
+					.replaceAll("[0-9][(k|m)?mh?]?[ms]?", "")
+					.replaceAll("\\s+",  " ").trim();		
 		
 		
-		cleanText = tmp;
+		cleanText = tmp.toLowerCase();
 	}
 
 	
