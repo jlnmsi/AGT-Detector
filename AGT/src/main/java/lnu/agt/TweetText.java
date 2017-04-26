@@ -135,14 +135,16 @@ public class TweetText {
 		}
 		//regex cleaning
 		tmp = tmp.replaceAll("[()\\[\\]/%\\\\:#]", "")
-					.replaceAll("^[(]?^[-+]?\\d+([.,][\\d]+)?\\w*", "number ")
-					.replaceAll("[^a-zA-Z0-9_]+$", "")
-					.replaceAll("[°'´\"`.,’!?]", "")
+					.replaceAll("[°'´\"`.,’!?@-]", "")
+					.replaceAll("[…]", " ")
+					.replaceAll("\\d+", "number ")
 					.replaceAll("[0-9][(k|m)?mh?]?[ms]?", "")
-					.replaceAll("\\s+",  " ").trim();		
+					.replaceAll("\\s+",  " ")
+					.trim()
+					.toLowerCase();		
 		
 		
-		cleanText = tmp.toLowerCase();
+		cleanText = tmp;
 	}
 
 	
