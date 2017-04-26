@@ -1,10 +1,12 @@
 package lnu.agt;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Properties;
 
 import org.codehaus.jackson.JsonNode;
 
@@ -28,15 +30,17 @@ public class TextClassifier {
 	public TextClassifier(JsonNode tweet) throws Exception {
 		this.tweet = tweet;
 		
-		//load dataset to get correct format of input data
-		BufferedReader reader = new BufferedReader(new FileReader("dummy.arff"));
+		Properties agtProps = AGTProperties.getAGTProperties();
+		File path = new File((String) agtProps.get("dummy"));
+		//load dummy dataset to get correct format of Instances data
+		BufferedReader reader = new BufferedReader(new FileReader(path));
 		ArffReader arff = new ArffReader(reader);
 		data = arff.getData();
 		reader.close();
 		
 		formatter = new DecimalFormat("#0.00000");     
 
-
+		
 		//get entities from Twitter
 		ArrayList<Integer> hashtag = null;
 		ArrayList<Integer> url = null;
