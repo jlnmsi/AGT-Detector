@@ -6,37 +6,103 @@ package lnu.agt.main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Scanner;
 
 import lnu.agt.AGTProperties;
+import lnu.agt.DeviceProfiler;
+import lnu.agt.ProfileGenerator;
+import lnu.agt.ReadZipFiles;
+import lnu.agt.UserProfile;
+
+import org.codehaus.jackson.JsonNode;
 
 /**
+ * The aim of this program is to generate training data for the Decision Maker.
+ * The input is a classification list (tweetIDs,classification) and the output
+ * is a decision making model
+ * - config/decisionMakingModel.txt
+ * containg, for each tweet, a text row with
+ *    classification, tweetID, deviceType, textProbability, ... + numerical profile properties.
+ * 
  * @author jlnmsi
  *
  */
 public class DMTrainingDataGeneratorMain {
-	
-	private static HashMap<Long,Integer> tweetClassification = new HashMap<Long,Integer>();
+
 
 	public static void main(String[] args) {
+		
 		// Read DM training data ==> setup tweetClassification mapping 
-		readClassification();
+		HashMap<Long,Integer> tweetClassification = readClassification();
+		
+		// Read json tweets to setup tweetID-to-json mapping
+		HashMap<Long,JsonNode> jsonTweets = readJsonTweets();
+		
+		// Start building training data
+		ProfileGenerator profiler = new ProfileGenerator(false);
+		ArrayList<String> outputRows = new ArrayList<String>();
+		for (long tweetID : tweetClassification.keySet()) {
+			int classification = tweetClassification.get(tweetID);
+			JsonNode tweet = jsonTweets.get(tweetID);
+			
+			String source = tweet.get("source").asText();
+			int deviceType = DeviceProfiler.classifyDevice(source);
+			
+			double textProbability = 0.9;          // Not completed!
+			
+			long userID = tweet.get("user").get("id").asLong();
+			UserProfile profile = profiler.getUserProfile(userID);
+			double[] userProperties = profile.getProperties();
+			
+			String row = buildOutputRow(classification,tweetID,deviceType,textProbability,userProperties);
+			outputRows.add(row);
+		}
+		System.out.println("Don't know profile used for "+profiler.getUnknownCount()+" tweets");
+		
+		File outFile = new File("config/decisionMakingModel.txt");
+		try {
+			PrintWriter writer = new PrintWriter( outFile );
+			for (String row : outputRows) {
+				writer.println(row);
+			}
+			writer.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Saved Decion Maker model for "+outputRows.size()+" tweet in "+outFile.getAbsolutePath());
+			
+		
 
 	}
 	
-	private static void readClassification() {
+	private static String buildOutputRow(int classification, long tweetID, int deviceType, 
+											double textProbability, double[] userProperties) {
+		StringBuilder buf = new StringBuilder();
+		String itemSep = " ";
+		buf.append(classification);
+		buf.append(itemSep).append(tweetID);
+		buf.append(itemSep).append(deviceType);
+		buf.append(itemSep).append(textProbability);
+		for (double uProp : userProperties)
+			buf.append(itemSep).append(uProp);
+		return buf.toString();
+	}
+	
+	private static HashMap<Long,Integer> readClassification() {
 		Properties agtProps = AGTProperties.getAGTProperties();
 		File trainingData = new File(agtProps.getProperty("dmTrainingData"));
-		double[] average = null;
-		int tweetCount = 0;
 		
+		HashMap<Long,Integer> tweetClassification = new HashMap<Long,Integer>();
 		Scanner scanner = null;
 		try {
 		    scanner = new Scanner(trainingData);
 		    while (scanner.hasNext()) {
-		    	tweetCount++;
 		    	String row = scanner.nextLine();
 		    	String[] items = row.split(" ");
 		    	int classification = Integer.parseInt(items[0]);
@@ -53,8 +119,25 @@ public class DMTrainingDataGeneratorMain {
 		}
 		System.out.println("Read "+tweetClassification.size()+
 				" tweet classifications from file "+trainingData.getAbsolutePath());
+		return tweetClassification;
 	}
 	
+	private static HashMap<Long,JsonNode> readJsonTweets() {
+		
+		Properties localProps = AGTProperties.getLocalProperties();
+		File zipFile = new File(localProps.getProperty("random1JsonZip"));
+		ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(zipFile);
+
+		HashMap<Long,JsonNode> jsonTweets = new HashMap<Long,JsonNode>();
+		for (JsonNode tweet : tweets) {
+			long tweetID = tweet.get("id").asLong();
+			jsonTweets.put(tweetID,tweet);
+		}
 	
+		System.out.println("Read "+jsonTweets.size()+
+				" Json tweets from file "+zipFile.getAbsolutePath());
+		
+		return jsonTweets;
+	}
 
 }

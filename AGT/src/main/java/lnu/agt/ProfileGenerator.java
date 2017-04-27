@@ -53,11 +53,13 @@ public class ProfileGenerator {
 	
 	private HashMap<Long,Integer> user2count = new HashMap<Long,Integer>();
 	int downloadCount = 0;
+	int unknownCount = 0;
 	public UserProfile getUserProfile(long uID) {
 		UserProfile user = user2profile.get(uID);
 		Integer count = user2count.get(uID);
 		
 		if (user == null) { // No profile available ==> return "don't know" while processing
+			unknownCount++;
 			if (count == null) {  // First contact with user
 				count = 1;
 			}
@@ -73,7 +75,7 @@ public class ProfileGenerator {
 				
 			}
 			
-			System.out.println("No profile available for user "+uID+", count: "+count);	
+			//System.out.println("No profile available for user "+uID+", count: "+count);	
 			return dontknow;
 		}
 		else 
@@ -82,6 +84,7 @@ public class ProfileGenerator {
 	}
 	
 	public int getDownloadCount() { return downloadCount; }
+	public int getUnknownCount() { return unknownCount; }
 	
 	public ArrayList<UserProfile> getAvailableProfiles() {
 		ArrayList<UserProfile> allProfiles = new ArrayList<UserProfile>();

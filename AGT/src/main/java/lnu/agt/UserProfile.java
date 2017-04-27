@@ -88,5 +88,9 @@ public class UserProfile {
 		
 		return buf.toString();
 	}
+	
+	public double[] getProperties() {
+		return userProperties;
+	}
 
 }
