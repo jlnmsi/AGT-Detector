@@ -17,6 +17,7 @@ import lnu.agt.AGTProperties;
 import lnu.agt.DeviceProfiler;
 import lnu.agt.ProfileGenerator;
 import lnu.agt.ReadZipFiles;
+import lnu.agt.TextClassifier;
 import lnu.agt.UserProfile;
 
 import org.codehaus.jackson.JsonNode;
@@ -26,8 +27,8 @@ import org.codehaus.jackson.JsonNode;
  * The input is a classification list (tweetIDs,classification) and the output
  * is a decision making model
  * - config/decisionMakingModel.txt
- * containg, for each tweet, a text row with
- *    classification, tweetID, deviceType, textProbability, ... + numerical profile properties.
+ * containing, for each tweet, a text row with
+ *    tweetID, deviceType, textProbability, ...numerical profile properties ..., classification
  * 
  * @author jlnmsi
  *
@@ -45,6 +46,7 @@ public class DMTrainingDataGeneratorMain {
 		
 		// Start building training data
 		ProfileGenerator profiler = new ProfileGenerator(false);
+		TextClassifier textClassifier = new TextClassifier();
 		ArrayList<String> outputRows = new ArrayList<String>();
 		for (long tweetID : tweetClassification.keySet()) {
 			int classification = tweetClassification.get(tweetID);
@@ -53,7 +55,7 @@ public class DMTrainingDataGeneratorMain {
 			String source = tweet.get("source").asText();
 			int deviceType = DeviceProfiler.classifyDevice(source);
 			
-			double textProbability = 0.9;          // Not completed!
+			double textProbability = textClassifier.getClassification(tweet);
 			
 			long userID = tweet.get("user").get("id").asLong();
 			UserProfile profile = profiler.getUserProfile(userID);
@@ -85,12 +87,12 @@ public class DMTrainingDataGeneratorMain {
 											double textProbability, double[] userProperties) {
 		StringBuilder buf = new StringBuilder();
 		String itemSep = " ";
-		buf.append(classification);
-		buf.append(itemSep).append(tweetID);
+		buf.append(tweetID);              // tweetID as first item
 		buf.append(itemSep).append(deviceType);
 		buf.append(itemSep).append(textProbability);
 		for (double uProp : userProperties)
 			buf.append(itemSep).append(uProp);
+		buf.append(classification);     // classification as last item
 		return buf.toString();
 	}
 	

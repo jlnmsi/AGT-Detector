@@ -55,7 +55,8 @@ public class TextClassifier {
 
 	}
 	
-	public TextClassifier() throws Exception {
+	public TextClassifier()  {
+		try {
 		agtProps = AGTProperties.getAGTProperties();
 		String path = agtProps.getProperty("dummy");
 		
@@ -68,6 +69,10 @@ public class TextClassifier {
 		//initilize classifier
 		String modelPath = agtProps.getProperty("modelRF");;
 		cls = (Classifier) weka.core.SerializationHelper.read(modelPath);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public TextClassifier(String model) throws Exception {
@@ -89,13 +94,19 @@ public class TextClassifier {
 		cls = (Classifier) weka.core.SerializationHelper.read(model);
 	}
 	
-	public double getClassification(JsonNode tweet) throws Exception{
-		TweetText tweetText = new TweetText(tweet);
-		Instance inst = new DenseInstance(data.numAttributes());
-		inst.setValue(data.attribute(0), data.attribute(0).addStringValue(tweetText.getCleanText()));
-		data.add(0, inst);
+	public double getClassification(JsonNode tweet) {
+		try {
+			TweetText tweetText = new TweetText(tweet);
+			Instance inst = new DenseInstance(data.numAttributes());
+			inst.setValue(data.attribute(0), data.attribute(0).addStringValue(tweetText.getCleanText()));
+			data.add(0, inst);
 
-		return cls.distributionForInstance(data.instance(0))[1];
+			return cls.distributionForInstance(data.instance(0))[1];
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1.0;
 	}
 
 	public Classifier getClassifier(){
