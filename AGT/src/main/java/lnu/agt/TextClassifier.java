@@ -41,6 +41,7 @@ public class TextClassifier {
 		int i = 0;
 		while(i < 3) {		
 			int r  = rand.nextInt(tweets.size());
+			//
 			//tc.setClassifier("modelNB"); uncomment for Naive Bayesian instead
 			//tc.setClassifier("modelSMO"); uncomment for support vector machine instead
 			TweetText tweetText = new TweetText(tweets.get(r));
