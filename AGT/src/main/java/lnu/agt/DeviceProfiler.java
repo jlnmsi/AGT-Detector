@@ -13,6 +13,14 @@ import java.util.Properties;
 import java.util.Scanner;
 
 /**
+ * 1 = mobile device
+ * 2 = web device
+ * 3 = app
+ * 4 = misc (hard to decide)
+ * 5 = bots
+ * 6 = unknown
+ * 
+ * 
  * @author jlnmsi
  *
  */
@@ -42,6 +50,15 @@ public class DeviceProfiler {
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+	
+	public static int classifyDevice(String sourceUrlTag) {
+		String deviceName = getDeviceName(sourceUrlTag);
+		Integer type =  deviceClassifier.get(deviceName);
+		if (type == null) // Unknown device type
+			return 6;
+		else
+			return type;
 	}
 	
 	// Demonstrator
