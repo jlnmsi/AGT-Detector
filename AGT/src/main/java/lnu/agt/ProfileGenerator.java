@@ -53,13 +53,13 @@ public class ProfileGenerator {
 	
 	private HashMap<Long,Integer> user2count = new HashMap<Long,Integer>();
 	int downloadCount = 0;
-	int unknownCount = 0;
+	int dontknownCount = 0;
 	public UserProfile getUserProfile(long uID) {
 		UserProfile user = user2profile.get(uID);
 		Integer count = user2count.get(uID);
 		
 		if (user == null) { // No profile available ==> return "don't know" while processing
-			unknownCount++;
+			dontknownCount++;
 			if (count == null) {  // First contact with user
 				count = 1;
 			}
@@ -86,7 +86,8 @@ public class ProfileGenerator {
 	}
 	
 	public int getDownloadCount() { return downloadCount; }
-	public int getUnknownCount() { return unknownCount; }
+	public int getDontknowCount() { return dontknownCount; }
+	public UserProfile getDontlnowProfile() { return dontknow; }
 	
 	public ArrayList<UserProfile> getAvailableProfiles() {
 		ArrayList<UserProfile> allProfiles = new ArrayList<UserProfile>();

@@ -65,7 +65,7 @@ public class DMTrainingDataGeneratorMain {
 			String row = buildOutputRow(classification,tweetID,isDontKnow,deviceType,textProbability,userProperties);
 			outputRows.add(row);
 		}
-		System.out.println("Don't know profile used for "+profiler.getUnknownCount()+" tweets");
+		System.out.println("Don't know profile used for "+profiler.getDontknowCount()+" tweets");
 		
 		File outFile = new File("config/decisionMakingTrainingSet.txt");
 		try {
