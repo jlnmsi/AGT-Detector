@@ -58,7 +58,8 @@ public class TextClassifier {
 	public TextClassifier()  {
 		try {
 		agtProps = AGTProperties.getAGTProperties();
-		String path = agtProps.getProperty("dummy");
+		//String path = agtProps.getProperty("dummy");        // Jonas N
+		String path = agtProps.getProperty("tcDummy");        // Jonas L
 		
 		//load dummy dataset to get correct format of Instances data
 		BufferedReader reader = new BufferedReader(new FileReader(path));
@@ -67,8 +68,10 @@ public class TextClassifier {
 		reader.close();
 		
 		//initilize classifier
-		String modelPath = agtProps.getProperty("modelRF");;
+		//String modelPath = agtProps.getProperty("modelRF");       // Jonas N
+		String modelPath = agtProps.getProperty("tcModel");         // Jonas L
 		cls = (Classifier) weka.core.SerializationHelper.read(modelPath);
+		System.out.println("Used Classifier: "+cls.getClass().getName());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +80,8 @@ public class TextClassifier {
 	
 	public TextClassifier(String model) throws Exception {
 		agtProps = AGTProperties.getAGTProperties();
-		String path = agtProps.getProperty("dummy");
+		//String path = agtProps.getProperty("dummy");	// Jonas N
+		String path = agtProps.getProperty("tcDummy");    // Jonas L
 		
 		//load dummy dataset to get correct format of Instances data
 		BufferedReader reader = new BufferedReader(new FileReader(path));

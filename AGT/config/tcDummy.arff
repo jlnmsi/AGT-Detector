@@ -1,0 +1,7 @@
+@relation tcTraining
+
+@attribute text string
+@attribute class_attr {0,1}
+
+@data
+'user revise their reserve estimates due to lower oil and gas prices what will user do in tomorrows review url',0

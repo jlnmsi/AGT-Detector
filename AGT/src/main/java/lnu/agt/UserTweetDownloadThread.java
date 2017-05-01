@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import twitter4j.Paging;
@@ -25,14 +26,23 @@ import twitter4j.conf.ConfigurationBuilder;
  */
 public class UserTweetDownloadThread extends Thread {
 	private final LinkedBlockingQueue<Long> queue;
+	private final ConcurrentHashMap<Long,UserProfile> user2profile;
 	private int downloadCount = 0;
+	private final UserProfile dontknow;
 	private final Twitter twitter;
 	
-	 public UserTweetDownloadThread(LinkedBlockingQueue<Long> tweetQueue) {
+	 public UserTweetDownloadThread(LinkedBlockingQueue<Long> tweetQueue,
+			 						ConcurrentHashMap<Long,UserProfile> user2prof,
+			 						UserProfile dontknow) {
 		 queue = tweetQueue;
+		 user2profile = user2prof;
+		 this.dontknow = dontknow;
 		 
 		// Setup Twitter4j connection 
 		twitter = connectTwitter4j();
+		
+		// Connect to user_profiles.txt to append more profiles
+		
 	 }
 	
 	public void run() {
@@ -41,38 +51,41 @@ public class UserTweetDownloadThread extends Thread {
 				long userID = queue.take();
 				User user = lookupUser(twitter,userID);
 				if (user != null) {
-					List<Status> tweets = null;
+					
 					try {
-						tweets = getAvailableStatuses(twitter,user);
-						
-						for (Status s : tweets) {
+						List<Status> statuses4j = getAvailableStatuses(twitter,user);
+						List<AGTStatus> tweets = new ArrayList<AGTStatus>();
+						for (Status s : statuses4j) {
 							AGTStatus aStatus = AGTStatus.createFromStatus(s);
-							System.out.println(aStatus);
+							tweets.add(aStatus);
 						}
+						downloadCount++;
+						System.out.println(downloadCount+"\tDownload completed for user "+ 
+											user.getId()+"\t"+user.getName()+", tweets: "+tweets.size());
+						UserProfile uProf = new UserProfile(tweets);
+						user2profile.put(userID,uProf);
 						
 					} catch (TwitterException e) {
 						String msg = e.getMessage();
 						
 						if (msg.contains("Authentication credentials")) {  // Access private account?
-							System.err.println("Dropping private account "+userID+". Add substitution");
+							System.err.println("Dropping private account "+userID+". Adds DontKnow as replacer");
+							user2profile.put(userID,dontknow);
 						}
 						else if (msg.contains("Something is broken")) {  // Temporary download problem
 							System.err.println("Temporary problem for account "
-									+userID+", "+user.getName()+", enqueues it again and sleeps for 1 minute");
-							
+									+userID+", "+user.getName()+", enqueues it again and sleeps for 1 minute");			
 							// Add to queue again and wait 1 minute
 							queue.add(userID);
 							try { Thread.sleep(1*60*1000); } catch (InterruptedException e1) {e1.printStackTrace();}
 						}
-						else
+						else {
 							System.err.println("Unkown error: "+msg+" for account "
 									+userID+", "+user.getName()+", enqueues it again and sleeps for 1 minute");
-					}
-					
-					if (tweets != null) {
-						downloadCount++;
-						System.out.println(downloadCount+"\tDownload completed for user "+ 
-											user.getId()+"\t"+user.getName()+", tweets: "+tweets.size());
+							// Add to queue again and wait 1 minute
+							queue.add(userID);
+							try { Thread.sleep(1*60*1000); } catch (InterruptedException e1) {e1.printStackTrace();}
+						}
 					}
 				}
 			}
@@ -107,7 +120,7 @@ public class UserTweetDownloadThread extends Thread {
 		return twitter;
 	}
 	
-	private static User lookupUser(Twitter twitter, long accountID) {
+	private User lookupUser(Twitter twitter, long accountID) {
 		ResponseList<User> users = null;
 		User user = null;
 		try {
@@ -116,15 +129,16 @@ public class UserTweetDownloadThread extends Thread {
 			if (users.size()>1)
 				System.err.println(accountID+"\t"+users.size());
 		} catch (TwitterException e) {
-			System.err.println(e.getMessage());
-			System.err.println("No user matches for specified terms: "+accountID);
+			//System.err.println(e.getMessage());
+			System.err.println("No user matches for specified terms: "+accountID+". Adds DontKnow as replacer");
+			user2profile.put(accountID,dontknow);
 			//e.printStackTrace();
 		}
 		return user;
 	}
 	
-	private static int pageCount = 0;
-	private static List<Status> getAvailableStatuses(Twitter twitter,User u) throws TwitterException {
+	private int pageCount = 0;
+	private List<Status> getAvailableStatuses(Twitter twitter,User u) throws TwitterException {
 		ArrayList<Status> allStatuses = new ArrayList<Status>();
 		
 		long id = u.getId();

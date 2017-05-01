@@ -17,8 +17,8 @@ public class UserProfile {
 	
 	private static int MAX_TWEETS = 3200;  // Used to normalize tweet count
 	
-	private long userID;
-	private String userName;
+	public final long userID;
+	public final String userName;
 	private double[] userProperties;
 	
 	

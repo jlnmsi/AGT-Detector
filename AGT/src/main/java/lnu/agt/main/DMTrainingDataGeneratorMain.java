@@ -59,14 +59,15 @@ public class DMTrainingDataGeneratorMain {
 			
 			long userID = tweet.get("user").get("id").asLong();
 			UserProfile profile = profiler.getUserProfile(userID);
+			boolean isDontKnow = profile.userID == 0?true:false;
 			double[] userProperties = profile.getProperties();
 			
-			String row = buildOutputRow(classification,tweetID,deviceType,textProbability,userProperties);
+			String row = buildOutputRow(classification,tweetID,isDontKnow,deviceType,textProbability,userProperties);
 			outputRows.add(row);
 		}
 		System.out.println("Don't know profile used for "+profiler.getUnknownCount()+" tweets");
 		
-		File outFile = new File("config/decisionMakingModel.txt");
+		File outFile = new File("config/decisionMakingTrainingSet.txt");
 		try {
 			PrintWriter writer = new PrintWriter( outFile );
 			for (String row : outputRows) {
@@ -77,22 +78,21 @@ public class DMTrainingDataGeneratorMain {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Saved Decion Maker model for "+outputRows.size()+" tweet in "+outFile.getAbsolutePath());
-			
-		
-
+		System.out.println("Saved Decision Maker model for "+outputRows.size()+" tweet in "+outFile.getAbsolutePath());
 	}
 	
-	private static String buildOutputRow(int classification, long tweetID, int deviceType, 
+	private static String buildOutputRow(int classification, long tweetID, boolean isDontKnow, int deviceType, 
 											double textProbability, double[] userProperties) {
 		StringBuilder buf = new StringBuilder();
 		String itemSep = " ";
-		buf.append(tweetID);              // tweetID as first item
+		buf.append(classification);     // classification as first item
+		buf.append(itemSep).append(tweetID);              
+		buf.append(itemSep).append( isDontKnow?1:0);    // 1 ==> using DontKnow profile
 		buf.append(itemSep).append(deviceType);
 		buf.append(itemSep).append(textProbability);
 		for (double uProp : userProperties)
 			buf.append(itemSep).append(uProp);
-		buf.append(classification);     // classification as last item
+		
 		return buf.toString();
 	}
 	

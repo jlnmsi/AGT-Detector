@@ -20,7 +20,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class ProfileGenerator {
 	// Thread communication
-	private final ConcurrentHashMap<Long,UserProfile>user2profile = new ConcurrentHashMap<Long, UserProfile>();
+	private final ConcurrentHashMap<Long,UserProfile> user2profile = new ConcurrentHashMap<Long, UserProfile>();
 	private final LinkedBlockingQueue<Long> downloadQueue = new LinkedBlockingQueue<Long>();
 	
 	private final UserProfile dontknow;
@@ -43,7 +43,7 @@ public class ProfileGenerator {
 		
 		// Start download thread
 		if (Download_Profile) {
-			downloadThread = new UserTweetDownloadThread(downloadQueue);
+			downloadThread = new UserTweetDownloadThread(downloadQueue, user2profile, dontknow);
 			downloadThread.start();
 		}
 		else
@@ -70,8 +70,10 @@ public class ProfileGenerator {
 			user2count.put(uID, count);
 			
 			if (Download_Profile && count == CountToStartDownload) {  // Start download user tweet
+			//if (count == CountToStartDownload) {  // Start
 				downloadCount++;
 				downloadQueue.add(uID);
+				//user2profile.put(uID, dontknow);
 				
 			}
 			
