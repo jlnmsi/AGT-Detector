@@ -105,42 +105,43 @@ public class TweetText {
 			for(int i = 0; i < hashtagMentions.size(); i = i + 2){
 				arrPart = Arrays.copyOfRange(arr32, 4*hashtagMentions.get(i), 4*hashtagMentions.get(i+1));
 				newString = new String(arrPart, "UTF-32");
-				tmp = tmp.replaceAll(Pattern.quote(newString), " HASHTAG ");
+				tmp = tmp.replaceAll(Pattern.quote(newString), " XHASHTAGX ");
 			}
 		}
 		if(urlMentions != null) {
 			for(int i = 0; i < urlMentions.size(); i = i + 2){
 				arrPart = Arrays.copyOfRange(arr32, 4*urlMentions.get(i), 4*urlMentions.get(i+1));
 				newString = new String(arrPart, "UTF-32");
-				tmp = tmp.replaceAll(Pattern.quote(newString), " URL ");
+				tmp = tmp.replaceAll(Pattern.quote(newString), " XURLX ");
 			}
 		}
 		if(userMentions != null) {
 			for(int i = 0; i < userMentions.size(); i = i + 2){
 				arrPart = Arrays.copyOfRange(arr32, 4*userMentions.get(i), 4*userMentions.get(i+1));
 				newString = new String(arrPart, "UTF-32");
-				tmp = tmp.replaceAll(Pattern.quote(newString), " USER ");
+				tmp = tmp.replaceAll(Pattern.quote(newString), " XUSERX ");
 			}
 		}
 		if(symbolMentions != null) {
 			for(int i = 0; i < symbolMentions.size(); i = i + 2){
 				arrPart = Arrays.copyOfRange(arr32, 4*symbolMentions.get(i), 4*symbolMentions.get(i+1));
 				newString = new String(arrPart, "UTF-32");
-				tmp = tmp.replaceAll(Pattern.quote(newString), " SYMBOL ");
+				tmp = tmp.replaceAll(Pattern.quote(newString), " XSYMBOLX ");
 			}
 		}
 		if(mediaMentions != null) {
 			for(int i = 0; i < mediaMentions.size(); i = i + 2){
 				arrPart = Arrays.copyOfRange(arr32, 4*mediaMentions.get(i), 4*mediaMentions.get(i+1));
 				newString = new String(arrPart, "UTF-32");
-				tmp = tmp.replaceAll(newString, " MEDIA ");
+				tmp = tmp.replaceAll(Pattern.quote(newString), " XMEDIAX ");
 			}
 		}
 		//regex cleaning
 		tmp = tmp.replaceAll("[()\\[\\]/%\\\\:#]", "")
-					.replaceAll("[°'´\"`.,’!?@-]", "")
+					.replaceAll("-?\\d*[.,]?\\d+", "number ")
+					.replaceAll("[°'´\"`.,’!?@-]", " ")
 					.replaceAll("[…]", " ")
-					.replaceAll("\\d+", "number ")
+//					.replaceAll("\\d+", "number ")
 					.replaceAll("[0-9][(k|m)?mh?]?[ms]?", "")
 					.replaceAll("\\s+",  " ")
 					.trim()
