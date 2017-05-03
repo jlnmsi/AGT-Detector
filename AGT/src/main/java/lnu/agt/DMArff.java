@@ -6,12 +6,15 @@ package lnu.agt;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
+import org.apache.commons.io.FileUtils;
 import org.codehaus.jackson.JsonNode;
 
 import weka.core.Attribute;
@@ -215,8 +218,20 @@ private final Instances dummy;
 		System.out.println(dm.getDummyArff());
 		
 		Instances training = dm.buildTrainingArff();
-		System.out.println("First training instance: "+training.get(0));
-
+		saveArff(training);
+		
+	}
+	
+	private static void saveArff(Instances data) {
+		try {
+			File out = new File("config/dmTraining.arff");
+			String text = data.toString();
+			
+			FileUtils.writeStringToFile(out,text,(Charset) null);
+			System.out.println("Saved arff file as "+out.getAbsolutePath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

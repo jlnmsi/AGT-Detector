@@ -144,7 +144,7 @@ public class TCArff {
 	
 	
 
-	// Demonstrator
+	// Demonstrator + Arff generator
 	public static void main(String[] args) {
 		TCArff tc = new TCArff();
 		System.out.println(tc);

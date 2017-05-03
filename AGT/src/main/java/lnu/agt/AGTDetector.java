@@ -79,33 +79,7 @@ public class AGTDetector {
 	}
 	
 	public int getDontknowCount() { return dontknowCount; }
-	
-//	private boolean classify(long tweetID, boolean isDontKnow, int deviceType, 
-//			double textProbability, double[] userProperties) {
-//		try {
-//
-//			Instance inst = new DenseInstance(19);
-////			inst.setValue( data.attribute(0), ""+tweetID);
-////			inst.setValue( data.attribute(1), ""+ (isDontKnow?1:0) );
-//			inst.setValue( data.attribute(0), ""+ deviceType );
-//			inst.setValue( data.attribute(1), textProbability );
-//			for (int i=2; i<2+userProperties.length;i++) 
-//				inst.setValue( data.attribute(i), userProperties[i-2] );
-//
-//			//inst.setValue( data.attribute(data.numAttributes()-1), ""+ classification );
-//			data.add(inst);
-//			inst.setDataset(data);
-//
-////			System.out.println(inst);
-//			//double prob = classifier.distributionForInstance(inst)[1];
-//			long clz = Math.round( classifier.classifyInstance(inst) );
-//			//System.out.println(prob + " ==> "+clz);
-//			return clz ==1;    // 1 ==> AFT
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return false;    // Should never happen!
-//	}
+
 	
 	
 	/*
@@ -114,9 +88,6 @@ public class AGTDetector {
 	private Classifier setupClassifier() {
 		Classifier cls = null;
 		try {
-			// Load empty dataset to get correct format of Instances data
-//			DecisionProfile decisionProfile = new DecisionProfile();
-//			data = decisionProfile.getDataset();
 			
 			//DMArff dm = new DMArff();
 			data = dmArff.getDummyArff();
@@ -146,14 +117,11 @@ public class AGTDetector {
 		for (JsonNode tweet : tweets) {
 			String text = tweet.get("text").asText();
 			long tID = tweet.get("id").asLong();
-//			if (tID == 819676709536628737L) {
 			if (agt.isAGT(tweet) ) {
 				nAgt++;
 			}
 			else
 				nHgt++;
-				//System.out.println(tID+"\t"+text.replaceAll("\n", " "));
-//			}
 		}
 		System.out.println("\nAGT: "+(0.0+nAgt)/tweets.size()+", HGT: "+(0.0+nHgt)/tweets.size());
 		System.out.println("DontknowCount: "+agt.getDontknowCount() );
