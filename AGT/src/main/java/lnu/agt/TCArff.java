@@ -1,8 +1,8 @@
 /**
- * CreateTCArff.java
- * 30 apr 2017
+ * TCArff.java
+ * 2 maj 2017
  */
-package lnu.agt.main;
+package lnu.agt;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,85 +14,58 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
-import lnu.agt.AGTProperties;
-import lnu.agt.ReadZipFiles;
-import lnu.agt.TweetText;
-
 import org.apache.commons.io.FileUtils;
 import org.codehaus.jackson.JsonNode;
 
-import weka.classifiers.Classifier;
-import weka.classifiers.meta.FilteredClassifier;
-import weka.classifiers.trees.RandomForest;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.filters.Filter;
-import weka.filters.unsupervised.attribute.StringToWordVector;
 
 /**
- * Generate a Weka arff file tcTraining.arff for our text classifier 
- * based on the training set tcTrainingData.
- * 
  * @author jlnmsi
  *
  */
-public class CreateTCArff {
-	
-	
-	private static final int FOLDS = 10;
-	private static final Classifier CLASSIFIER = new RandomForest();
+public class TCArff {
 
-	public static void main(String[] args) {
+	private final Instances dummy;
+	
+	public TCArff() {
+		dummy = setupAttributes();
+	}
+	
+	public Instances setupAttributes() {
+		// Configure attribute set
+		ArrayList<Attribute> attributes = new ArrayList<Attribute> ();
+		List<String> values = new ArrayList<String>();
+		values.add("0"); values.add("1");
+		Attribute clz = new Attribute("class_attr",values) ;
+		Attribute text = new Attribute("text",(ArrayList<String>) null);
+		attributes.add( text ); attributes.add( clz );   
+
+		Instances data = new Instances("tcTraining", attributes, 1);
+		data.setClass( clz );
+		return data;
+	}
+	
+	public Instances getDummyArff() { return new Instances(dummy); }  // Deep copy?
+	
+	@Override
+	public String toString() { 
+		return "TCArrf, Name: "+dummy.relationName()+", Attributes: "+dummy.numAttributes();
+	}
+	
+	
+	public Instances buildTrainingArff() {
 		// Read TC training data ==> setup tweetClassification mapping 
 		HashMap<Long,Integer> tweetClassification = readClassification();
-				
+						
 		// Read json tweets to setup tweetID-to-json mapping
 		HashMap<Long,JsonNode> jsonTweets = readJsonTweets();
 		
-		Instances data = buildDataSet(tweetClassification,jsonTweets);
+		// Initialize empty instance
+		Instances data = new Instances(dummy);
 		
-		System.out.println(data.toSummaryString());
-		saveARFF(data);
-	}
-	
-	private static void saveARFF(Instances data) {
-		try {
-			File out = new File("config/tcTraining.arff");
-			String text = data.toString();
-			
-			FileUtils.writeStringToFile(out,text,(Charset) null);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	public static FilteredClassifier setupFilteredClassifier( Classifier classifier  ) {
-		FilteredClassifier fc = new FilteredClassifier();
-		// making a classifier and taking care of instance ID
-		Filter filter = new StringToWordVector();
-
-		// meta-classifier
-		fc.setFilter(filter);
-		fc.setClassifier(classifier);		
-
-		return fc;
-	}
-	
-	private static Instances buildDataSet(HashMap<Long,Integer> tweetClassification, 
-											HashMap<Long,JsonNode> jsonTweets) {
-//		// Configure data set
-//		ArrayList<Attribute> attributes = new ArrayList<Attribute> ();
-//		List<String> values = new ArrayList<String>();
-//		values.add("0"); values.add("1");
-//		Attribute clz = new Attribute("class_attr",values) ;
-//		Attribute text = new Attribute("text",(ArrayList<String>) null);
-//		attributes.add( text ); attributes.add( clz );   
-//		
-//		Instances data = new Instances("tcTraining", attributes, 1);
-//		data.setClass( clz );
 		int agt = 0, hgt = 0;
 		try {
 			for (long tID : tweetClassification.keySet()) {
@@ -104,8 +77,8 @@ public class CreateTCArff {
 				//System.out.println(clazz+"\t"+cleanText);
 				
 				Instance inst = new DenseInstance(2);
-				inst.setValue(text, cleanText);
-				inst.setValue(clz, clazz);
+				inst.setValue(data.attribute(0), cleanText);
+				inst.setValue(data.attribute(1), clazz);
 				data.add(inst);
 				
 				if (clazz.equals("1"))
@@ -116,11 +89,12 @@ public class CreateTCArff {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		System.out.println("AGT Count: "+agt+", HGT Count: "+hgt);
+		System.out.println("TCArff: Added Instances: "+data.numInstances()+", AGT Count: "+agt+", HGT Count: "+hgt);
+		
 		return data;
 	}
-
-	private static HashMap<Long,JsonNode> readJsonTweets() {
+	
+	private HashMap<Long,JsonNode> readJsonTweets() {
 		
 		Properties localProps = AGTProperties.getLocalProperties();
 		File zipFile = new File(localProps.getProperty("random1JsonZip"));
@@ -132,15 +106,15 @@ public class CreateTCArff {
 			jsonTweets.put(tweetID,tweet);
 		}
 	
-		System.out.println("Read "+jsonTweets.size()+
+		System.out.println("TCArff: Read "+jsonTweets.size()+
 				" Json tweets from file "+zipFile.getAbsolutePath());
 		
 		return jsonTweets;
 	}
 	
-	private static HashMap<Long,Integer> readClassification() {
+	private HashMap<Long,Integer> readClassification() {
 		Properties agtProps = AGTProperties.getAGTProperties();
-		File trainingData = new File(agtProps.getProperty("tcTrainingData"));
+		File trainingData = new File(agtProps.getProperty("trainingData10k"));
 		
 		HashMap<Long,Integer> tweetClassification = new HashMap<Long,Integer>();
 		Scanner scanner = null;
@@ -161,11 +135,37 @@ public class CreateTCArff {
 		        scanner.close();
 		    }
 		}
-		System.out.println("Read "+tweetClassification.size()+
+		System.out.println("TCArff: Read "+tweetClassification.size()+
 				" tweet classifications from file "+trainingData.getAbsolutePath());
 		return tweetClassification;
 	}
 	
+	
+	
+	
 
+	// Demonstrator
+	public static void main(String[] args) {
+		TCArff tc = new TCArff();
+		System.out.println(tc);
+		System.out.println(tc.getDummyArff());
+		
+		Instances training = tc.buildTrainingArff();
+		System.out.println(training.numInstances());
+		saveArff(training);
+		
+	}
+	
+	private static void saveArff(Instances data) {
+		try {
+			File out = new File("config/tcTraining10k.arff");
+			String text = data.toString();
+			
+			FileUtils.writeStringToFile(out,text,(Charset) null);
+			System.out.println("Saved arff file as "+out.getAbsolutePath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
