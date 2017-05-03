@@ -83,16 +83,16 @@ public class CreateTCArff {
 	
 	private static Instances buildDataSet(HashMap<Long,Integer> tweetClassification, 
 											HashMap<Long,JsonNode> jsonTweets) {
-		// Configure data set
-		ArrayList<Attribute> attributes = new ArrayList<Attribute> ();
-		List<String> values = new ArrayList<String>();
-		values.add("0"); values.add("1");
-		Attribute clz = new Attribute("class_attr",values) ;
-		Attribute text = new Attribute("text",(ArrayList<String>) null);
-		attributes.add( text ); attributes.add( clz );   
-		
-		Instances data = new Instances("tcTraining", attributes, 1);
-		data.setClass( clz );
+//		// Configure data set
+//		ArrayList<Attribute> attributes = new ArrayList<Attribute> ();
+//		List<String> values = new ArrayList<String>();
+//		values.add("0"); values.add("1");
+//		Attribute clz = new Attribute("class_attr",values) ;
+//		Attribute text = new Attribute("text",(ArrayList<String>) null);
+//		attributes.add( text ); attributes.add( clz );   
+//		
+//		Instances data = new Instances("tcTraining", attributes, 1);
+//		data.setClass( clz );
 		int agt = 0, hgt = 0;
 		try {
 			for (long tID : tweetClassification.keySet()) {
@@ -166,76 +166,6 @@ public class CreateTCArff {
 		return tweetClassification;
 	}
 	
-//	private static void runCrossValidation(Classifier fc, Instances data, int folds) {
-//		for (int n = 0; n < folds; n++) {
-//			Instances trainingData = data.trainCV(folds, n);
-//			Instances testingData = data.testCV(folds, n);
-//			
-//			try {
-//				// train classifier
-//				fc.buildClassifier(trainingData);
-//				
-//				// evaluate classifier
-//				evalClassifier(fc, testingData);
-//				
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}	
-//		
-//		// Present summary
-//		System.out.println("\nInstances: "+data.numInstances()+", Correct: "+correct+", Incorrect: "+incorrect);		
-//		printConfusionMatrix();
-//		System.out.println("\nError Classifications \n"+misclassified);
-//	}
-//	
-//	public static  void evalClassifier(Classifier fc, Instances testingData) throws Exception {
-//		for(int i=0; i < testingData.numInstances(); i++){
-//			Instance current = testingData.instance(i);
-//			double predicted = fc.classifyInstance(current);
-//			double actual = current.classValue();
-//
-//			// Store result
-//			evalStat(current,predicted, actual);
-//
-//		}
-//	}
-//	
-//	private static int humanHuman = 0, botBot = 0, predHumanActualBot = 0, predBotActualHuman = 0;
-//	private static int correct = 0, incorrect = 0;
-//	private static StringBuilder misclassified = new StringBuilder();
-//	public static void evalStat(Instance current, double predicted, double actual) {
-//		if (predicted == actual){
-//			correct++;
-//			if( predicted == 0 ){
-//				humanHuman++;
-//			}
-//			else {
-//				botBot++;
-//			}
-//		}
-//		else {  // Classification error
-//			misclassified.append((int) predicted + "," + current + "\n");
-//			incorrect++;
-//			
-//			if(predicted == 1){
-//				predBotActualHuman++;
-//			}
-//			else 
-//				predHumanActualBot++;
-//		}
-//	}
-//	
-//	public static void printConfusionMatrix(){
-//		System.out.println("\n***** Confusion Matrix *******");
-//		final Object[][] table = new String[3][];
-//		table[0] = new String[] { "\t", "actual human", "actual AGT" };
-//		table[1] = new String[] { "predicted human", Integer.toString(humanHuman), Integer.toString(predHumanActualBot) };
-//		table[2] = new String[] { "predicted AGT", Integer.toString(predBotActualHuman), Integer.toString(botBot) };
-//
-//		for (final Object[] row : table) {
-//		    System.out.format("%15s%15s%15s\n", row);
-//		}
-//	}
+
 
 }

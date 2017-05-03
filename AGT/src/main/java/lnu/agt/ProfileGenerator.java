@@ -150,7 +150,7 @@ public class ProfileGenerator {
 		user2profile.put(0L, dontknow);
 		//System.out.println("Don't Know: "+dontknow);
 		
-		System.out.println("Initialized "+user2profile.size()+" user profiles from repository " +userProfiles.getAbsolutePath());
+		System.out.println("ProfileGenerator: Initialized "+user2profile.size()+" user profiles from repository " +userProfiles.getAbsolutePath());
 	}
 	
 	

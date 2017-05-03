@@ -32,10 +32,12 @@ public class AGTDetector {
 	private final boolean downloadUsers;
 	private Instances data; 
 	private Classifier classifier;
+	private DMArff dmArff;
 	
 	public AGTDetector(boolean downloadUsers) {
 		this.downloadUsers = downloadUsers;
 		
+		dmArff = new DMArff();
 		classifier = setupClassifier();
 	}
 	
@@ -65,39 +67,45 @@ public class AGTDetector {
 		if (isDontKnow) dontknowCount++;
 		double[] userProperties = profile.getProperties();
 		
-		boolean clz = classify(tID,isDontKnow, deviceType, textProbability, userProperties);
-//		System.out.println(clz);
-		return clz;
-	}
-	
-	public int getDontknowCount() { return dontknowCount; }
-	
-	private boolean classify(long tweetID, boolean isDontKnow, int deviceType, 
-			double textProbability, double[] userProperties) {
 		try {
-
-			Instance inst = new DenseInstance(19);
-//			inst.setValue( data.attribute(0), ""+tweetID);
-//			inst.setValue( data.attribute(1), ""+ (isDontKnow?1:0) );
-			inst.setValue( data.attribute(0), ""+ deviceType );
-			inst.setValue( data.attribute(1), textProbability );
-			for (int i=2; i<2+userProperties.length;i++) 
-				inst.setValue( data.attribute(i), userProperties[i-2] );
-
-			//inst.setValue( data.attribute(data.numAttributes()-1), ""+ classification );
-			data.add(inst);
+			Instance inst = dmArff.addInstance(data, -1 ,deviceType,textProbability,userProperties);
 			inst.setDataset(data);
-
-//			System.out.println(inst);
-			//double prob = classifier.distributionForInstance(inst)[1];
-			long clz = Math.round( classifier.classifyInstance(inst) );
-			//System.out.println(prob + " ==> "+clz);
+			long clz= Math.round( classifier.classifyInstance(inst) );
 			return clz ==1;    // 1 ==> AFT
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;    // Should never happen!
+		return false;    // Should never happen
 	}
+	
+	public int getDontknowCount() { return dontknowCount; }
+	
+//	private boolean classify(long tweetID, boolean isDontKnow, int deviceType, 
+//			double textProbability, double[] userProperties) {
+//		try {
+//
+//			Instance inst = new DenseInstance(19);
+////			inst.setValue( data.attribute(0), ""+tweetID);
+////			inst.setValue( data.attribute(1), ""+ (isDontKnow?1:0) );
+//			inst.setValue( data.attribute(0), ""+ deviceType );
+//			inst.setValue( data.attribute(1), textProbability );
+//			for (int i=2; i<2+userProperties.length;i++) 
+//				inst.setValue( data.attribute(i), userProperties[i-2] );
+//
+//			//inst.setValue( data.attribute(data.numAttributes()-1), ""+ classification );
+//			data.add(inst);
+//			inst.setDataset(data);
+//
+////			System.out.println(inst);
+//			//double prob = classifier.distributionForInstance(inst)[1];
+//			long clz = Math.round( classifier.classifyInstance(inst) );
+//			//System.out.println(prob + " ==> "+clz);
+//			return clz ==1;    // 1 ==> AFT
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return false;    // Should never happen!
+//	}
 	
 	
 	/*
@@ -107,15 +115,18 @@ public class AGTDetector {
 		Classifier cls = null;
 		try {
 			// Load empty dataset to get correct format of Instances data
-			DecisionProfile decisionProfile = new DecisionProfile();
-			data = decisionProfile.getDataset();
+//			DecisionProfile decisionProfile = new DecisionProfile();
+//			data = decisionProfile.getDataset();
+			
+			//DMArff dm = new DMArff();
+			data = dmArff.getDummyArff();
 
 			// initilize classifier		
 			Properties agtProps = AGTProperties.getAGTProperties();
 			String modelPath = agtProps.getProperty("dmModel");   // Model by Jonas L
 			cls = (Classifier) weka.core.SerializationHelper.read(modelPath);
 			
-			System.out.println("Model: "+modelPath+", Used Classifier: "+cls.getClass().getName());
+			System.out.println("AGTDetector: Model: "+modelPath+", Used Classifier: "+cls.getClass().getName());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -144,7 +155,7 @@ public class AGTDetector {
 				//System.out.println(tID+"\t"+text.replaceAll("\n", " "));
 //			}
 		}
-		System.out.println("AGT: "+(0.0+nAgt)/tweets.size()+", HGT: "+(0.0+nHgt)/tweets.size());
+		System.out.println("\nAGT: "+(0.0+nAgt)/tweets.size()+", HGT: "+(0.0+nHgt)/tweets.size());
 		System.out.println("DontknowCount: "+agt.getDontknowCount() );
 	}
 }
