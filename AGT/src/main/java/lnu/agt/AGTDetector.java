@@ -88,8 +88,6 @@ public class AGTDetector {
 	private Classifier setupClassifier() {
 		Classifier cls = null;
 		try {
-			
-			//DMArff dm = new DMArff();
 			data = dmArff.getDummyArff();
 
 			// initilize classifier		

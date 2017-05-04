@@ -83,6 +83,7 @@ private final Instances dummy;
 		attributes.add( new Attribute("urlRatio") );
 		attributes.add( new Attribute("hashtagRatio") );
 		attributes.add( new Attribute("mentionRatio") );
+		attributes.add( new Attribute("retweetRatio") );
 		attributes.add( new Attribute("mobileDevice") );
 		attributes.add( new Attribute("webDevice") );
 		attributes.add( new Attribute("appDevice") );
@@ -139,6 +140,7 @@ private final Instances dummy;
 			boolean isDontKnow = profile.userID == 0?true:false;
 			double[] userProperties = profile.getProperties();
 
+
 			Instance inst = addInstance(data, classification,deviceType,textProbability,userProperties);
 		}
 		System.out.println("DMArff: Don't know profile used for "+profiler.getDontknowCount()+" tweets");
@@ -150,7 +152,7 @@ private final Instances dummy;
 	public Instance addInstance(Instances dataset, int classification,int deviceType, 
 			double textProbability, double[] userProperties) {
 
-		Instance inst = new DenseInstance(19);
+		Instance inst = new DenseInstance( dataset.numAttributes());
 		inst.setValue( dataset.attribute(0), ""+ deviceType );
 		inst.setValue( dataset.attribute(1), textProbability );
 		for (int i=2; i<2+userProperties.length;i++) 

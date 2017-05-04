@@ -9,6 +9,25 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 0 = tweetCount
+ * 1 = chiMin
+ * 2 = chiSec
+ * 3 = entropyHour
+ * 4 = entropyMin
+ * 5 = entropySec
+ * 6 = accountRep
+ * 7 = urlRatio
+ * 8 = hashtagRatio
+ * 9 = mentionRatio
+ * 10 = retweetRatio
+ * 11 = mobileDevice
+ * 12 = webDevice
+ * 13 = appDevice
+ * 14 = miscDevice
+ * 15 = botDevice
+ * 16 = otherDevice
+ * 
+ * 
  * @author jlnmsi
  *
  */
