@@ -37,7 +37,7 @@ public class ReadZipFiles {
 //			else
 //				System.out.println("Dropping file "+f);
 		}
-		System.out.println("Zip files: "+toReturn.size());
+//		System.out.println("Zip files: "+toReturn.size());
 		return toReturn;
 	}
 	
@@ -70,7 +70,7 @@ public class ReadZipFiles {
 
 			// Prepare summary print
 			String fName = f.getName();
-			System.out.println("\t"+fName+", Count: "+toReturn.size());
+//			System.out.println("\t"+fName+", Count: "+toReturn.size());
 		}catch(IOException e) {
 			e.printStackTrace();
 		}

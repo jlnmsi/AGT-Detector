@@ -4,10 +4,8 @@
  */
 package lnu.agt.main;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
@@ -15,6 +13,7 @@ import java.util.Scanner;
 
 import lnu.agt.AGTProperties;
 import lnu.agt.ReadZipFiles;
+import lnu.agt.TCArff;
 import lnu.agt.TextClassifier;
 import lnu.agt.TweetText;
 
@@ -24,7 +23,6 @@ import weka.classifiers.Classifier;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.converters.ArffLoader.ArffReader;
 
 /**
  * Goal: Evaluate my text classifier (constructed in TrainTextClassifier, 
@@ -45,17 +43,14 @@ public class EvalTextClassifier {
 				
 		// Read json tweets to setup tweetID-to-json mapping
 		HashMap<Long,JsonNode> jsonTweets = readJsonTweets();
-		
-		// Restore classifier from arff file
-		Classifier cls = setupClassifier();
-		
+
+		TextClassifier textClassifier = new TextClassifier();		
 		try {
 			for (long tID : tweetClassification.keySet()) {
 				int actual = tweetClassification.get(tID);
 				JsonNode tweet = jsonTweets.get(tID);
 				
-				double predicted = getClassification(cls,tweet);
-				
+				double predicted = textClassifier.getClassification(tweet);
 				evalStat(tweet, tID, predicted, actual);
 			}
 		} catch (Exception e) {
@@ -68,23 +63,7 @@ public class EvalTextClassifier {
 		System.out.println("\nError Classifications \n"+misclassified);
 
 	}
-	
-	private static double getClassification(Classifier cls, JsonNode tweet) {
-		try {
-			TweetText tweetText = new TweetText(tweet);
-			String cleanText = tweetText.getCleanText();
-			Instance inst = new DenseInstance(2);
-			inst.setDataset(data);
-			inst.setValue(0,cleanText);
 
-			return cls.distributionForInstance(inst)[1];
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.exit(-1);
-		return -1.0;
-	}
 	
 	
 	private static HashMap<Long,JsonNode> readJsonTweets() {
@@ -105,31 +84,7 @@ public class EvalTextClassifier {
 		return jsonTweets;
 	}
 	
-	private static Instances data; 
-	private static Classifier setupClassifier() {
-		Classifier cls = null;
-		try {
-			//load dummy dataset to get correct format of Instances data
-			Properties agtProps = AGTProperties.getAGTProperties();
-			String path = agtProps.getProperty("tcDummy");
-			BufferedReader reader = new BufferedReader(new FileReader(path));
-			ArffReader arff = new ArffReader(reader);
-			data = arff.getData();
-			reader.close();
 
-			//initilize classifier		
-			String modelPath = agtProps.getProperty("tcModel");   // Model by Jonas L
-			cls = (Classifier) weka.core.SerializationHelper.read(modelPath);
-			
-			System.out.println("Dummy: "+path+", Model: "+modelPath);
-			System.out.println("Used Classifier: "+cls.getClass().getName());
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		return cls;
-	}
-	
 	private static HashMap<Long,Integer> readClassification() {
 		Properties agtProps = AGTProperties.getAGTProperties();
 		File trainingData = new File(agtProps.getProperty("dmTrainingData"));
@@ -176,7 +131,8 @@ public class EvalTextClassifier {
 			}
 		}
 		else {  // Classification error
-			misclassified.append(actual + "\t" + predicted + "\t" + tweetID + "\t" + text + "\n");
+			String predString = String.format("%.3f", predicted);
+			misclassified.append(actual + "\t" + predString + "\t" + tweetID + "\t" + text + "\n");
 			incorrect++;
 			
 			if(pred == 1){
