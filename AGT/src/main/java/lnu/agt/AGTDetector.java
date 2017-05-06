@@ -108,7 +108,7 @@ public class AGTDetector {
 		AGTDetector agt = new AGTDetector(false);
 		
 		Properties localProps = AGTProperties.getLocalProperties();
-		File zipFile = new File(localProps.getProperty("random1JsonZip"));
+		File zipFile = new File(localProps.getProperty("random234JsonZip"));
 		ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(zipFile);
 
 		int nAgt = 0, nHgt = 0;

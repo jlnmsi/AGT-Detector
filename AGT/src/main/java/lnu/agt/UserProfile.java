@@ -39,6 +39,7 @@ public class UserProfile {
 	public final long userID;
 	public final String userName;
 	private double[] userProperties;
+	private boolean isDontknow = false;
 	
 	
 	
@@ -73,8 +74,9 @@ public class UserProfile {
 		double[] props = accProp.getProperties();  // 5 values
 		append(profile,props);
 		
-		double[] deviceProfile = DeviceProfiler.getDeviceProfile(tweets);
+		double[] deviceProfile = DeviceProfiler.getDeviceProfile(tweets);  // 6 values
 		append(profile,deviceProfile);
+		//System.out.println(Arrays.toString(deviceProfile));
 	
 		// Convert list to double array
 		userProperties = new double[profile.size()];
@@ -87,6 +89,8 @@ public class UserProfile {
 //		System.exit(-1);
 
 	}
+	
+	public void setDontknow(boolean dontknow) { isDontknow = dontknow; }
 	
 	public void append(List<Double> list, double[] data) {
 		for( double d: data)

@@ -114,7 +114,7 @@ public class TCArff {
 	
 	private HashMap<Long,Integer> readClassification() {
 		Properties agtProps = AGTProperties.getAGTProperties();
-		File trainingData = new File(agtProps.getProperty("trainingData10k"));
+		File trainingData = new File(agtProps.getProperty("tcTrainingData"));
 		
 		HashMap<Long,Integer> tweetClassification = new HashMap<Long,Integer>();
 		Scanner scanner = null;
@@ -158,7 +158,7 @@ public class TCArff {
 	
 	private static void saveArff(Instances data) {
 		try {
-			File out = new File("config/tcTraining10k.arff");
+			File out = new File("config/tcTraining.arff");
 			String text = data.toString();
 			
 			FileUtils.writeStringToFile(out,text,(Charset) null);

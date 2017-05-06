@@ -33,7 +33,7 @@ dlvr.it	4
 LinkedIn	3
 Spotify	3
 Twitter for Windows	2
-Mobile Web (M2)	1
+Mobile Web (M2)	5
 Path	1
 Twittascope	5
 Trendsmap Alerting	5

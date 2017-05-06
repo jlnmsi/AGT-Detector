@@ -41,8 +41,8 @@ public class ProfileGeneratorMain {
 		long before = System.currentTimeMillis();
 		int userCount = 0;
 		for (File f : ntsFiles) {
-//			if (!f.getName().startsWith("100"))   // A few zip files
-//				continue;
+			if (!f.getName().startsWith("212507898"))   // A few zip files
+				continue;
 			
 			userCount++;
 			ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(f);
@@ -62,8 +62,8 @@ public class ProfileGeneratorMain {
 			if (statuses.size() > 0){
 				UserProfile user = new UserProfile(statuses);
 				String row = user.asRow('\t');
-				output.println(row);
-				//System.out.println(user.getUserProfile());
+				//output.println(row);
+				//System.out.println(row);
 			}
 		}
 		output.close();

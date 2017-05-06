@@ -4,6 +4,10 @@
  */
 package lnu.agt;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +34,7 @@ public class UserTweetDownloadThread extends Thread {
 	private int downloadCount = 0;
 	private final UserProfile dontknow;
 	private final Twitter twitter;
+	private final FileWriter outWriter; 
 	
 	 public UserTweetDownloadThread(LinkedBlockingQueue<Long> tweetQueue,
 			 						ConcurrentHashMap<Long,UserProfile> user2prof,
@@ -42,6 +47,7 @@ public class UserTweetDownloadThread extends Thread {
 		twitter = connectTwitter4j();
 		
 		// Connect to user_profiles.txt to append more profiles
+		outWriter = setupProfileStorage();
 		
 	 }
 	
@@ -50,7 +56,7 @@ public class UserTweetDownloadThread extends Thread {
 			while ( true ) {
 				long userID = queue.take();
 				User user = lookupUser(twitter,userID);
-				if (user != null) {
+				if (user != null) {   // A new user found
 					
 					try {
 						List<Status> statuses4j = getAvailableStatuses(twitter,user);
@@ -61,23 +67,26 @@ public class UserTweetDownloadThread extends Thread {
 						}
 						downloadCount++;
 						System.out.println(downloadCount+"\tDownload completed for user "+ 
-											user.getId()+"\t"+user.getName()+", tweets: "+tweets.size());
+											user.getId()+"\t"+user.getScreenName()+", tweets: "+tweets.size());
 						UserProfile uProf = new UserProfile(tweets);
-						user2profile.put(userID,uProf);
+						saveUserProfile(userID,uProf);
+						
 						
 					} catch (TwitterException e) {
 						String msg = e.getMessage();
 						
 						if (msg.contains("Authentication credentials")) {  // Access private account?
 							System.err.println("Dropping private account "+userID+". Adds DontKnow as replacer");
-							user2profile.put(userID,dontknow);
+							saveUserProfile(userID,dontknow);
 						}
 						else if (msg.contains("Something is broken")) {  // Temporary download problem
 							System.err.println("Temporary problem for account "
 									+userID+", "+user.getName()+", enqueues it again and sleeps for 1 minute");			
-							// Add to queue again and wait 1 minute
+							// Add to queue again and wait 1 minute if queue is almost empty
+							if (queue.size() < 3)
+								try { Thread.sleep(1*60*1000); } catch (InterruptedException e1) {e1.printStackTrace();}
 							queue.add(userID);
-							try { Thread.sleep(1*60*1000); } catch (InterruptedException e1) {e1.printStackTrace();}
+							
 						}
 						else {
 							System.err.println("Unkown error: "+msg+" for account "
@@ -115,7 +124,7 @@ public class UserTweetDownloadThread extends Thread {
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		Twitter twitter = tf.getInstance();
 		
-		System.out.println("Connected to Twitter using account "+keyProps.getProperty("accountName"));
+		System.out.println("TweetDownload: Connected to Twitter using account "+keyProps.getProperty("accountName"));
 		
 		return twitter;
 	}
@@ -131,7 +140,7 @@ public class UserTweetDownloadThread extends Thread {
 		} catch (TwitterException e) {
 			//System.err.println(e.getMessage());
 			System.err.println("No user matches for specified terms: "+accountID+". Adds DontKnow as replacer");
-			user2profile.put(accountID,dontknow);
+			saveUserProfile(accountID,dontknow);
 			//e.printStackTrace();
 		}
 		return user;
@@ -152,7 +161,7 @@ public class UserTweetDownloadThread extends Thread {
     		Paging paging = new Paging(page, pageSize);
     		List<Status> statuses = twitter.getUserTimeline(id,paging);
     		
-    		System.out.print(" "+pageCount);
+//    		System.out.print(" "+pageCount);
     		sz = statuses.size();
     		if (sz > 0) {
     			allStatuses.addAll(statuses);
@@ -160,9 +169,10 @@ public class UserTweetDownloadThread extends Thread {
     		
     		if (pageCount == 895) {
     			System.err.print("\nPage max reached at "+new Date());
-				System.err.println(". Restarts again in 15 minutes");
+				System.err.print(". Restarts again in 10 minutes");
+				System.err.println(". Current queue size: "+queue.size());
 //System.exit(-1);
-				long sleep = 15*60*1000;
+				long sleep = 10*60*1000;
 				try { Thread.sleep(sleep); } catch (InterruptedException e1) {e1.printStackTrace();}
 				pageCount = 0;
     		}
@@ -172,5 +182,31 @@ public class UserTweetDownloadThread extends Thread {
     	//System.out.println();
     	//System.out.println("Found statuses: "+allStatuses.size());
 		return allStatuses;
+	}
+	
+	private FileWriter setupProfileStorage() {
+		Properties props = AGTProperties.getAGTProperties();
+		File outFile =  new File( props.getProperty("allUserProfiles") );
+
+		FileWriter fw = null;
+		try{
+			fw = new FileWriter(outFile,true);
+			System.out.println("Data successfully appended at the end of file");
+
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		return fw;
+	}
+	
+	private void saveUserProfile(long userID, UserProfile uProf) {
+		user2profile.put(userID,uProf);
+		try {
+			String asRow = uProf.asRow('\t');
+			outWriter.write( asRow +"\n" );
+			outWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

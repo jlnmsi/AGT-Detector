@@ -23,8 +23,8 @@ public class ProfileGenerator {
 	private final ConcurrentHashMap<Long,UserProfile> user2profile = new ConcurrentHashMap<Long, UserProfile>();
 	private final LinkedBlockingQueue<Long> downloadQueue = new LinkedBlockingQueue<Long>();
 	
-	private final UserProfile dontknow;
-	private final int CountToStartDownload = 5; // Tweets to be seen before Tweet download start. 
+	private UserProfile dontknow;
+	private final int CountToStartDownload = 3; // Tweets to be seen before Tweet download start. 
 	private final UserTweetDownloadThread downloadThread;
 	private final boolean Download_Profile; 
 	
@@ -34,12 +34,9 @@ public class ProfileGenerator {
 		// Init table by reading previously stored user-to-profile info 
 		initUserToProfileMapping();
 		
-		// Setup "Don't Know" user profile 
-		dontknow = getUserProfile(0L);
+		// Check "Don't Know" user profile 
 		if (dontknow == null)
 			throw new RuntimeException("\"Don't Know\" profile not found!");
-		
-		
 		
 		// Start download thread
 		if (Download_Profile) {
@@ -101,7 +98,11 @@ public class ProfileGenerator {
 	
 	private void initUserToProfileMapping() {
 		Properties agtProps = AGTProperties.getAGTProperties();
-		File userProfiles = new File(agtProps.getProperty("userProfiles"));
+		File userProfiles;
+		if (Download_Profile)
+			userProfiles = new File(agtProps.getProperty("allUserProfiles"));
+		else 
+			userProfiles = new File(agtProps.getProperty("userProfiles"));
 		double[] average = null;
 		int userCount = 0;
 		
@@ -146,7 +147,8 @@ public class ProfileGenerator {
 		for (int i=0;i<average.length;i++) {
 			average[i] = average[i]/userCount;
 		}
-		UserProfile dontknow = new UserProfile(0,"Don't Know",average);
+		dontknow = new UserProfile(0,"Don't Know",average);
+		dontknow.setDontknow(true);
 		user2profile.put(0L, dontknow);
 		//System.out.println("Don't Know: "+dontknow);
 		

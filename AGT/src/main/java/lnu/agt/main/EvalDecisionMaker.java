@@ -52,7 +52,7 @@ public class EvalDecisionMaker {
 		System.out.println("\nInstances: "+tweetClassification.size()+", Correct: "+correct
 				+", Incorrect: "+incorrect+", Dontknow: "+agtDetector.getDontknowCount());		
 		printConfusionMatrix();
-		System.out.println("\nError Classifications \n"+misclassified);
+//		System.out.println("\nError Classifications \n"+misclassified);
 		System.out.println("\nError Classifications \n"+out);
 	}
 

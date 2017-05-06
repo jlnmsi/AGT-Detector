@@ -36,15 +36,16 @@ public class AGTStatus {
 	public final int urlCount;
 	public final int friendsCount;
 	public final int followersCount;
+	public final int favoritesCount;
 	
 	private AGTStatus(long tweetID, long userID, long createdAt, String userName,
 						String text, String source, boolean isRetweet,
 						int hashtagCount, int mentionCount, int urlCount,
-						int friendsCount, int followersCount) {
+						int friendsCount, int followersCount,int favoritesCount) {
 		this.tweetId = tweetID; this.userId = userID; this.createdAt = createdAt; this.userName = userName;
 		this.text = text; this.source = source; this.isRetweet = isRetweet; 
 		this.hashtagCount = hashtagCount; this.mentionCount = mentionCount;  this.urlCount = urlCount; 
-		this.friendsCount = friendsCount; this.followersCount = followersCount;
+		this.friendsCount = friendsCount; this.followersCount = followersCount; this.favoritesCount = favoritesCount;
 	}
 	
 	@Override
@@ -62,6 +63,7 @@ public class AGTStatus {
 		buf.append(urlCount).append(", ");
 		buf.append(friendsCount).append(", ");
 		buf.append(followersCount).append(", ");
+		buf.append(favoritesCount).append(", ");
 
 		return buf.toString();
 	}
@@ -80,8 +82,9 @@ public class AGTStatus {
 		int urls = s.getURLEntities().length;
 		int friends = s.getUser().getFriendsCount();
 		int followers = s.getUser().getFollowersCount();
+		int favorites = s.getUser().getFavouritesCount();
 		
-		return new AGTStatus(tID,uID,time,userName,text,source,isRT,hashtags,mentions,urls,friends,followers);		
+		return new AGTStatus(tID,uID,time,userName,text,source,isRT,hashtags,mentions,urls,friends,followers,favorites);		
 	}
 	
 	public static  AGTStatus createFromJson4J(JsonNode json) {
@@ -100,8 +103,10 @@ public class AGTStatus {
 		int urls = u.size();
 		int friends = json.get("user").get("friendsCount").asInt();
 		int followers = json.get("user").get("followersCount").asInt();
+		int favorites = json.get("user").get("favoritesCount").asInt();
+		System.out.println(favorites);
 		
-		return new AGTStatus(tID,uID,time,name,text,source,isRT,hashtags,mentions,urls,friends,followers);		
+		return new AGTStatus(tID,uID,time,name,text,source,isRT,hashtags,mentions,urls,friends,followers, favorites);		
 	}
 	
 

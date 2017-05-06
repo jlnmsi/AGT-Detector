@@ -79,6 +79,7 @@ public class DeviceProfiler {
 		for (AGTStatus tweet : tweets) {		
 			String deviceName = getDeviceName( tweet.source );
 			Integer code = deviceClassifier.get(deviceName);
+			//System.out.println(tweet.userName+": "+tweet.source+" --> "+deviceName + " --> "+code);
 			if (code == null)  { // Unknown
 				counts[5]++;
 				//System.out.println(deviceName + " --> "+code);
@@ -90,8 +91,6 @@ public class DeviceProfiler {
 		for (int i=0;i<counts.length;i++) {
 			ratios[i] = (0.0+counts[i])/tweetCount;
 		}		
-//		System.out.println(Arrays.toString(counts)+" --> "+Arrays.toString(ratios));
-//		System.exit(-1);
 		return ratios;
 	}
 	
@@ -108,7 +107,7 @@ public class DeviceProfiler {
 			return name.trim();
 		}
 		catch(Exception e) {
-			System.err.println("Problem to parse name from "+sourceUrlTag);
+			//System.err.println("Problem to parse name from "+sourceUrlTag);
 			return "DeviceParseProblem"; 
 		}
 
