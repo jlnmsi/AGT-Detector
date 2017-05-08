@@ -20,19 +20,19 @@ import java.util.List;
  * 8 = hashtagRatio
  * 9 = mentionRatio
  * 10 = retweetRatio
- * 11 = mobileDevice
- * 12 = webDevice
- * 13 = appDevice
- * 14 = miscDevice
- * 15 = botDevice
- * 16 = otherDevice
+ * 11 = replyRatio
+ * 12 = mobileDevice
+ * 13 = webDevice
+ * 14 = appDevice
+ * 15 = miscDevice
+ * 16 = botDevice
+ * 17 = otherDevice
  * 
  * 
  * @author jlnmsi
  *
  */
 public class UserProfile {
-//	private StringBuilder userProperties = new StringBuilder();
 	
 	private static int MAX_TWEETS = 3200;  // Used to normalize tweet count
 	
@@ -71,7 +71,7 @@ public class UserProfile {
 		append(profile,entropyData);
 		
 		AccountProperties accProp = new AccountProperties(tweets);
-		double[] props = accProp.getProperties();  // 5 values
+		double[] props = accProp.getProperties();  // 6 values
 		append(profile,props);
 		
 		double[] deviceProfile = DeviceProfiler.getDeviceProfile(tweets);  // 6 values
@@ -91,6 +91,7 @@ public class UserProfile {
 	}
 	
 	public void setDontknow(boolean dontknow) { isDontknow = dontknow; }
+	public boolean isDontKnow() { return isDontknow; }
 	
 	public void append(List<Double> list, double[] data) {
 		for( double d: data)

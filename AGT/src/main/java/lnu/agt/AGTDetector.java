@@ -53,29 +53,36 @@ public class AGTDetector {
 			profiler = new ProfileGenerator(downloadUsers);
 			textClassifier = new TextClassifier();
 		}
-		
-		// Start building training data
-		long tID = tweet.get("id").asLong();
-		String source = tweet.get("source").asText();
-		int deviceType = DeviceProfiler.classifyDevice(source);
 
+		AGTStatus status = AGTStatus.createFromJson(tweet);
+		
+		int classification = -99; // Placeholder, will not be used
+
+		// Tweet specific properties
+		int deviceType = DeviceProfiler.classifyDevice( status.source );
 		double textProbability = textClassifier.getClassification(tweet);
+		int days = (int) ((status.createdAt - status.accountCreatedAt)/(1000 * 60 * 60 * 24));
+		days = (days!=0)?days:1;   // account created today, return that it exists 1 day so we avoid dividing by 0
+		double tweetsPerDay = (0.0+status.statusCount)/days;
+		double favoritesPerDay = (0.0+status.favoritesCount)/days;
 
-		long userID = tweet.get("user").get("id").asLong();
-		UserProfile profile = profiler.getUserProfile(userID);
-		boolean isDontKnow = profile.userID == 0?true:false;
-		if (isDontKnow) dontknowCount++;
+		// User profile properties
+		UserProfile profile = profiler.getUserProfile( status.userId);
 		double[] userProperties = profile.getProperties();
+		if (profile.isDontKnow()) dontknowCount++;
 		
+		// Build instance and make classification
 		try {
-			Instance inst = dmArff.addInstance(data, -1 ,deviceType,textProbability,userProperties);
+			Instance inst = dmArff.addInstance(data, classification,
+                    deviceType,textProbability,tweetsPerDay,favoritesPerDay,
+                    userProperties);
 			inst.setDataset(data);
 			long clz= Math.round( classifier.classifyInstance(inst) );
 			return clz ==1;    // 1 ==> AFT
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return false;    // Should never happen
+		throw new RuntimeException("Failed to make a classification!");
 	}
 	
 	public int getDontknowCount() { return dontknowCount; }
@@ -92,7 +99,7 @@ public class AGTDetector {
 
 			// initilize classifier		
 			Properties agtProps = AGTProperties.getAGTProperties();
-			String modelPath = agtProps.getProperty("dmModel");   // Model by Jonas L
+			String modelPath = agtProps.getProperty("dmModel");  
 			cls = (Classifier) weka.core.SerializationHelper.read(modelPath);
 			
 			System.out.println("AGTDetector: Model: "+modelPath+", Used Classifier: "+cls.getClass().getName());

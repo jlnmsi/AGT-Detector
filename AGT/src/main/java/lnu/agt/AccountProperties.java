@@ -7,7 +7,7 @@ import twitter4j.Status;
 public class AccountProperties {
 
 	/*acc. reputation, URL ratio, hashtag ratio, mention ratio, retweet ratio*/
-	private double[] accountProperties = new double[5];
+	private double[] accountProperties = new double[6];
 	
 	public AccountProperties(List<AGTStatus> tweets){
 		accountReputation(tweets);
@@ -28,10 +28,13 @@ public class AccountProperties {
 		double hashRatio = 0;
 		double mentionRatio = 0;
 		double URLRatio = 0;
+		double replyRatio = 0;
 		int ownTweets = 0;
 		
 
 		for(AGTStatus s : tweets){
+			if (s.isReply)
+				replyRatio++;
 			if(s.isRetweet){
 				retweetRatio++;
 			}
@@ -43,7 +46,10 @@ public class AccountProperties {
 			}
 		}
 		
+		
+		
 		retweetRatio = retweetRatio/tweets.size();
+		replyRatio = replyRatio/tweets.size();
 		if (ownTweets > 0) {			
 			hashRatio = hashRatio/ownTweets;
 			mentionRatio = mentionRatio/ownTweets;
@@ -59,6 +65,8 @@ public class AccountProperties {
 		accountProperties[2] = hashRatio;
 		accountProperties[3] = mentionRatio;
 		accountProperties[4] = retweetRatio;
+		accountProperties[5] = replyRatio;
+
 	}
 	
 	public double[] getProperties(){

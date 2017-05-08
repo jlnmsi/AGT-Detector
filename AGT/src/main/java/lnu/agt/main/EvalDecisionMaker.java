@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import lnu.agt.AGTDetector;
 import lnu.agt.AGTProperties;
+import lnu.agt.AGTStatus;
 import lnu.agt.DeviceProfiler;
 import lnu.agt.ProfileGenerator;
 import lnu.agt.ReadZipFiles;
@@ -125,12 +126,21 @@ public class EvalDecisionMaker {
 		out.append(pred).append(itemSep);
 		out.append(tweetID).append(itemSep);
 		
+		AGTStatus status = AGTStatus.createFromJson(tweet);
+		
 		// Start collecting account properties
-		String source = tweet.get("source").asText();
-		int deviceType = DeviceProfiler.classifyDevice(source);
+		int deviceType = DeviceProfiler.classifyDevice( status.source );
 		double textProbability = textClassifier.getClassification(tweet);
 		String textProb = String.format("%.3f",textProbability);
-		long userID = tweet.get("user").get("id").asLong();
+		
+		int days = (int) ((status.createdAt - status.accountCreatedAt)/(1000 * 60 * 60 * 24));
+		days = (days!=0)?days:1;   // account created today, return that it exists 1 day so we avoid dividing by 0
+		double tweetsPerDay = (0.0+status.statusCount)/days;
+		String textTPD = String.format("%.3f",tweetsPerDay);
+		double favoritesPerDay = (0.0+status.favoritesCount)/days;
+		String textFPD = String.format("%.3f",favoritesPerDay);
+		
+		long userID = status.userId;
 		UserProfile profile = profiler.getUserProfile(userID);
 		boolean isDontknow = profile.userID == 0?true:false;
 		double[] userProperties = profile.getProperties();
@@ -140,6 +150,8 @@ public class EvalDecisionMaker {
 		out.append(isDontknow).append(itemSep);
 		out.append(deviceType).append(itemSep);
 		out.append(textProb).append(itemSep);
+		out.append(textTPD).append(itemSep);
+		out.append(textFPD).append(itemSep);
 		for (double d : userProperties) {
 			String dString = String.format("%.3f", d);
 			out.append( dString ).append(itemSep);

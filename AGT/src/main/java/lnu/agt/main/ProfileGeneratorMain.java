@@ -37,12 +37,12 @@ public class ProfileGeneratorMain {
 		System.out.println(profileFile.getAbsolutePath());
 		
 		
-		ArrayList<File> ntsFiles = ReadZipFiles.findZipFiles( userTweetsDir );
+		ArrayList<File> userTimelines = ReadZipFiles.findZipFiles( userTweetsDir );
 		long before = System.currentTimeMillis();
 		int userCount = 0;
-		for (File f : ntsFiles) {
-			if (!f.getName().startsWith("212507898"))   // A few zip files
-				continue;
+		for (File f : userTimelines) {
+//			if (!f.getName().startsWith("10"))   // A few zip files
+//				continue;
 			
 			userCount++;
 			ArrayList<JsonNode> tweets = ReadZipFiles.readZipFile(f);
@@ -54,7 +54,9 @@ public class ProfileGeneratorMain {
 					AGTStatus aStatus = AGTStatus.createFromJson4J(json);
 					statuses.add(aStatus);
 				} catch (Exception e) {
-					System.err.println("Unable to convert json tweet "+json);
+					//System.err.println("Unable to convert json tweet "+json);
+					e.printStackTrace();
+					System.exit(-1);
 				}
 			}
 			
@@ -62,8 +64,8 @@ public class ProfileGeneratorMain {
 			if (statuses.size() > 0){
 				UserProfile user = new UserProfile(statuses);
 				String row = user.asRow('\t');
-				//output.println(row);
-				//System.out.println(row);
+				output.println(row);
+				System.out.println(f.getName());
 			}
 		}
 		output.close();

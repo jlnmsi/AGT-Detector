@@ -26,6 +26,8 @@ import weka.core.Instances;
  * 
 @attribute deviceType {1,2,3,4,5,6}
 @attribute textProbability numeric
+@attribute tweetsPerDay numeric         // New!
+@attribute favoritesPerDay numeric		// New!
 @attribute tweetRatio numeric
 @attribute chiSquaredMin numeric
 @attribute chiSquaredSec numeric
@@ -36,12 +38,14 @@ import weka.core.Instances;
 @attribute urlRatio numeric
 @attribute hashtagRatio numeric
 @attribute mentionRatio numeric
+@attribute retweetRatio numeric
 @attribute mobileDevice numeric
 @attribute webDevice numeric
 @attribute appDevice numeric
 @attribute miscDevice numeric
 @attribute botDevice numeric
 @attribute otherDevice numeric
+
 @attribute class_attr {0,1}                        // class
  * 
  * @author jlnmsi
@@ -57,22 +61,16 @@ private final Instances dummy;
 	
 	public Instances setupAttributes() {
 		ArrayList<Attribute> attributes = new ArrayList<Attribute> ();
-		
-//		// Addition tweet information ==> To be filtered out
-//		attributes.add( new Attribute("tweetId",(ArrayList<String>) null) );  // string attribute
-//		
-//		List<String> dkValues = new ArrayList<String>();
-//		dkValues.add("0"); dkValues.add("1");
-//		attributes.add( new Attribute("dontknow",dkValues) );
-		
-		
-		// Add device type
+
+		// Add tweet specific data
 		List<String> devices = new ArrayList<String>();
 		devices.add("1"); devices.add("2");devices.add("3"); devices.add("4");devices.add("5"); devices.add("6"); 
 		attributes.add( new Attribute("deviceType",devices) );
-		
-		// Add numeric profile attributes
 		attributes.add( new Attribute("textProbability") );
+		attributes.add( new Attribute("tweetsPerDay") );
+		attributes.add( new Attribute("favoritesPerDay") );
+		
+		// Add numeric user profile attributes
 		attributes.add( new Attribute("tweetRatio") );
 		attributes.add( new Attribute("chiSquaredMin") );
 		attributes.add( new Attribute("chiSquaredSec") );
@@ -84,6 +82,7 @@ private final Instances dummy;
 		attributes.add( new Attribute("hashtagRatio") );
 		attributes.add( new Attribute("mentionRatio") );
 		attributes.add( new Attribute("retweetRatio") );
+		attributes.add( new Attribute("replyRatio") );
 		attributes.add( new Attribute("mobileDevice") );
 		attributes.add( new Attribute("webDevice") );
 		attributes.add( new Attribute("appDevice") );
@@ -99,9 +98,6 @@ private final Instances dummy;
 
 		Instances data = new Instances("dmTraining", attributes, 1);
 		data.setClass( clz );
-		
-//		System.out.println("Attribute Count: "+data.numAttributes());
-//		System.out.println(data);
 		
 		return data;
 	}
@@ -127,36 +123,45 @@ private final Instances dummy;
 		ProfileGenerator profiler = new ProfileGenerator(false);
 		TextClassifier textClassifier = new TextClassifier();
 		for (long tweetID : tweetClassification.keySet()) {
-			int classification = tweetClassification.get(tweetID);
+
 			JsonNode tweet = jsonTweets.get(tweetID);
+			AGTStatus status = AGTStatus.createFromJson(tweet);
+			
+			int classification = tweetClassification.get(tweetID);
 
-			String source = tweet.get("source").asText();
-			int deviceType = DeviceProfiler.classifyDevice(source);
-
+			// Tweet specific properties
+			int deviceType = DeviceProfiler.classifyDevice( status.source );
 			double textProbability = textClassifier.getClassification(tweet);
+			int days = (int) ((status.createdAt - status.accountCreatedAt)/(1000 * 60 * 60 * 24));
+			days = (days!=0)?days:1;   // account created today, return that it exists 1 day so we avoid dividing by 0
+			double tweetsPerDay = (0.0+status.statusCount)/days;
+			double favoritesPerDay = (0.0+status.favoritesCount)/days;
 
-			long userID = tweet.get("user").get("id").asLong();
-			UserProfile profile = profiler.getUserProfile(userID);
-			boolean isDontKnow = profile.userID == 0?true:false;
+			// User profile properties
+			UserProfile profile = profiler.getUserProfile( status.userId);
 			double[] userProperties = profile.getProperties();
 
 
-			Instance inst = addInstance(data, classification,deviceType,textProbability,userProperties);
+			Instance inst = addInstance(data, classification,
+					                    deviceType,textProbability,tweetsPerDay,favoritesPerDay,
+					                    userProperties);
 		}
 		System.out.println("DMArff: Don't know profile used for "+profiler.getDontknowCount()+" tweets");
-//		System.out.println("Dataset: "+data.relationName()+", Attributes: "+data.numAttributes()+", Instances: "+data.numInstances());
 
 		return data;
 	}
 	
-	public Instance addInstance(Instances dataset, int classification,int deviceType, 
-			double textProbability, double[] userProperties) {
+	public Instance addInstance(Instances dataset, int classification,
+								int deviceType, double textProbability, double tweetsPerDay, double favoritesPerDay,
+								double[] userProperties) {
 
 		Instance inst = new DenseInstance( dataset.numAttributes());
 		inst.setValue( dataset.attribute(0), ""+ deviceType );
 		inst.setValue( dataset.attribute(1), textProbability );
-		for (int i=2; i<2+userProperties.length;i++) 
-			inst.setValue( dataset.attribute(i), userProperties[i-2] );
+		inst.setValue( dataset.attribute(2), tweetsPerDay );
+		inst.setValue( dataset.attribute(3), favoritesPerDay );
+		for (int i=4; i<4+userProperties.length;i++) 
+			inst.setValue( dataset.attribute(i), userProperties[i-4] );
 		if (classification >= 0)
 			inst.setValue( dataset.attribute(dataset.numAttributes()-1), ""+ classification );
 		dataset.add(inst);

@@ -67,7 +67,6 @@ public class ProfileGenerator {
 			user2count.put(uID, count);
 			
 			if (Download_Profile && count == CountToStartDownload) {  // Start download user tweet
-			//if (count == CountToStartDownload) {  // Start
 				downloadCount++;
 				downloadQueue.add(uID);
 				//user2profile.put(uID, dontknow);
@@ -84,7 +83,7 @@ public class ProfileGenerator {
 	
 	public int getDownloadCount() { return downloadCount; }
 	public int getDontknowCount() { return dontknownCount; }
-	public UserProfile getDontlnowProfile() { return dontknow; }
+	public UserProfile getDontknowProfile() { return dontknow; }
 	
 	public ArrayList<UserProfile> getAvailableProfiles() {
 		ArrayList<UserProfile> allProfiles = new ArrayList<UserProfile>();
@@ -115,7 +114,6 @@ public class ProfileGenerator {
 		    	String[] items = row.split("\t");
 		    	long userID = Long.parseLong(items[0]);
 		    	String userName = items[1];
-//		        System.out.println(userID+"\t"+userName+"\t"+items.length);
 		    	
 		    	// Setup average
 		    	if (average == null) {
