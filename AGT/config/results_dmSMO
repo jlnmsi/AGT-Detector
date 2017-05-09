@@ -1,0 +1,104 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007" -calibrator "weka.classifiers.functions.Logistic -R 1.0E-8 -M -1 -num-decimal-places 4"
+Relation:     dmTraining
+Instances:    4999
+Attributes:   23
+              deviceType
+              textProbability
+              tweetsPerDay
+              favoritesPerDay
+              tweetRatio
+              chiSquaredMin
+              chiSquaredSec
+              entropyHours
+              entropyMin
+              entropySec
+              accountRep
+              urlRatio
+              hashtagRatio
+              mentionRatio
+              retweetRatio
+              replyRatio
+              mobileDevice
+              webDevice
+              appDevice
+              miscDevice
+              botDevice
+              otherDevice
+              class_attr
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+SMO
+
+Kernel used:
+  Linear Kernel: K(x,y) = <x,y>
+
+Classifier for classes: 0, 1
+
+BinarySMO
+
+Machine linear: showing attribute weights, not support vectors.
+
+        -0.4679 * (normalized) deviceType=1
+ +      -0.8828 * (normalized) deviceType=2
+ +      -0.3732 * (normalized) deviceType=3
+ +       1.0075 * (normalized) deviceType=4
+ +       1      * (normalized) deviceType=5
+ +      -0.2837 * (normalized) deviceType=6
+ +       4.0123 * (normalized) textProbability
+ +       0.2879 * (normalized) tweetsPerDay
+ +      -0.0607 * (normalized) favoritesPerDay
+ +       0.31   * (normalized) tweetRatio
+ +      -0.1097 * (normalized) chiSquaredMin
+ +      -0.0384 * (normalized) chiSquaredSec
+ +      -0.0206 * (normalized) entropyHours
+ +      -0.5011 * (normalized) entropyMin
+ +      -0.3386 * (normalized) entropySec
+ +      -0.0752 * (normalized) accountRep
+ +      -0.3412 * (normalized) urlRatio
+ +      -0.6817 * (normalized) hashtagRatio
+ +      -0.3618 * (normalized) mentionRatio
+ +      -0.3839 * (normalized) retweetRatio
+ +      -0.6303 * (normalized) replyRatio
+ +      -0.3202 * (normalized) mobileDevice
+ +       0.0739 * (normalized) webDevice
+ +       0.0133 * (normalized) appDevice
+ +      -0.3034 * (normalized) miscDevice
+ +      -0.046  * (normalized) botDevice
+ +       0.5821 * (normalized) otherDevice
+ +       0.0079
+
+Number of kernel evaluations: 663226 (67.606% cached)
+
+
+
+Time taken to build model: 1.38 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        4971               99.4399 %
+Incorrectly Classified Instances        28                0.5601 %
+Kappa statistic                          0.9838
+Mean absolute error                      0.0056
+Root mean squared error                  0.0748
+Relative absolute error                  1.6106 %
+Root relative squared error             17.9495 %
+Total Number of Instances             4999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.998    0.020    0.994      0.998    0.996      0.984    0.989     0.994     0
+                 0.980    0.002    0.995      0.980    0.987      0.984    0.989     0.979     1
+Weighted Avg.    0.994    0.016    0.994      0.994    0.994      0.984    0.989     0.991     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3873    6 |    a = 0
+   22 1098 |    b = 1
+
