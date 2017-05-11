@@ -1,0 +1,79 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007" -calibrator "weka.classifiers.functions.Logistic -R 1.0E-8 -M -1 -num-decimal-places 4"
+Relation:     metaDMTraining
+Instances:    4999
+Attributes:   11
+              textProbability
+              deviceType
+              isReply
+              isRetweet
+              hashtagDensity
+              urlDensity
+              mentionDensity
+              accountRep
+              statusesPerDay
+              favoritesPerDay
+              class_attr
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+SMO
+
+Kernel used:
+  Linear Kernel: K(x,y) = <x,y>
+
+Classifier for classes: 0, 1
+
+BinarySMO
+
+Machine linear: showing attribute weights, not support vectors.
+
+         3.8701 * (normalized) textProbability
+ +      -0.7863 * (normalized) deviceType=1
+ +      -0.8404 * (normalized) deviceType=2
+ +      -0.5885 * (normalized) deviceType=3
+ +       1.273  * (normalized) deviceType=4
+ +       1.3234 * (normalized) deviceType=5
+ +      -0.3812 * (normalized) deviceType=6
+ +      -0.2187 * (normalized) isReply=1
+ +      -0.4725 * (normalized) hashtagDensity
+ +      -0.1924 * (normalized) urlDensity
+ +       0.5304 * (normalized) mentionDensity
+ +      -0.22   * (normalized) accountRep
+ +       0.516  * (normalized) statusesPerDay
+ +      -0.3205 * (normalized) favoritesPerDay
+ -       0.6451
+
+Number of kernel evaluations: 541996 (65.517% cached)
+
+
+
+Time taken to build model: 0.5 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        4970               99.4199 %
+Incorrectly Classified Instances        29                0.5801 %
+Kappa statistic                          0.9832
+Mean absolute error                      0.0058
+Root mean squared error                  0.0762
+Relative absolute error                  1.6681 %
+Root relative squared error             18.2672 %
+Total Number of Instances             4999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.998    0.021    0.994      0.998    0.996      0.983    0.989     0.994     0
+                 0.979    0.002    0.995      0.979    0.987      0.983    0.989     0.979     1
+Weighted Avg.    0.994    0.016    0.994      0.994    0.994      0.983    0.989     0.990     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3873    6 |    a = 0
+   23 1097 |    b = 1
+

@@ -1,0 +1,117 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     metaDMTraining
+Instances:    4999
+Attributes:   11
+              textProbability
+              deviceType
+              isReply
+              isRetweet
+              hashtagDensity
+              urlDensity
+              mentionDensity
+              accountRep
+              statusesPerDay
+              favoritesPerDay
+              class_attr
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                     Class
+Attribute                0        1
+                    (0.78)   (0.22)
+====================================
+textProbability
+  mean               0.0179   0.9314
+  std. dev.          0.0298   0.1766
+  weight sum           3879     1120
+  precision           0.012    0.012
+
+deviceType
+  1                  2568.0      8.0
+  2                   906.0      5.0
+  3                   386.0    657.0
+  4                     6.0      9.0
+  5                     2.0    443.0
+  6                    17.0      4.0
+  [total]            3885.0   1126.0
+
+isReply
+  0                  2216.0    807.0
+  1                  1665.0    315.0
+  [total]            3881.0   1122.0
+
+isRetweet
+  0                  3880.0   1121.0
+  1                     1.0      1.0
+  [total]            3881.0   1122.0
+
+hashtagDensity
+  mean               0.0441   0.0198
+  std. dev.          0.1098   0.0603
+  weight sum           3879     1120
+  precision          0.0084   0.0084
+
+urlDensity
+  mean               0.0332   0.0446
+  std. dev.          0.0706   0.0551
+  weight sum           3879     1120
+  precision          0.0147   0.0147
+
+mentionDensity
+  mean                0.096    0.032
+  std. dev.          0.1595    0.052
+  weight sum           3879     1120
+  precision          0.0101   0.0101
+
+accountRep
+  mean               0.5205   0.9151
+  std. dev.          0.2206   0.2062
+  weight sum           3879     1120
+  precision          0.0003   0.0003
+
+statusesPerDay
+  mean              21.1353 189.1847
+  std. dev.         39.5005 107.9812
+  weight sum           3879     1120
+  precision          0.1649   0.1649
+
+favoritesPerDay
+  mean              12.2721    0.211
+  std. dev.         27.7907   2.5373
+  weight sum           3879     1120
+  precision          0.0547   0.0547
+
+
+
+Time taken to build model: 0.03 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        4963               99.2799 %
+Incorrectly Classified Instances        36                0.7201 %
+Kappa statistic                          0.9792
+Mean absolute error                      0.0072
+Root mean squared error                  0.0808
+Relative absolute error                  2.0757 %
+Root relative squared error             19.3883 %
+Total Number of Instances             4999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.997    0.022    0.994      0.997    0.995      0.979    0.997     0.999     0
+                 0.978    0.003    0.990      0.978    0.984      0.979    0.997     0.992     1
+Weighted Avg.    0.993    0.018    0.993      0.993    0.993      0.979    0.997     0.997     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3868   11 |    a = 0
+   25 1095 |    b = 1
+

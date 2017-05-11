@@ -1,0 +1,66 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.RandomForest -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     dmTraining
+Instances:    4999
+Attributes:   23
+              deviceType
+              textProbability
+              tweetsPerDay
+              favoritesPerDay
+              tweetRatio
+              chiSquaredMin
+              chiSquaredSec
+              entropyHours
+              entropyMin
+              entropySec
+              accountRep
+              urlRatio
+              hashtagRatio
+              mentionRatio
+              retweetRatio
+              replyRatio
+              mobileDevice
+              webDevice
+              appDevice
+              miscDevice
+              botDevice
+              otherDevice
+              class_attr
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Time taken to build model: 3.29 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        4976               99.5399 %
+Incorrectly Classified Instances        23                0.4601 %
+Kappa statistic                          0.9867
+Mean absolute error                      0.0117
+Root mean squared error                  0.0691
+Relative absolute error                  3.3641 %
+Root relative squared error             16.5748 %
+Total Number of Instances             4999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.998    0.015    0.996      0.998    0.997      0.987    0.997     0.998     0
+                 0.985    0.002    0.995      0.985    0.990      0.987    0.997     0.993     1
+Weighted Avg.    0.995    0.012    0.995      0.995    0.995      0.987    0.997     0.997     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3873    6 |    a = 0
+   17 1103 |    b = 1
+

@@ -1,0 +1,3558 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.meta.FilteredClassifier -F "weka.filters.unsupervised.attribute.StringToWordVector -R first-last -W 1000 -prune-rate -1.0 -N 0 -stemmer weka.core.stemmers.NullStemmer -stopwords-handler weka.core.stopwords.Null -M 1 -tokenizer \"weka.core.tokenizers.WordTokenizer -delimiters \\\" \\\\r\\\\n\\\\t.,;:\\\\\\\'\\\\\\\"()?!\\\"\"" -W weka.classifiers.trees.RandomForest -- -P 100 -attribute-importance -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Relation:     tcTraining
+Instances:    4999
+Attributes:   2
+              text
+              class_attr
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+FilteredClassifier using weka.classifiers.trees.RandomForest -P 100 -attribute-importance -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1 on data filtered through weka.filters.unsupervised.attribute.StringToWordVector -R 1 -W 1000 -prune-rate -1.0 -N 0 -stemmer weka.core.stemmers.NullStemmer -stopwords-handler weka.core.stopwords.Null -M 1 -tokenizer "weka.core.tokenizers.WordTokenizer -delimiters \" \\r\\n\\t.,;:\\\'\\\"()?!\""
+
+Filtered Header
+@relation 'tcTraining-weka.filters.unsupervised.attribute.StringToWordVector-R1-W1000-prune-rate-1.0-N0-stemmerweka.core.stemmers.NullStemmer-stopwords-handlerweka.core.stopwords.Null-M1-tokenizerweka.core.tokenizers.WordTokenizer -delimiters \" \\r\\n\\t.,;:\\\'\\\"()?!\"'
+
+@attribute class_attr {0,1}
+@attribute $number numeric
+@attribute &amp numeric
+@attribute &gt numeric
+@attribute &lt numeric
+@attribute + numeric
+@attribute = numeric
+@attribute ^^ numeric
+@attribute a numeric
+@attribute abima numeric
+@attribute about numeric
+@attribute absolutely numeric
+@attribute across numeric
+@attribute actual numeric
+@attribute actually numeric
+@attribute add numeric
+@attribute added numeric
+@attribute advice numeric
+@attribute af numeric
+@attribute after numeric
+@attribute again numeric
+@attribute against numeric
+@attribute ago numeric
+@attribute agree numeric
+@attribute ah numeric
+@attribute ain numeric
+@attribute air numeric
+@attribute airport numeric
+@attribute alive numeric
+@attribute all numeric
+@attribute almost numeric
+@attribute alone numeric
+@attribute already numeric
+@attribute also numeric
+@attribute always numeric
+@attribute am numeric
+@attribute amazing numeric
+@attribute america numeric
+@attribute american numeric
+@attribute among numeric
+@attribute an numeric
+@attribute and numeric
+@attribute another numeric
+@attribute any numeric
+@attribute anybody numeric
+@attribute anymore numeric
+@attribute anyone numeric
+@attribute anything numeric
+@attribute anyway numeric
+@attribute apparently numeric
+@attribute apple numeric
+@attribute are numeric
+@attribute aren numeric
+@attribute around numeric
+@attribute arsenal numeric
+@attribute art numeric
+@attribute article numeric
+@attribute as numeric
+@attribute ask numeric
+@attribute asking numeric
+@attribute asleep numeric
+@attribute ass numeric
+@attribute at numeric
+@attribute auto numeric
+@attribute available numeric
+@attribute awake numeric
+@attribute away numeric
+@attribute awesome numeric
+@attribute b numeric
+@attribute baby numeric
+@attribute back numeric
+@attribute bad numeric
+@attribute band numeric
+@attribute bar numeric
+@attribute bc numeric
+@attribute be numeric
+@attribute beach numeric
+@attribute beat numeric
+@attribute beautiful numeric
+@attribute beauty numeric
+@attribute because numeric
+@attribute become numeric
+@attribute becomes numeric
+@attribute becoming numeric
+@attribute bed numeric
+@attribute been numeric
+@attribute beer numeric
+@attribute before numeric
+@attribute beginning numeric
+@attribute behind numeric
+@attribute being numeric
+@attribute believe numeric
+@attribute bergen numeric
+@attribute best numeric
+@attribute better numeric
+@attribute between numeric
+@attribute beyond numeric
+@attribute big numeric
+@attribute bigger numeric
+@attribute birds numeric
+@attribute birthday numeric
+@attribute bit numeric
+@attribute bitch numeric
+@attribute black numeric
+@attribute bless numeric
+@attribute block numeric
+@attribute blocked numeric
+@attribute blog numeric
+@attribute blue numeric
+@attribute bobby numeric
+@attribute body numeric
+@attribute book numeric
+@attribute boom numeric
+@attribute born numeric
+@attribute both numeric
+@attribute boy numeric
+@attribute boys numeric
+@attribute brain numeric
+@attribute break numeric
+@attribute breaking numeric
+@attribute bring numeric
+@attribute bro numeric
+@attribute broken numeric
+@attribute brother numeric
+@attribute btw numeric
+@attribute build numeric
+@attribute bus numeric
+@attribute business numeric
+@attribute but numeric
+@attribute buy numeric
+@attribute by numeric
+@attribute bye numeric
+@attribute c numeric
+@attribute call numeric
+@attribute called numeric
+@attribute calls numeric
+@attribute came numeric
+@attribute camera numeric
+@attribute can numeric
+@attribute cant numeric
+@attribute car numeric
+@attribute card numeric
+@attribute care numeric
+@attribute catch numeric
+@attribute cause numeric
+@attribute certain numeric
+@attribute chance numeric
+@attribute change numeric
+@attribute changed numeric
+@attribute changes numeric
+@attribute check numeric
+@attribute cheers numeric
+@attribute children numeric
+@attribute chill numeric
+@attribute choice numeric
+@attribute chris numeric
+@attribute christmas numeric
+@attribute chukwu numeric
+@attribute city numeric
+@attribute class numeric
+@attribute clean numeric
+@attribute clip numeric
+@attribute close numeric
+@attribute club numeric
+@attribute coffee numeric
+@attribute cold numeric
+@attribute com numeric
+@attribute come numeric
+@attribute comes numeric
+@attribute coming numeric
+@attribute company numeric
+@attribute complete numeric
+@attribute completely numeric
+@attribute computer numeric
+@attribute conference numeric
+@attribute congrats numeric
+@attribute consider numeric
+@attribute cool numeric
+@attribute copenhagen numeric
+@attribute cos numeric
+@attribute could numeric
+@attribute couldn numeric
+@attribute count numeric
+@attribute country numeric
+@attribute couple numeric
+@attribute course numeric
+@attribute cover numeric
+@attribute crazy numeric
+@attribute crying numeric
+@attribute cup numeric
+@attribute currently numeric
+@attribute cute numeric
+@attribute cutest numeric
+@attribute cuz numeric
+@attribute d numeric
+@attribute dad numeric
+@attribute daily numeric
+@attribute damn numeric
+@attribute danish numeric
+@attribute dark numeric
+@attribute data numeric
+@attribute day numeric
+@attribute days numeric
+@attribute de numeric
+@attribute dead numeric
+@attribute deal numeric
+@attribute dear numeric
+@attribute death numeric
+@attribute decided numeric
+@attribute definitely numeric
+@attribute degrees numeric
+@attribute delayed numeric
+@attribute denmark numeric
+@attribute depp numeric
+@attribute design numeric
+@attribute destroyed numeric
+@attribute did numeric
+@attribute didn numeric
+@attribute die numeric
+@attribute different numeric
+@attribute dm numeric
+@attribute do numeric
+@attribute does numeric
+@attribute doesn numeric
+@attribute dog numeric
+@attribute dogs numeric
+@attribute doing numeric
+@attribute don numeric
+@attribute done numeric
+@attribute dont numeric
+@attribute door numeric
+@attribute doubt numeric
+@attribute down numeric
+@attribute dream numeric
+@attribute dreams numeric
+@attribute drink numeric
+@attribute drinking numeric
+@attribute drive numeric
+@attribute drop numeric
+@attribute drunk numeric
+@attribute dude numeric
+@attribute due numeric
+@attribute during numeric
+@attribute e numeric
+@attribute each numeric
+@attribute earlier numeric
+@attribute early numeric
+@attribute either numeric
+@attribute else numeric
+@attribute emotional numeric
+@attribute end numeric
+@attribute enjoy numeric
+@attribute enjoying numeric
+@attribute enough numeric
+@attribute entire numeric
+@attribute europe numeric
+@attribute eve numeric
+@attribute even numeric
+@attribute evening numeric
+@attribute event numeric
+@attribute ever numeric
+@attribute every numeric
+@attribute everyone numeric
+@attribute everything numeric
+@attribute everywhere numeric
+@attribute exactly numeric
+@attribute excited numeric
+@attribute excuse numeric
+@attribute experience numeric
+@attribute eyes numeric
+@attribute f numeric
+@attribute face numeric
+@attribute facebook numeric
+@attribute fact numeric
+@attribute fake numeric
+@attribute fall numeric
+@attribute family numeric
+@attribute fan numeric
+@attribute fantastic numeric
+@attribute far numeric
+@attribute fast numeric
+@attribute fave numeric
+@attribute favorite numeric
+@attribute favourite numeric
+@attribute fb numeric
+@attribute february numeric
+@attribute feel numeric
+@attribute feeling numeric
+@attribute feels numeric
+@attribute fell numeric
+@attribute few numeric
+@attribute fight numeric
+@attribute fighting numeric
+@attribute filled numeric
+@attribute film numeric
+@attribute fin numeric
+@attribute final numeric
+@attribute finally numeric
+@attribute find numeric
+@attribute fine numeric
+@attribute finish numeric
+@attribute finland numeric
+@attribute finnish numeric
+@attribute fire numeric
+@attribute fireworks numeric
+@attribute first numeric
+@attribute fit numeric
+@attribute flight numeric
+@attribute focus numeric
+@attribute folks numeric
+@attribute follow numeric
+@attribute following numeric
+@attribute food numeric
+@attribute football numeric
+@attribute for numeric
+@attribute forever numeric
+@attribute forget numeric
+@attribute forward numeric
+@attribute found numeric
+@attribute four numeric
+@attribute free numeric
+@attribute fresh numeric
+@attribute friday numeric
+@attribute friend numeric
+@attribute friends numeric
+@attribute from numeric
+@attribute fuck numeric
+@attribute fucking numeric
+@attribute full numeric
+@attribute fully numeric
+@attribute fun numeric
+@attribute funny numeric
+@attribute future numeric
+@attribute g numeric
+@attribute game numeric
+@attribute games numeric
+@attribute gave numeric
+@attribute germany numeric
+@attribute get numeric
+@attribute gets numeric
+@attribute getting numeric
+@attribute girl numeric
+@attribute girls numeric
+@attribute give numeric
+@attribute glad numeric
+@attribute global numeric
+@attribute glorious numeric
+@attribute go numeric
+@attribute goal numeric
+@attribute goals numeric
+@attribute god numeric
+@attribute goes numeric
+@attribute going numeric
+@attribute golden numeric
+@attribute gone numeric
+@attribute gonna numeric
+@attribute good numeric
+@attribute goodbye numeric
+@attribute goodnight numeric
+@attribute google numeric
+@attribute got numeric
+@attribute gothenburg numeric
+@attribute gotta numeric
+@attribute grattis numeric
+@attribute gratulasjon numeric
+@attribute great numeric
+@attribute group numeric
+@attribute guess numeric
+@attribute guide numeric
+@attribute guy numeric
+@attribute guys numeric
+@attribute gym numeric
+@attribute h numeric
+@attribute had numeric
+@attribute haha numeric
+@attribute hahaha numeric
+@attribute hahahaha numeric
+@attribute hair numeric
+@attribute half numeric
+@attribute hall numeric
+@attribute happen numeric
+@attribute happened numeric
+@attribute happiness numeric
+@attribute happy numeric
+@attribute hard numeric
+@attribute has numeric
+@attribute hate numeric
+@attribute have numeric
+@attribute haven numeric
+@attribute having numeric
+@attribute he numeric
+@attribute head numeric
+@attribute health numeric
+@attribute hear numeric
+@attribute heard numeric
+@attribute heart numeric
+@attribute hell numeric
+@attribute hello numeric
+@attribute help numeric
+@attribute helsinki numeric
+@attribute her numeric
+@attribute here numeric
+@attribute hey numeric
+@attribute hi numeric
+@attribute high numeric
+@attribute him numeric
+@attribute his numeric
+@attribute hit numeric
+@attribute hmm numeric
+@attribute hold numeric
+@attribute holy numeric
+@attribute home numeric
+@attribute honest numeric
+@attribute honestly numeric
+@attribute hope numeric
+@attribute hopefully numeric
+@attribute hot numeric
+@attribute hotel numeric
+@attribute hour numeric
+@attribute hours numeric
+@attribute house numeric
+@attribute how numeric
+@attribute hug numeric
+@attribute hugs numeric
+@attribute human numeric
+@attribute hurts numeric
+@attribute i numeric
+@attribute ice numeric
+@attribute iceland numeric
+@attribute idea numeric
+@attribute idiot numeric
+@attribute if numeric
+@attribute im numeric
+@attribute imagine numeric
+@attribute in numeric
+@attribute indeed numeric
+@attribute india numeric
+@attribute inquest numeric
+@attribute instagram numeric
+@attribute interested numeric
+@attribute interesting numeric
+@attribute internet numeric
+@attribute into numeric
+@attribute is numeric
+@attribute isn numeric
+@attribute israel numeric
+@attribute issues numeric
+@attribute it numeric
+@attribute its numeric
+@attribute ive numeric
+@attribute january numeric
+@attribute job numeric
+@attribute john numeric
+@attribute join numeric
+@attribute joke numeric
+@attribute june numeric
+@attribute just numeric
+@attribute justin numeric
+@attribute k numeric
+@attribute keep numeric
+@attribute keeping numeric
+@attribute key numeric
+@attribute kids numeric
+@attribute kill numeric
+@attribute killing numeric
+@attribute kind numeric
+@attribute know numeric
+@attribute knowing numeric
+@attribute l numeric
+@attribute lady numeric
+@attribute language numeric
+@attribute last numeric
+@attribute late numeric
+@attribute later numeric
+@attribute latest numeric
+@attribute lazy numeric
+@attribute learn numeric
+@attribute learning numeric
+@attribute least numeric
+@attribute leave numeric
+@attribute left numeric
+@attribute legal numeric
+@attribute less numeric
+@attribute let numeric
+@attribute lets numeric
+@attribute lexa numeric
+@attribute life numeric
+@attribute light numeric
+@attribute lights numeric
+@attribute like numeric
+@attribute liked numeric
+@attribute likes numeric
+@attribute lily numeric
+@attribute lips numeric
+@attribute list numeric
+@attribute listening numeric
+@attribute literally numeric
+@attribute little numeric
+@attribute live numeric
+@attribute living numeric
+@attribute ll numeric
+@attribute lmao numeric
+@attribute loads numeric
+@attribute lol numeric
+@attribute london numeric
+@attribute long numeric
+@attribute longer numeric
+@attribute look numeric
+@attribute looked numeric
+@attribute looking numeric
+@attribute looks numeric
+@attribute lose numeric
+@attribute lost numeric
+@attribute lot numeric
+@attribute lots numeric
+@attribute love numeric
+@attribute loved numeric
+@attribute lovely numeric
+@attribute loves numeric
+@attribute loving numeric
+@attribute luck numeric
+@attribute lunch numeric
+@attribute m numeric
+@attribute ma numeric
+@attribute mad numeric
+@attribute made numeric
+@attribute make numeric
+@attribute makes numeric
+@attribute making numeric
+@attribute man numeric
+@attribute many numeric
+@attribute march numeric
+@attribute market numeric
+@attribute match numeric
+@attribute matter numeric
+@attribute may numeric
+@attribute maybe numeric
+@attribute mayward numeric
+@attribute me numeric
+@attribute mean numeric
+@attribute means numeric
+@attribute meet numeric
+@attribute meeting numeric
+@attribute men numeric
+@attribute mention numeric
+@attribute might numeric
+@attribute million numeric
+@attribute min numeric
+@attribute mind numeric
+@attribute mine numeric
+@attribute minus numeric
+@attribute minutes numeric
+@attribute miss numeric
+@attribute missing numeric
+@attribute model numeric
+@attribute modern numeric
+@attribute mom numeric
+@attribute moment numeric
+@attribute monday numeric
+@attribute money numeric
+@attribute month numeric
+@attribute months numeric
+@attribute mood numeric
+@attribute more numeric
+@attribute morning numeric
+@attribute most numeric
+@attribute move numeric
+@attribute movie numeric
+@attribute moving numeric
+@attribute mr numeric
+@attribute much numeric
+@attribute murderous numeric
+@attribute music numeric
+@attribute must numeric
+@attribute my numeric
+@attribute myself numeric
+@attribute n numeric
+@attribute name numeric
+@attribute nature numeric
+@attribute near numeric
+@attribute need numeric
+@attribute needs numeric
+@attribute never numeric
+@attribute new numeric
+@attribute news numeric
+@attribute next numeric
+@attribute nice numeric
+@attribute night numeric
+@attribute no numeric
+@attribute nor numeric
+@attribute normal numeric
+@attribute northern numeric
+@attribute norway numeric
+@attribute norwegian numeric
+@attribute not numeric
+@attribute nothing numeric
+@attribute now numeric
+@attribute nowhere numeric
+@attribute number numeric
+@attribute o numeric
+@attribute obama numeric
+@attribute ocean numeric
+@attribute of numeric
+@attribute off numeric
+@attribute office numeric
+@attribute often numeric
+@attribute oh numeric
+@attribute ok numeric
+@attribute okay numeric
+@attribute okike numeric
+@attribute old numeric
+@attribute omg numeric
+@attribute omg😂 numeric
+@attribute on numeric
+@attribute once numeric
+@attribute one numeric
+@attribute ones numeric
+@attribute online numeric
+@attribute only numeric
+@attribute open numeric
+@attribute or numeric
+@attribute order numeric
+@attribute oslo numeric
+@attribute other numeric
+@attribute others numeric
+@attribute our numeric
+@attribute out numeric
+@attribute outside numeric
+@attribute over numeric
+@attribute own numeric
+@attribute p numeric
+@attribute park numeric
+@attribute part numeric
+@attribute party numeric
+@attribute pass numeric
+@attribute past numeric
+@attribute pay numeric
+@attribute peace numeric
+@attribute people numeric
+@attribute per numeric
+@attribute perfect numeric
+@attribute person numeric
+@attribute phone numeric
+@attribute photo numeric
+@attribute pic numeric
+@attribute picture numeric
+@attribute piece numeric
+@attribute place numeric
+@attribute plan numeric
+@attribute planning numeric
+@attribute play numeric
+@attribute played numeric
+@attribute player numeric
+@attribute players numeric
+@attribute playing numeric
+@attribute please numeric
+@attribute plenty numeric
+@attribute pls numeric
+@attribute pm numeric
+@attribute point numeric
+@attribute politics numeric
+@attribute poor numeric
+@attribute positive numeric
+@attribute possible numeric
+@attribute post numeric
+@attribute power numeric
+@attribute ppl numeric
+@attribute president numeric
+@attribute pretty numeric
+@attribute probably numeric
+@attribute problem numeric
+@attribute project numeric
+@attribute proud numeric
+@attribute put numeric
+@attribute putin numeric
+@attribute queen numeric
+@attribute question numeric
+@attribute quite numeric
+@attribute r numeric
+@attribute rain numeric
+@attribute rather numeric
+@attribute re numeric
+@attribute read numeric
+@attribute reading numeric
+@attribute ready numeric
+@attribute real numeric
+@attribute reality numeric
+@attribute realize numeric
+@attribute really numeric
+@attribute reason numeric
+@attribute record numeric
+@attribute red numeric
+@attribute rednecks numeric
+@attribute refuse numeric
+@attribute remember numeric
+@attribute report numeric
+@attribute respect numeric
+@attribute rest numeric
+@attribute restaurant numeric
+@attribute ride numeric
+@attribute right numeric
+@attribute road numeric
+@attribute rock numeric
+@attribute room numeric
+@attribute rose numeric
+@attribute rt numeric
+@attribute run numeric
+@attribute running numeric
+@attribute runs numeric
+@attribute russia numeric
+@attribute russian numeric
+@attribute s numeric
+@attribute sad numeric
+@attribute said numeric
+@attribute same numeric
+@attribute saw numeric
+@attribute say numeric
+@attribute saying numeric
+@attribute says numeric
+@attribute school numeric
+@attribute science numeric
+@attribute screen numeric
+@attribute season numeric
+@attribute second numeric
+@attribute security numeric
+@attribute see numeric
+@attribute seeing numeric
+@attribute seem numeric
+@attribute seems numeric
+@attribute seen numeric
+@attribute self numeric
+@attribute send numeric
+@attribute sending numeric
+@attribute serious numeric
+@attribute seriously numeric
+@attribute serve numeric
+@attribute set numeric
+@attribute shall numeric
+@attribute share numeric
+@attribute she numeric
+@attribute sherlock numeric
+@attribute shit numeric
+@attribute shop numeric
+@attribute short numeric
+@attribute shot numeric
+@attribute should numeric
+@attribute show numeric
+@attribute shows numeric
+@attribute sick numeric
+@attribute sign numeric
+@attribute since numeric
+@attribute single numeric
+@attribute sister numeric
+@attribute sit numeric
+@attribute sitting numeric
+@attribute situation numeric
+@attribute skiing numeric
+@attribute sleep numeric
+@attribute sleeping numeric
+@attribute slept numeric
+@attribute small numeric
+@attribute smile numeric
+@attribute snapchat numeric
+@attribute snow numeric
+@attribute so numeric
+@attribute some numeric
+@attribute someone numeric
+@attribute something numeric
+@attribute sometimes numeric
+@attribute son numeric
+@attribute song numeric
+@attribute songs numeric
+@attribute soon numeric
+@attribute sorry numeric
+@attribute sound numeric
+@attribute sounds numeric
+@attribute space numeric
+@attribute special numeric
+@attribute spend numeric
+@attribute spent numeric
+@attribute spot numeric
+@attribute spread numeric
+@attribute st numeric
+@attribute stalkers numeric
+@attribute start numeric
+@attribute started numeric
+@attribute starting numeric
+@attribute state numeric
+@attribute station numeric
+@attribute stay numeric
+@attribute staying numeric
+@attribute still numeric
+@attribute stockholm numeric
+@attribute stop numeric
+@attribute stories numeric
+@attribute story numeric
+@attribute stream numeric
+@attribute strong numeric
+@attribute stuck numeric
+@attribute stuff numeric
+@attribute stupid numeric
+@attribute style numeric
+@attribute such numeric
+@attribute sun numeric
+@attribute super numeric
+@attribute support numeric
+@attribute supposed numeric
+@attribute sure numeric
+@attribute sweden numeric
+@attribute swedish numeric
+@attribute sweet numeric
+@attribute system numeric
+@attribute t numeric
+@attribute tack numeric
+@attribute take numeric
+@attribute takes numeric
+@attribute taking numeric
+@attribute talk numeric
+@attribute talking numeric
+@attribute tax numeric
+@attribute tbh numeric
+@attribute team numeric
+@attribute tech numeric
+@attribute technology numeric
+@attribute tell numeric
+@attribute test numeric
+@attribute testing numeric
+@attribute th numeric
+@attribute than numeric
+@attribute thank numeric
+@attribute thanks numeric
+@attribute that numeric
+@attribute thats numeric
+@attribute the numeric
+@attribute their numeric
+@attribute them numeric
+@attribute then numeric
+@attribute there numeric
+@attribute these numeric
+@attribute they numeric
+@attribute thing numeric
+@attribute things numeric
+@attribute think numeric
+@attribute thinking numeric
+@attribute third numeric
+@attribute this numeric
+@attribute tho numeric
+@attribute those numeric
+@attribute though numeric
+@attribute thought numeric
+@attribute thread numeric
+@attribute three numeric
+@attribute through numeric
+@attribute thursday numeric
+@attribute till numeric
+@attribute tim numeric
+@attribute time numeric
+@attribute times numeric
+@attribute tired numeric
+@attribute to numeric
+@attribute today numeric
+@attribute together numeric
+@attribute told numeric
+@attribute tom numeric
+@attribute tomorrow numeric
+@attribute tonight numeric
+@attribute too numeric
+@attribute took numeric
+@attribute top numeric
+@attribute totally numeric
+@attribute tour numeric
+@attribute town numeric
+@attribute training numeric
+@attribute tried numeric
+@attribute trip numeric
+@attribute true numeric
+@attribute trump numeric
+@attribute truth numeric
+@attribute try numeric
+@attribute trying numeric
+@attribute tv numeric
+@attribute tweet numeric
+@attribute tweeted numeric
+@attribute tweets numeric
+@attribute twitter numeric
+@attribute two numeric
+@attribute u numeric
+@attribute uk numeric
+@attribute un numeric
+@attribute under numeric
+@attribute understand numeric
+@attribute until numeric
+@attribute up numeric
+@attribute ur numeric
+@attribute us numeric
+@attribute use numeric
+@attribute used numeric
+@attribute using numeric
+@attribute usually numeric
+@attribute value numeric
+@attribute ve numeric
+@attribute version numeric
+@attribute very numeric
+@attribute via numeric
+@attribute video numeric
+@attribute videos numeric
+@attribute view numeric
+@attribute views numeric
+@attribute visit numeric
+@attribute vs numeric
+@attribute w numeric
+@attribute wait numeric
+@attribute waiting numeric
+@attribute wake numeric
+@attribute walk numeric
+@attribute wall numeric
+@attribute wanna numeric
+@attribute want numeric
+@attribute wanted numeric
+@attribute wants numeric
+@attribute war numeric
+@attribute was numeric
+@attribute wasn numeric
+@attribute watch numeric
+@attribute watched numeric
+@attribute watching numeric
+@attribute water numeric
+@attribute way numeric
+@attribute ways numeric
+@attribute we numeric
+@attribute wear numeric
+@attribute weather numeric
+@attribute website numeric
+@attribute week numeric
+@attribute weekend numeric
+@attribute weeks numeric
+@attribute weird numeric
+@attribute welcome numeric
+@attribute well numeric
+@attribute went numeric
+@attribute were numeric
+@attribute what numeric
+@attribute whatever numeric
+@attribute when numeric
+@attribute whenever numeric
+@attribute where numeric
+@attribute which numeric
+@attribute while numeric
+@attribute whit numeric
+@attribute white numeric
+@attribute who numeric
+@attribute whole numeric
+@attribute why numeric
+@attribute will numeric
+@attribute win numeric
+@attribute wind numeric
+@attribute winning numeric
+@attribute wins numeric
+@attribute winter numeric
+@attribute wish numeric
+@attribute with numeric
+@attribute without numeric
+@attribute woke numeric
+@attribute woman numeric
+@attribute women numeric
+@attribute won numeric
+@attribute wonder numeric
+@attribute wonderful numeric
+@attribute word numeric
+@attribute words numeric
+@attribute work numeric
+@attribute working numeric
+@attribute works numeric
+@attribute world numeric
+@attribute worry numeric
+@attribute worse numeric
+@attribute worst numeric
+@attribute worth numeric
+@attribute would numeric
+@attribute wouldn numeric
+@attribute wow numeric
+@attribute write numeric
+@attribute wrong numeric
+@attribute wtf numeric
+@attribute x numeric
+@attribute xd numeric
+@attribute xhashtagx numeric
+@attribute xmediax numeric
+@attribute xnumber numeric
+@attribute xurlx numeric
+@attribute xuserx numeric
+@attribute y numeric
+@attribute ya numeric
+@attribute yeah numeric
+@attribute year numeric
+@attribute years numeric
+@attribute yep numeric
+@attribute yes numeric
+@attribute yesterday numeric
+@attribute yet numeric
+@attribute yo numeric
+@attribute you numeric
+@attribute your numeric
+@attribute yourself numeric
+@attribute youtube numeric
+@attribute zzz numeric
+@attribute | numeric
+@attribute — numeric
+@attribute ” numeric
+@attribute • numeric
+@attribute ☺ numeric
+@attribute ❄️ numeric
+@attribute ❤ numeric
+@attribute ❤❤❤ numeric
+@attribute ❤️ numeric
+@attribute 🇩🇰 numeric
+@attribute 🇳🇴 numeric
+@attribute 🎉 numeric
+@attribute 👍 numeric
+@attribute 👏 numeric
+@attribute 💕 numeric
+@attribute 💖 numeric
+@attribute 😀 numeric
+@attribute 😁 numeric
+@attribute 😂 numeric
+@attribute 😂😂 numeric
+@attribute 😂😂😂 numeric
+@attribute 😃 numeric
+@attribute 😄 numeric
+@attribute 😅 numeric
+@attribute 😉 numeric
+@attribute 😊 numeric
+@attribute 😍 numeric
+@attribute 😎 numeric
+@attribute 😘 numeric
+@attribute 😩 numeric
+@attribute 😭 numeric
+@attribute 😳 numeric
+@attribute 😴 numeric
+@attribute 🙂 numeric
+@attribute 🚨 numeric
+@attribute 🚨like numeric
+@attribute 🚨subscribe numeric
+@attribute 🤔 numeric
+@attribute aanumber numeric
+@attribute abandoned numeric
+@attribute above numeric
+@attribute accounts numeric
+@attribute acnumber numeric
+@attribute adds numeric
+@attribute afrojack numeric
+@attribute agl numeric
+@attribute akershus numeric
+@attribute albeit numeric
+@attribute album numeric
+@attribute ale numeric
+@attribute alexa numeric
+@attribute alieu numeric
+@attribute alright numeric
+@attribute angeles numeric
+@attribute angels numeric
+@attribute anumber numeric
+@attribute anxiety numeric
+@attribute appeared numeric
+@attribute appears numeric
+@attribute apples numeric
+@attribute apply numeric
+@attribute approves numeric
+@attribute architect numeric
+@attribute arctic numeric
+@attribute arhus numeric
+@attribute arms numeric
+@attribute asker numeric
+@attribute associate numeric
+@attribute aung numeric
+@attribute ave numeric
+@attribute awakening numeric
+@attribute awakens numeric
+@attribute awwsome numeric
+@attribute az numeric
+@attribute baana numeric
+@attribute baker numeric
+@attribute bank numeric
+@attribute bankers numeric
+@attribute barometer numeric
+@attribute barometern numeric
+@attribute bass numeric
+@attribute battle numeric
+@attribute bauman numeric
+@attribute bbdnumber numeric
+@attribute bdnumber numeric
+@attribute became numeric
+@attribute began numeric
+@attribute believer numeric
+@attribute benene numeric
+@attribute berger numeric
+@attribute bicycle numeric
+@attribute biscuits numeric
+@attribute bishops numeric
+@attribute bitches numeric
+@attribute blev numeric
+@attribute blood numeric
+@attribute bnumber numeric
+@attribute boat numeric
+@attribute bonus numeric
+@attribute bonuses numeric
+@attribute boo numeric
+@attribute bording numeric
+@attribute boss numeric
+@attribute bother numeric
+@attribute bottle numeric
+@attribute bout numeric
+@attribute bow numeric
+@attribute boxing numeric
+@attribute brand numeric
+@attribute brandy numeric
+@attribute breath numeric
+@attribute brexit numeric
+@attribute brooklyn numeric
+@attribute brynäs numeric
+@attribute burma numeric
+@attribute cabello numeric
+@attribute cafe numeric
+@attribute california numeric
+@attribute camila numeric
+@attribute canadian numeric
+@attribute cancer numeric
+@attribute cancerfonden numeric
+@attribute canumber numeric
+@attribute capital numeric
+@attribute captured numeric
+@attribute carga numeric
+@attribute carlslund numeric
+@attribute carry numeric
+@attribute cassis numeric
+@attribute castle numeric
+@attribute ccednumber numeric
+@attribute centre numeric
+@attribute cet numeric
+@attribute characters numeric
+@attribute child numeric
+@attribute china numeric
+@attribute classic numeric
+@attribute clear numeric
+@attribute click numeric
+@attribute clouds numeric
+@attribute cnumber numeric
+@attribute codes numeric
+@attribute collapse numeric
+@attribute collection numeric
+@attribute colour numeric
+@attribute comfortable numeric
+@attribute commissioning numeric
+@attribute committed numeric
+@attribute communication numeric
+@attribute confident numeric
+@attribute consciousness numeric
+@attribute continues numeric
+@attribute corporate numeric
+@attribute costs numeric
+@attribute counter numeric
+@attribute county numeric
+@attribute crack numeric
+@attribute creep numeric
+@attribute crooked numeric
+@attribute crosses numeric
+@attribute cry numeric
+@attribute csg numeric
+@attribute current numeric
+@attribute cycling numeric
+@attribute daft numeric
+@attribute damselfly numeric
+@attribute dance numeric
+@attribute dannijensennumber numeric
+@attribute darbo numeric
+@attribute darker numeric
+@attribute daydream numeric
+@attribute dcnumber numeric
+@attribute dcpt numeric
+@attribute dean numeric
+@attribute dec numeric
+@attribute defiance numeric
+@attribute deli numeric
+@attribute denumber numeric
+@attribute deny numeric
+@attribute department numeric
+@attribute depreston numeric
+@attribute desert numeric
+@attribute designer numeric
+@attribute destiny numeric
+@attribute details numeric
+@attribute detected numeric
+@attribute development numeric
+@attribute dfmnumber numeric
+@attribute diamonds numeric
+@attribute diana numeric
+@attribute digital numeric
+@attribute director numeric
+@attribute dirty numeric
+@attribute dist numeric
+@attribute distance numeric
+@attribute dnumber numeric
+@attribute doe numeric
+@attribute doors numeric
+@attribute downeaster numeric
+@attribute draw numeric
+@attribute dreamin numeric
+@attribute drizzle numeric
+@attribute eanumber numeric
+@attribute easy numeric
+@attribute eat numeric
+@attribute eazy numeric
+@attribute ecanumber numeric
+@attribute edge numeric
+@attribute edition numeric
+@attribute education numeric
+@attribute eet numeric
+@attribute eknumber numeric
+@attribute elder numeric
+@attribute ele numeric
+@attribute emirates numeric
+@attribute ending numeric
+@attribute ene numeric
+@attribute engineer numeric
+@attribute england numeric
+@attribute enumber numeric
+@attribute ericsbergs numeric
+@attribute error numeric
+@attribute ese numeric
+@attribute esplanadi numeric
+@attribute espresso numeric
+@attribute eurajoki numeric
+@attribute everglow numeric
+@attribute everyday numeric
+@attribute excelencia numeric
+@attribute eyez numeric
+@attribute fallande numeric
+@attribute fallende numeric
+@attribute falling numeric
+@attribute falls numeric
+@attribute fantasmas numeric
+@attribute farentuna numeric
+@attribute farm numeric
+@attribute fat numeric
+@attribute feat numeric
+@attribute featuring numeric
+@attribute feraye numeric
+@attribute fifty numeric
+@attribute finance numeric
+@attribute finger numeric
+@attribute finished numeric
+@attribute flachau numeric
+@attribute flesh numeric
+@attribute flickr numeric
+@attribute florida numeric
+@attribute flow numeric
+@attribute flux numeric
+@attribute fnumber numeric
+@attribute fog numeric
+@attribute forbidden numeric
+@attribute forecast numeric
+@attribute forgetting numeric
+@attribute forgiven numeric
+@attribute frida numeric
+@attribute front numeric
+@attribute fucky numeric
+@attribute funk numeric
+@attribute fxxk numeric
+@attribute ghost numeric
+@attribute glory numeric
+@attribute gold numeric
+@attribute gomez numeric
+@attribute goteborg numeric
+@attribute gothersgade numeric
+@attribute gotland numeric
+@attribute gott numeric
+@attribute graphy numeric
+@attribute green numeric
+@attribute grey numeric
+@attribute grow numeric
+@attribute guilty numeric
+@attribute guitar numeric
+@attribute gust numeric
+@attribute ha numeric
+@attribute halland numeric
+@attribute ham numeric
+@attribute hammarbybacken numeric
+@attribute hammer numeric
+@attribute hand numeric
+@attribute hands numeric
+@attribute hansdotter numeric
+@attribute harry numeric
+@attribute hashtag numeric
+@attribute hashtags numeric
+@attribute hastigt numeric
+@attribute hatt numeric
+@attribute healthy numeric
+@attribute heathens numeric
+@attribute heaven numeric
+@attribute helped numeric
+@attribute herring numeric
+@attribute hidden numeric
+@attribute hide numeric
+@attribute hill numeric
+@attribute hilton numeric
+@attribute history numeric
+@attribute hnumber numeric
+@attribute hockey numeric
+@attribute hollyweed numeric
+@attribute hollywood numeric
+@attribute horse numeric
+@attribute hospital numeric
+@attribute hotels numeric
+@attribute hound numeric
+@attribute hourly numeric
+@attribute hpa numeric
+@attribute humblegatan numeric
+@attribute humidity numeric
+@attribute humiliation numeric
+@attribute hur numeric
+@attribute ic numeric
+@attribute identity numeric
+@attribute ikea numeric
+@attribute impact numeric
+@attribute imperfection numeric
+@attribute indicates numeric
+@attribute indigenous numeric
+@attribute indyref numeric
+@attribute infinite numeric
+@attribute infinity numeric
+@attribute inside numeric
+@attribute intensity numeric
+@attribute interlude numeric
+@attribute intern numeric
+@attribute international numeric
+@attribute inuit numeric
+@attribute ipa numeric
+@attribute isolation numeric
+@attribute issue numeric
+@attribute jackson numeric
+@attribute janet numeric
+@attribute jared numeric
+@attribute jerusalem numeric
+@attribute jesus numeric
+@attribute ji numeric
+@attribute joya numeric
+@attribute juniper numeric
+@attribute jvm numeric
+@attribute ka numeric
+@attribute kanada numeric
+@attribute karlsson numeric
+@attribute kelly numeric
+@attribute kentish numeric
+@attribute kicks numeric
+@attribute kid numeric
+@attribute killpop numeric
+@attribute kimbra numeric
+@attribute kiruna numeric
+@attribute klass numeric
+@attribute km numeric
+@attribute kmh numeric
+@attribute knew numeric
+@attribute ko numeric
+@attribute koh numeric
+@attribute kushner numeric
+@attribute kyi numeric
+@attribute la numeric
+@attribute lab numeric
+@attribute laborant numeric
+@attribute laboratory numeric
+@attribute lahti numeric
+@attribute lake numeric
+@attribute largest numeric
+@attribute lau numeric
+@attribute laxnes numeric
+@attribute lead numeric
+@attribute leah numeric
+@attribute lean numeric
+@attribute lego numeric
+@attribute lego® numeric
+@attribute length numeric
+@attribute limit numeric
+@attribute line numeric
+@attribute linja numeric
+@attribute liverpool numeric
+@attribute lo numeric
+@attribute loca numeric
+@attribute local numeric
+@attribute lonely numeric
+@attribute los numeric
+@attribute low numeric
+@attribute lu numeric
+@attribute lucky numeric
+@attribute lucy numeric
+@attribute löfven numeric
+@attribute main numeric
+@attribute malcolm numeric
+@attribute maltainen numeric
+@attribute management numeric
+@attribute manager numeric
+@attribute manchester numeric
+@attribute margot numeric
+@attribute marketing numeric
+@attribute mars numeric
+@attribute masters numeric
+@attribute materials numeric
+@attribute max numeric
+@attribute mb numeric
+@attribute meant numeric
+@attribute mechanix numeric
+@attribute memories numeric
+@attribute meryl numeric
+@attribute metso numeric
+@attribute middle numeric
+@attribute midnight numeric
+@attribute mike numeric
+@attribute milkshake numeric
+@attribute millions numeric
+@attribute mins numeric
+@attribute mist numeric
+@attribute mix numeric
+@attribute mm numeric
+@attribute mnumber numeric
+@attribute moderate numeric
+@attribute monkey numeric
+@attribute moonage numeric
+@attribute morrowind numeric
+@attribute mot numeric
+@attribute moves numeric
+@attribute ms numeric
+@attribute mtv numeric
+@attribute mutemath numeric
+@attribute mwno numeric
+@attribute na numeric
+@attribute names numeric
+@attribute nana numeric
+@attribute narcisista numeric
+@attribute nato numeric
+@attribute ne numeric
+@attribute nearer numeric
+@attribute needed numeric
+@attribute nicola numeric
+@attribute nikkaluokta numeric
+@attribute nipromec numeric
+@attribute nne numeric
+@attribute nnw numeric
+@attribute noon numeric
+@attribute nots numeric
+@attribute nov numeric
+@attribute nu numeric
+@attribute nw numeric
+@attribute nyc numeric
+@attribute nytt numeric
+@attribute odin numeric
+@attribute oj numeric
+@attribute omnipollos numeric
+@attribute opening numeric
+@attribute original numeric
+@attribute oso numeric
+@attribute ostrobothnia numeric
+@attribute oy numeric
+@attribute palace numeric
+@attribute pale numeric
+@attribute paradise numeric
+@attribute partner numeric
+@attribute path numeric
+@attribute payback numeric
+@attribute peak numeric
+@attribute peptalk numeric
+@attribute perfume numeric
+@attribute personal numeric
+@attribute phoenix numeric
+@attribute phrases numeric
+@attribute pillow numeric
+@attribute pocket numeric
+@attribute population numeric
+@attribute por numeric
+@attribute port numeric
+@attribute posted numeric
+@attribute praktikant numeric
+@attribute precipitation numeric
+@attribute premium numeric
+@attribute pressure numeric
+@attribute prince numeric
+@attribute princess numeric
+@attribute programme numeric
+@attribute pt numeric
+@attribute published numeric
+@attribute pumped numeric
+@attribute punk numeric
+@attribute putins numeric
+@attribute quickly numeric
+@attribute radio numeric
+@attribute raid numeric
+@attribute raiders numeric
+@attribute rainbow numeric
+@attribute raks numeric
+@attribute raphael numeric
+@attribute rapidly numeric
+@attribute rare numeric
+@attribute raskt numeric
+@attribute rd numeric
+@attribute recommend numeric
+@attribute recorded numeric
+@attribute recovery numeric
+@attribute region numeric
+@attribute religion numeric
+@attribute remaster numeric
+@attribute remastered numeric
+@attribute remembers numeric
+@attribute remix numeric
+@attribute resolve numeric
+@attribute reykjavik numeric
+@attribute rider numeric
+@attribute rideshare numeric
+@attribute rise numeric
+@attribute rising numeric
+@attribute role numeric
+@attribute rollin numeric
+@attribute roomer numeric
+@attribute rs numeric
+@attribute rts numeric
+@attribute runway numeric
+@attribute sabotage numeric
+@attribute sake numeric
+@attribute sakta numeric
+@attribute sakte numeric
+@attribute samtec numeric
+@attribute samuel numeric
+@attribute san numeric
+@attribute saturday numeric
+@attribute save numeric
+@attribute scattered numeric
+@attribute scrolls numeric
+@attribute se numeric
+@attribute searchers numeric
+@attribute searches numeric
+@attribute seattle numeric
+@attribute seconds numeric
+@attribute secured numeric
+@attribute selena numeric
+@attribute sells numeric
+@attribute senior numeric
+@attribute sense numeric
+@attribute sentimental numeric
+@attribute service numeric
+@attribute shades numeric
+@attribute shaky numeric
+@attribute shape numeric
+@attribute sharing numeric
+@attribute ship numeric
+@attribute shl numeric
+@attribute shore numeric
+@attribute shortest numeric
+@attribute shower numeric
+@attribute shy numeric
+@attribute side numeric
+@attribute sight numeric
+@attribute silence numeric
+@attribute silent numeric
+@attribute sin numeric
+@attribute singing numeric
+@attribute site numeric
+@attribute sky numeric
+@attribute slott numeric
+@attribute slovakien numeric
+@attribute slow numeric
+@attribute slowly numeric
+@attribute snake numeric
+@attribute sober numeric
+@attribute soft numeric
+@attribute software numeric
+@attribute sold numeric
+@attribute soldiers numeric
+@attribute somebody numeric
+@attribute somewhere numeric
+@attribute source numeric
+@attribute southern numeric
+@attribute spaces numeric
+@attribute sparring numeric
+@attribute sparta numeric
+@attribute spartacus numeric
+@attribute spitfire numeric
+@attribute split numeric
+@attribute spotify numeric
+@attribute spurs numeric
+@attribute square numeric
+@attribute sse numeric
+@attribute sso numeric
+@attribute ssw numeric
+@attribute stabilize numeric
+@attribute stabilt numeric
+@attribute stand numeric
+@attribute standing numeric
+@attribute starboy numeric
+@attribute starving numeric
+@attribute steady numeric
+@attribute stealing numeric
+@attribute stefan numeric
+@attribute stfu numeric
+@attribute stigande numeric
+@attribute stingy numeric
+@attribute stockmann numeric
+@attribute stone numeric
+@attribute stormy numeric
+@attribute straight numeric
+@attribute strand numeric
+@attribute strange numeric
+@attribute strawberry numeric
+@attribute streep numeric
+@attribute stronger numeric
+@attribute studios numeric
+@attribute stunning numeric
+@attribute sturgeon numeric
+@attribute sturridge numeric
+@attribute sucky numeric
+@attribute suggests numeric
+@attribute summer numeric
+@attribute sunday numeric
+@attribute sunderland numeric
+@attribute sunrise numeric
+@attribute sunset numeric
+@attribute sunshine numeric
+@attribute survive numeric
+@attribute sustainable numeric
+@attribute suu numeric
+@attribute sv numeric
+@attribute sverige numeric
+@attribute sw numeric
+@attribute swerve numeric
+@attribute swim numeric
+@attribute swimming numeric
+@attribute swing numeric
+@attribute table numeric
+@attribute taboo numeric
+@attribute taken numeric
+@attribute tampere numeric
+@attribute tao numeric
+@attribute taste numeric
+@attribute tearing numeric
+@attribute tears numeric
+@attribute teenage numeric
+@attribute teliasonera numeric
+@attribute temp numeric
+@attribute temperature numeric
+@attribute term numeric
+@attribute terminal numeric
+@attribute terrible numeric
+@attribute terso numeric
+@attribute theatre numeric
+@attribute theme numeric
+@attribute thirty numeric
+@attribute thorning numeric
+@attribute tillsammans numeric
+@attribute tl numeric
+@attribute toinen numeric
+@attribute tonjes_photomoments numeric
+@attribute topic numeric
+@attribute topnumber numeric
+@attribute total numeric
+@attribute touch numeric
+@attribute touched numeric
+@attribute trash numeric
+@attribute tree numeric
+@attribute trend numeric
+@attribute trending numeric
+@attribute trends numeric
+@attribute tuesday numeric
+@attribute tur numeric
+@attribute turbine numeric
+@attribute turku numeric
+@attribute turn numeric
+@attribute uddevalla numeric
+@attribute undone numeric
+@attribute union numeric
+@attribute united numeric
+@attribute universe numeric
+@attribute unplugged numeric
+@attribute unsettled numeric
+@attribute unumber numeric
+@attribute uppsala numeric
+@attribute users numeric
+@attribute utc+number numeric
+@attribute vakaa numeric
+@attribute validation numeric
+@attribute vantaa numeric
+@attribute vasteras numeric
+@attribute vehicle numeric
+@attribute verification numeric
+@attribute verified numeric
+@attribute verso numeric
+@attribute vg numeric
+@attribute violin numeric
+@attribute virus numeric
+@attribute voices numeric
+@attribute vordingborg numeric
+@attribute walking numeric
+@attribute wallström numeric
+@attribute warm numeric
+@attribute waste numeric
+@attribute web numeric
+@attribute wednesday numeric
+@attribute welder numeric
+@attribute west numeric
+@attribute western numeric
+@attribute wife numeric
+@attribute wild numeric
+@attribute wiltern numeric
+@attribute windnumber numeric
+@attribute wings numeric
+@attribute wnw numeric
+@attribute wonderwall numeric
+@attribute workout numeric
+@attribute worthy numeric
+@attribute wrongs numeric
+@attribute wrote numeric
+@attribute wsw numeric
+@attribute young numeric
+@attribute yuengling numeric
+@attribute z numeric
+@attribute zygmunt numeric
+@attribute « numeric
+@attribute » numeric
+@attribute økende numeric
+@attribute ‼ numeric
+@attribute ↑number numeric
+@attribute ↓number numeric
+@attribute ⒈ numeric
+@attribute ⒉ numeric
+@attribute ⒊ numeric
+@attribute ⒋ numeric
+@attribute ⒌ numeric
+@attribute ⒍ numeric
+@attribute ⒎ numeric
+@attribute ⒏ numeric
+@attribute ⒐ numeric
+@attribute ⒑ numeric
+@attribute ⓖⓞⓞⓖⓛⓔ numeric
+@attribute ♪ numeric
+@attribute ♫ numeric
+@attribute ❌ numeric
+@attribute ➊ numeric
+@attribute ➋ numeric
+@attribute ➌ numeric
+@attribute ⭕ numeric
+@attribute 🇮🇸 numeric
+@attribute 🇸🇪 numeric
+@attribute 🍎🍾😀 numeric
+@attribute 📈 numeric
+@attribute 😞 numeric
+
+@data
+
+
+Classifier Model
+RandomForest
+
+Bagging with 100 iterations and base learner
+
+weka.classifiers.trees.RandomTree -K 0 -M 1.0 -V 0.001 -S 1 -do-not-check-capabilities
+
+Attribute importance based on average impurity decrease (and number of nodes using that attribute)
+
+      0.56 (   213)  ♪
+      0.55 (   228)  ♫
+      0.48 (     2)  secured
+      0.47 (     9)  workout
+      0.46 (     2)  barometern
+      0.45 (     4)  indyref
+      0.42 (     6)  suggests
+      0.42 (    19)  barometer
+      0.4  (   280)  by
+      0.39 (    24)  unumber
+      0.38 (     9)  vordingborg
+      0.38 (    13)  crooked
+      0.35 (    10)  communication
+      0.35 (     6)  recorded
+      0.34 (     3)  manchester
+      0.34 (    51)  recommend
+      0.33 (     3)  samuel
+      0.33 (     4)  nov
+      0.33 (     2)  sustainable
+      0.33 (    77)  trends
+      0.33 (    13)  ⒎
+      0.32 (    67)  posted
+      0.32 (   431)  xurlx
+      0.32 (     9)  colour
+      0.31 (    27)  graphy
+      0.31 (    11)  spartacus
+      0.31 (    11)  metso
+      0.3  (     9)  terrible
+      0.3  (    79)  sunset
+      0.29 (    16)  runway
+      0.29 (    57)  opening
+      0.29 (    14)  counter
+      0.29 (     6)  wallström
+      0.29 (     7)  bonuses
+      0.29 (     7)  defiance
+      0.28 (    47)  temperature
+      0.28 (    10)  wrote
+      0.28 (    56)  humidity
+      0.28 (     4)  intern
+      0.27 (    10)  spotify
+      0.27 (    22)  hpa
+      0.27 (    26)  »
+      0.27 (    37)  kmh
+      0.27 (    29)  carlslund
+      0.27 (     8)  designer
+      0.27 (     5)  tillsammans
+      0.27 (     7)  religion
+      0.26 (   416)  xuserx
+      0.26 (   362)  xmediax
+      0.26 (    31)  population
+      0.26 (     5)  heaven
+      0.26 (    60)  friday
+      0.25 (     9)  mins
+      0.25 (    13)  dfmnumber
+      0.25 (    14)  welder
+      0.25 (     4)  woman
+      0.25 (   412)  number
+      0.25 (     8)  tl
+      0.25 (    13)  appeared
+      0.25 (    13)  feels
+      0.25 (    66)  anyone
+      0.24 (   369)  xhashtagx
+      0.24 (    31)  sunrise
+      0.24 (     8)  resolve
+      0.24 (     8)  searchers
+      0.24 (    15)  🍎🍾😀
+      0.24 (    53)  topic
+      0.24 (    11)  shortest
+      0.24 (     7)  teliasonera
+      0.23 (    21)  group
+      0.23 (     5)  canadian
+      0.23 (    20)  healthy
+      0.23 (     4)  millions
+      0.23 (    99)  trending
+      0.23 (     5)  wiltern
+      0.23 (    18)  farentuna
+      0.23 (    61)  km
+      0.23 (    23)  rise
+      0.23 (    12)  captured
+      0.23 (     8)  perfume
+      0.23 (    21)  baana
+      0.22 (    15)  nytt
+      0.22 (    36)  ms
+      0.22 (     6)  sucky
+      0.22 (    11)  management
+      0.22 (    29)  interested
+      0.22 (    34)  esplanadi
+      0.22 (     5)  ❌
+      0.22 (    25)  bicycle
+      0.22 (    78)  c
+      0.22 (    52)  fit
+      0.22 (    13)  peptalk
+      0.22 (    15)  accounts
+      0.21 (     8)  odin
+      0.21 (    29)  mm
+      0.21 (   394)  in
+      0.21 (    10)  sharing
+      0.21 (    13)  toinen
+      0.21 (    18)  z
+      0.21 (     7)  anumber
+      0.21 (   279)  at
+      0.21 (     8)  front
+      0.21 (     9)  bording
+      0.21 (    19)  ⭕
+      0.21 (    36)  started
+      0.21 (    15)  space
+      0.2  (    56)  january
+      0.2  (    23)  glorious
+      0.2  (    25)  vantaa
+      0.2  (    82)  photo
+      0.2  (    26)  costs
+      0.2  (     6)  roomer
+      0.2  (     7)  characters
+      0.2  (    21)  ⒈
+      0.2  (    28)  mb
+      0.2  (    29)  local
+      0.2  (     9)  remembers
+      0.2  (     8)  consciousness
+      0.2  (    11)  india
+      0.2  (    39)  view
+      0.2  (    12)  ‼
+      0.2  (    30)  ale
+      0.2  (     8)  premium
+      0.2  (     6)  programme
+      0.2  (    13)  verified
+      0.2  (    13)  restaurant
+      0.2  (    55)  latest
+      0.19 (    17)  temp
+      0.19 (    12)  sparta
+      0.19 (    18)  mention
+      0.19 (    36)  set
+      0.19 (     6)  ic
+      0.19 (    75)  wind
+      0.18 (    37)  «
+      0.18 (    71)  &gt
+      0.18 (     9)  soft
+      0.18 (     5)  lead
+      0.18 (     5)  mars
+      0.18 (    48)  software
+      0.18 (    18)  noon
+      0.18 (    15)  laxnes
+      0.18 (    22)  trend
+      0.18 (    14)  total
+      0.18 (    15)  helped
+      0.18 (   107)  stockholm
+      0.18 (     2)  table
+      0.18 (   332)  i
+      0.18 (     8)  detected
+      0.17 (    14)  peak
+      0.17 (    79)  finland
+      0.17 (    12)  lahti
+      0.17 (    24)  uddevalla
+      0.17 (    22)  weather
+      0.17 (     6)  rare
+      0.17 (    27)  evening
+      0.17 (    10)  bonus
+      0.17 (    14)  began
+      0.17 (     6)  streep
+      0.17 (    34)  pressure
+      0.17 (    12)  capital
+      0.17 (    23)  😞
+      0.17 (    38)  wednesday
+      0.17 (    10)  janet
+      0.17 (    13)  ending
+      0.17 (    12)  russian
+      0.17 (     6)  indigenous
+      0.17 (     8)  thorning
+      0.16 (    25)  🇸🇪
+      0.16 (    12)  rest
+      0.16 (     6)  asking
+      0.16 (    13)  identity
+      0.16 (    35)  manager
+      0.16 (   323)  a
+      0.16 (    40)  apply
+      0.16 (    33)  humblegatan
+      0.16 (    15)  gott
+      0.16 (    14)  appears
+      0.16 (     8)  praktikant
+      0.16 (     7)  taste
+      0.16 (     6)  windnumber
+      0.16 (    11)  associate
+      0.16 (    20)  akershus
+      0.16 (    20)  falling
+      0.16 (   382)  the
+      0.16 (    13)  spend
+      0.16 (   285)  for
+      0.16 (    54)  rain
+      0.16 (    64)  pm
+      0.16 (     7)  ➊
+      0.16 (     6)  per
+      0.16 (    12)  arctic
+      0.16 (    11)  nipromec
+      0.16 (    16)  theme
+      0.15 (     7)  shall
+      0.15 (     8)  western
+      0.15 (    28)  h
+      0.15 (    10)  spitfire
+      0.15 (     9)  strand
+      0.15 (    71)  hours
+      0.15 (    11)  lego
+      0.15 (     2)  rs
+      0.15 (     9)  hansdotter
+      0.15 (     8)  realize
+      0.15 (     9)  benene
+      0.15 (     5)  grey
+      0.15 (    20)  radio
+      0.15 (    14)  camila
+      0.15 (   324)  of
+      0.15 (    23)  hotels
+      0.15 (    20)  hashtag
+      0.15 (    20)  flickr
+      0.15 (    14)  winning
+      0.15 (    27)  🇮🇸
+      0.15 (     6)  anxiety
+      0.15 (   293)  s
+      0.15 (    15)  ipa
+      0.15 (    19)  stockmann
+      0.15 (    24)  details
+      0.15 (     6)  ➌
+      0.14 (    10)  camera
+      0.14 (   190)  was
+      0.14 (     6)  stealing
+      0.14 (    29)  mnumber
+      0.14 (    18)  sunshine
+      0.14 (     7)  across
+      0.14 (    14)  lego®
+      0.14 (     6)  kiruna
+      0.14 (   125)  re
+      0.14 (    16)  turn
+      0.14 (    11)  corporate
+      0.14 (    23)  terminal
+      0.14 (     9)  uppsala
+      0.14 (    11)  source
+      0.14 (    15)  battle
+      0.14 (     9)  published
+      0.14 (    31)  tuesday
+      0.14 (    47)  cycling
+      0.14 (    11)  kentish
+      0.14 (    15)  ⒉
+      0.14 (   161)  our
+      0.14 (    12)  wonderwall
+      0.13 (   211)  m
+      0.13 (    18)  southern
+      0.13 (    19)  rising
+      0.13 (    18)  favourite
+      0.13 (    13)  tax
+      0.13 (    32)  mist
+      0.13 (    10)  silent
+      0.13 (    19)  early
+      0.13 (   302)  to
+      0.13 (     4)  continues
+      0.13 (     7)  computer
+      0.13 (   263)  this
+      0.13 (    12)  linja
+      0.13 (   160)  sweden
+      0.13 (    12)  became
+      0.13 (    22)  hashtags
+      0.13 (   105)  helsinki
+      0.13 (   138)  today
+      0.13 (    33)  service
+      0.13 (    30)  walking
+      0.13 (   297)  is
+      0.13 (    10)  maltainen
+      0.13 (    40)  w
+      0.13 (     8)  stream
+      0.13 (   297)  you
+      0.13 (    39)  topnumber
+      0.13 (   232)  with
+      0.13 (    18)  emirates
+      0.13 (     7)  gotland
+      0.13 (    62)  th
+      0.13 (    29)  engineer
+      0.12 (    30)  took
+      0.12 (    12)  😀
+      0.12 (    41)  architect
+      0.12 (   320)  and
+      0.12 (    12)  eet
+      0.12 (     9)  indeed
+      0.12 (    50)  clouds
+      0.12 (    22)  put
+      0.12 (     7)  ele
+      0.12 (    18)  bye
+      0.12 (   240)  on
+      0.12 (    11)  lab
+      0.12 (    85)  could
+      0.12 (    26)  crying
+      0.12 (    13)  party
+      0.12 (    25)  split
+      0.12 (    56)  click
+      0.12 (    11)  gust
+      0.12 (    40)  version
+      0.12 (    65)  were
+      0.12 (    11)  short
+      0.12 (     6)  karlsson
+      0.12 (    12)  searches
+      0.12 (    18)  vg
+      0.12 (    11)  lexa
+      0.12 (     8)  asleep
+      0.12 (     7)  ⒍
+      0.12 (    25)  help
+      0.12 (    49)  running
+      0.12 (    17)  shades
+      0.12 (     8)  survive
+      0.12 (   172)  out
+      0.12 (     9)  child
+      0.12 (    28)  broken
+      0.12 (    18)  hammarbybacken
+      0.12 (    40)  ❄️
+      0.12 (    38)  mix
+      0.11 (    46)  tweets
+      0.11 (    13)  agl
+      0.11 (   197)  be
+      0.11 (    81)  city
+      0.11 (    68)  norway
+      0.11 (    11)  ➋
+      0.11 (     2)  elder
+      0.11 (    32)  📈
+      0.11 (    61)  looking
+      0.11 (    66)  check
+      0.11 (    93)  want
+      0.11 (    39)  senior
+      0.11 (    11)  slept
+      0.11 (    12)  idea
+      0.11 (    21)  office
+      0.11 (    13)  region
+      0.11 (    10)  wear
+      0.11 (     8)  rideshare
+      0.11 (    10)  tonjes_photomoments
+      0.11 (    20)  taken
+      0.11 (    31)  top
+      0.11 (    11)  hands
+      0.11 (    11)  stefan
+      0.11 (    47)  oslo
+      0.11 (    14)  spot
+      0.11 (    25)  film
+      0.11 (    42)  place
+      0.11 (   198)  just
+      0.11 (     4)  stormy
+      0.11 (   127)  more
+      0.11 (    20)  goodbye
+      0.11 (    35)  design
+      0.11 (    16)  ↑number
+      0.11 (    29)  business
+      0.11 (     9)  pale
+      0.11 (    22)  finished
+      0.11 (    11)  looked
+      0.11 (    58)  copenhagen
+      0.1  (    17)  football
+      0.1  (   165)  day
+      0.1  (    19)  tree
+      0.1  (    11)  horse
+      0.1  (    45)  drinking
+      0.1  (    12)  ain
+      0.1  (    27)  +
+      0.1  (     8)  station
+      0.1  (    24)  tampere
+      0.1  (    15)  dec
+      0.1  (    21)  turku
+      0.1  (    49)  might
+      0.1  (    13)  snapchat
+      0.1  (    10)  port
+      0.1  (     3)  nyc
+      0.1  (    27)  thursday
+      0.1  (    10)  edition
+      0.1  (    12)  classic
+      0.1  (    31)  slowly
+      0.1  (    37)  st
+      0.1  (    24)  second
+      0.1  (    61)  via
+      0.1  (    34)  coffee
+      0.1  (     4)  fallende
+      0.1  (    49)  denmark
+      0.1  (    35)  school
+      0.1  (    14)  guy
+      0.1  (    15)  join
+      0.09 (    53)  sun
+      0.09 (     4)  sunderland
+      0.09 (   111)  work
+      0.09 (     9)  commissioning
+      0.09 (    20)  club
+      0.09 (    22)  class
+      0.09 (    42)  things
+      0.09 (    13)  rather
+      0.09 (    15)  situation
+      0.09 (    16)  hide
+      0.09 (    11)  entire
+      0.09 (    33)  county
+      0.09 (    12)  boxing
+      0.09 (   194)  we
+      0.09 (    15)  moves
+      0.09 (     9)  happen
+      0.09 (    21)  book
+      0.09 (   187)  can
+      0.09 (   115)  year
+      0.09 (    17)  apples
+      0.09 (     9)  klass
+      0.09 (    11)  february
+      0.09 (     4)  destiny
+      0.09 (     6)  forecast
+      0.09 (    25)  gotta
+      0.09 (    13)  brand
+      0.09 (     6)  kushner
+      0.09 (    13)  darbo
+      0.09 (    14)  chill
+      0.09 (    41)  fuck
+      0.09 (    11)  remaster
+      0.09 (    83)  am
+      0.09 (    24)  high
+      0.09 (    34)  b
+      0.09 (    14)  vasteras
+      0.09 (    14)  boat
+      0.09 (    13)  sverige
+      0.09 (    72)  soon
+      0.08 (    22)  goes
+      0.08 (     4)  validation
+      0.08 (    28)  went
+      0.08 (   266)  it
+      0.08 (   143)  time
+      0.08 (    15)  vakaa
+      0.08 (    14)  harry
+      0.08 (    65)  winter
+      0.08 (    45)  week
+      0.08 (    23)  🇩🇰
+      0.08 (    12)  marketing
+      0.08 (     8)  excuse
+      0.08 (    16)  deli
+      0.08 (     4)  humiliation
+      0.08 (    14)  ham
+      0.08 (    45)  those
+      0.08 (    43)  getting
+      0.08 (    14)  everywhere
+      0.08 (    15)  tour
+      0.08 (   207)  t
+      0.08 (    14)  pt
+      0.08 (    93)  better
+      0.08 (    56)  hard
+      0.08 (   104)  night
+      0.08 (    21)  spurs
+      0.08 (    18)  market
+      0.08 (   130)  great
+      0.08 (   153)  will
+      0.08 (    37)  bergen
+      0.08 (    18)  words
+      0.08 (    27)  doing
+      0.08 (     5)  slott
+      0.08 (   133)  no
+      0.08 (   185)  now
+      0.08 (     7)  arhus
+      0.08 (    33)  light
+      0.08 (     9)  phrases
+      0.08 (    10)  dcpt
+      0.08 (    17)  anymore
+      0.08 (    30)  n
+      0.08 (    28)  cet
+      0.08 (    22)  buy
+      0.08 (   146)  how
+      0.08 (    13)  pass
+      0.08 (    35)  far
+      0.07 (    14)  movie
+      0.07 (   167)  up
+      0.07 (    37)  christmas
+      0.07 (   104)  got
+      0.07 (    15)  beer
+      0.07 (    14)  ice
+      0.07 (   258)  my
+      0.07 (    11)  tur
+      0.07 (     8)  bishops
+      0.07 (     8)  hurts
+      0.07 (    13)  test
+      0.07 (    20)  sick
+      0.07 (    15)  final
+      0.07 (     8)  users
+      0.07 (    30)  tell
+      0.07 (    18)  tweeted
+      0.07 (    27)  air
+      0.07 (    14)  yourself
+      0.07 (    71)  iceland
+      0.07 (    14)  tech
+      0.07 (     6)  dist
+      0.07 (    39)  minutes
+      0.07 (    25)  pic
+      0.07 (     4)  eyez
+      0.07 (     8)  paradise
+      0.07 (    32)  lovely
+      0.07 (    14)  gothersgade
+      0.07 (     4)  alieu
+      0.07 (   102)  best
+      0.07 (    19)  ⒋
+      0.07 (    33)  flight
+      0.07 (    19)  playing
+      0.07 (    17)  northern
+      0.07 (    20)  queen
+      0.07 (    11)  remix
+      0.07 (    35)  friends
+      0.07 (     7)  lean
+      0.07 (    27)  least
+      0.07 (   124)  don
+      0.07 (   146)  not
+      0.07 (     6)  union
+      0.07 (   184)  but
+      0.07 (    13)  omnipollos
+      0.07 (    11)  history
+      0.07 (    18)  lips
+      0.07 (    35)  using
+      0.07 (    27)  mean
+      0.07 (     7)  reykjavik
+      0.07 (   108)  right
+      0.07 (    22)  ass
+      0.07 (    14)  danish
+      0.07 (    14)  brexit
+      0.07 (    58)  old
+      0.07 (   158)  good
+      0.07 (    16)  gone
+      0.07 (    59)  where
+      0.07 (   206)  that
+      0.07 (    89)  people
+      0.07 (     7)  wings
+      0.07 (    10)  meeting
+      0.07 (     1)  studios
+      0.07 (    96)  thanks
+      0.07 (    33)  ago
+      0.07 (    15)  agree
+      0.07 (     9)  gym
+      0.07 (     7)  singing
+      0.07 (   231)  me
+      0.07 (     5)  shore
+      0.07 (     6)  zygmunt
+      0.07 (    27)  sky
+      0.07 (    53)  its
+      0.07 (    16)  kid
+      0.07 (    51)  house
+      0.07 (    15)  saw
+      0.07 (     3)  drizzle
+      0.07 (   173)  your
+      0.07 (    52)  —
+      0.07 (   128)  see
+      0.07 (    45)  nothing
+      0.07 (   188)  have
+      0.06 (   205)  new
+      0.06 (     3)  somebody
+      0.06 (    16)  called
+      0.06 (    18)  vs
+      0.06 (    12)  development
+      0.06 (    21)  break
+      0.06 (    17)  hatt
+      0.06 (    13)  hilton
+      0.06 (     5)  los
+      0.06 (    21)  ha
+      0.06 (    17)  four
+      0.06 (    47)  own
+      0.06 (    17)  guide
+      0.06 (    23)  chance
+      0.06 (    10)  😳
+      0.06 (    20)  hell
+      0.06 (   152)  like
+      0.06 (     3)  strong
+      0.06 (    14)  eknumber
+      0.06 (    16)  😎
+      0.06 (    15)  dean
+      0.06 (    17)  current
+      0.06 (    38)  him
+      0.06 (     6)  oj
+      0.06 (     6)  education
+      0.06 (     2)  jackson
+      0.06 (     7)  shy
+      0.06 (    34)  feat
+      0.06 (    10)  album
+      0.06 (   185)  from
+      0.06 (   156)  love
+      0.06 (    20)  becoming
+      0.06 (    66)  live
+      0.06 (    19)  sherlock
+      0.06 (     9)  cancer
+      0.06 (    21)  awake
+      0.06 (    75)  snow
+      0.06 (    13)  kanada
+      0.06 (    19)  tried
+      0.06 (    30)  monday
+      0.06 (     8)  finger
+      0.06 (    36)  waiting
+      0.06 (    20)  quite
+      0.06 (     9)  stunning
+      0.06 (    24)  move
+      0.06 (    14)  square
+      0.06 (    75)  morning
+      0.06 (    37)  watching
+      0.06 (    17)  stand
+      0.06 (     6)  samtec
+      0.06 (    51)  thing
+      0.06 (    47)  friend
+      0.06 (    40)  wanna
+      0.06 (     6)  third
+      0.06 (    59)  most
+      0.06 (    16)  trash
+      0.06 (    87)  life
+      0.06 (   130)  get
+      0.06 (    18)  longer
+      0.06 (     7)  löfven
+      0.06 (   144)  do
+      0.06 (    30)  digital
+      0.06 (    81)  going
+      0.06 (    22)  head
+      0.06 (    15)  espresso
+      0.06 (    49)  won
+      0.06 (    18)  utc+number
+      0.06 (   206)  all
+      0.06 (    28)  hill
+      0.06 (    38)  run
+      0.06 (     6)  due
+      0.06 (     9)  goteborg
+      0.06 (    25)  ride
+      0.06 (    83)  down
+      0.06 (    17)  halland
+      0.06 (     7)  moderate
+      0.06 (    30)  times
+      0.06 (    75)  than
+      0.05 (    12)  impact
+      0.05 (    54)  tomorrow
+      0.05 (    39)  trump
+      0.05 (     5)  csg
+      0.05 (    15)  lonely
+      0.05 (    37)  sure
+      0.05 (     7)  ostrobothnia
+      0.05 (     7)  putins
+      0.05 (    36)  sleeping
+      0.05 (    12)  limit
+      0.05 (    19)  young
+      0.05 (     7)  hollywood
+      0.05 (    81)  free
+      0.05 (    55)  team
+      0.05 (   103)  much
+      0.05 (     3)  kyi
+      0.05 (   105)  very
+      0.05 (    42)  wonderful
+      0.05 (     8)  margot
+      0.05 (    35)  white
+      0.05 (    35)  remastered
+      0.05 (   126)  an
+      0.05 (    18)  length
+      0.05 (     4)  decided
+      0.05 (    39)  season
+      0.05 (     6)  nikkaluokta
+      0.05 (    21)  cover
+      0.05 (     8)  easy
+      0.05 (   105)  first
+      0.05 (   101)  last
+      0.05 (    23)  forget
+      0.05 (    81)  always
+      0.05 (    41)  these
+      0.05 (     8)  waste
+      0.05 (    11)  juniper
+      0.05 (    10)  role
+      0.05 (    36)  conference
+      0.05 (   142)  here
+      0.05 (    15)  honest
+      0.05 (     6)  brandy
+      0.05 (   121)  about
+      0.05 (    77)  nice
+      0.05 (     5)  angeles
+      0.05 (    18)  trying
+      0.05 (    57)  read
+      0.05 (   149)  as
+      0.05 (   171)  what
+      0.05 (    24)  sunday
+      0.05 (    25)  since
+      0.05 (    16)  middle
+      0.05 (     9)  doe
+      0.05 (    24)  born
+      0.05 (    64)  off
+      0.05 (    24)  girls
+      0.05 (    19)  hnumber
+      0.05 (     9)  plan
+      0.05 (     5)  told
+      0.05 (    27)  r
+      0.05 (    30)  room
+      0.05 (     8)  bauman
+      0.05 (    34)  seen
+      0.05 (    41)  shape
+      0.05 (    74)  only
+      0.05 (    33)  welcome
+      0.05 (    64)  big
+      0.05 (    25)  omg
+      0.05 (    45)  😊
+      0.05 (     7)  fxxk
+      0.05 (    27)  art
+      0.05 (     8)  crack
+      0.05 (    81)  need
+      0.05 (    46)  though
+      0.05 (    66)  other
+      0.04 (    61)  man
+      0.04 (    22)  games
+      0.04 (    37)  long
+      0.04 (     8)  tired
+      0.04 (     5)  virus
+      0.04 (   194)  so
+      0.04 (    91)  us
+      0.04 (    22)  isn
+      0.04 (    22)  hotel
+      0.04 (   102)  days
+      0.04 (    48)  almost
+      0.04 (     6)  bobby
+      0.04 (     6)  ↓number
+      0.04 (    37)  without
+      0.04 (     7)  taboo
+      0.04 (     3)  grow
+      0.04 (    46)  her
+      0.04 (    11)  ⒌
+      0.04 (    24)  ask
+      0.04 (   115)  if
+      0.04 (    12)  website
+      0.04 (     3)  sells
+      0.04 (    10)  drink
+      0.04 (    17)  finance
+      0.04 (    28)  favorite
+      0.04 (    35)  europe
+      0.04 (     6)  wtf
+      0.04 (    67)  made
+      0.04 (    18)  fantastic
+      0.04 (    53)  ready
+      0.04 (     7)  dannijensennumber
+      0.04 (    80)  did
+      0.04 (     6)  hospital
+      0.04 (    40)  airport
+      0.04 (     6)  stupid
+      0.04 (   137)  when
+      0.04 (    14)  bottle
+      0.04 (    72)  miss
+      0.04 (     5)  dogs
+      0.04 (    76)  his
+      0.04 (     2)  scrolls
+      0.04 (   116)  go
+      0.04 (    21)  arsenal
+      0.04 (     6)  hound
+      0.04 (     3)  slovakien
+      0.04 (    20)  loves
+      0.04 (    58)  tonight
+      0.04 (    25)  such
+      0.04 (    15)  worth
+      0.04 (    16)  punk
+      0.04 (    39)  fucking
+      0.04 (   117)  or
+      0.04 (    11)  seems
+      0.04 (    30)  job
+      0.04 (    34)  main
+      0.04 (    26)  event
+      0.04 (    60)  around
+      0.04 (    13)  error
+      0.04 (     9)  brynäs
+      0.04 (    26)  heart
+      0.04 (    33)  =
+      0.04 (    26)  eyes
+      0.04 (    16)  call
+      0.04 (    30)  goodnight
+      0.04 (     4)  nato
+      0.04 (    19)  money
+      0.04 (    40)  found
+      0.04 (     5)  thirty
+      0.04 (    66)  coming
+      0.04 (    28)  yep
+      0.04 (    13)  fast
+      0.04 (    14)  bow
+      0.04 (    45)  hall
+      0.04 (    22)  dear
+      0.04 (    84)  she
+      0.04 (     6)  seattle
+      0.04 (    37)  word
+      0.04 (    23)  wall
+      0.04 (    19)  die
+      0.04 (    27)  pls
+      0.04 (    86)  come
+      0.04 (    85)  world
+      0.04 (    11)  talking
+      0.04 (    36)  song
+      0.04 (    39)  ok
+      0.04 (    40)  family
+      0.04 (    15)  brother
+      0.04 (    19)  quickly
+      0.04 (     7)  shop
+      0.04 (    13)  sse
+      0.04 (    39)  hope
+      0.04 (    55)  game
+      0.04 (     9)  daft
+      0.04 (    11)  sturgeon
+      0.04 (    79)  never
+      0.04 (    27)  kind
+      0.04 (     7)  featuring
+      0.04 (     3)  supposed
+      0.04 (    51)  into
+      0.04 (    68)  im
+      0.04 (     5)  anybody
+      0.04 (    29)  road
+      0.03 (    59)  start
+      0.03 (    77)  over
+      0.03 (    26)  😉
+      0.03 (    15)  yet
+      0.03 (    98)  home
+      0.03 (    28)  someone
+      0.03 (    28)  excited
+      0.03 (    18)  power
+      0.03 (    45)  left
+      0.03 (   117)  some
+      0.03 (     5)  screen
+      0.03 (    31)  fresh
+      0.03 (    14)  possible
+      0.03 (    17)  brooklyn
+      0.03 (    12)  side
+      0.03 (    72)  should
+      0.03 (    13)  jerusalem
+      0.03 (    35)  interesting
+      0.03 (     4)  max
+      0.03 (    34)  wait
+      0.03 (    14)  clear
+      0.03 (     4)  centre
+      0.03 (   103)  know
+      0.03 (     6)  mwno
+      0.03 (    21)  part
+      0.03 (    47)  already
+      0.03 (     8)  moving
+      0.03 (    45)  black
+      0.03 (   148)  &amp
+      0.03 (   105)  too
+      0.03 (    10)  depp
+      0.03 (     2)  seem
+      0.03 (    72)  thank
+      0.03 (    41)  tweet
+      0.03 (    21)  cheers
+      0.03 (    66)  something
+      0.03 (   100)  really
+      0.03 (    37)  while
+      0.03 (    13)  lost
+      0.03 (    28)  enough
+      0.03 (    50)  actually
+      0.03 (     9)  payback
+      0.03 (    38)  may
+      0.03 (    36)  both
+      0.03 (    55)  say
+      0.03 (    25)  men
+      0.03 (    24)  stuff
+      0.03 (    17)  couple
+      0.03 (     2)  albeit
+      0.03 (     9)  sturridge
+      0.03 (    85)  beautiful
+      0.03 (     5)  online
+      0.03 (    11)  department
+      0.03 (    16)  face
+      0.03 (    21)  seconds
+      0.03 (     3)  daydream
+      0.03 (    39)  working
+      0.03 (    15)  different
+      0.03 (   200)  are
+      0.03 (    18)  saturday
+      0.03 (    51)  video
+      0.03 (    11)  son
+      0.03 (    65)  then
+      0.03 (     9)  ene
+      0.03 (    47)  little
+      0.03 (     6)  abandoned
+      0.03 (     9)  phone
+      0.03 (    72)  d
+      0.03 (    16)  blev
+      0.03 (    67)  years
+      0.03 (    17)  line
+      0.03 (   129)  happy
+      0.03 (    18)  key
+      0.03 (     7)  ⒑
+      0.03 (    33)  needs
+      0.03 (     7)  skiing
+      0.03 (    53)  show
+      0.03 (    30)  super
+      0.03 (    27)  close
+      0.03 (    12)  wsw
+      0.03 (    26)  luck
+      0.03 (    96)  there
+      0.03 (    13)  cafe
+      0.03 (     4)  hahahaha
+      0.03 (     9)  months
+      0.03 (     5)  suu
+      0.03 (    12)  chris
+      0.03 (    15)  changes
+      0.03 (    17)  person
+      0.03 (    69)  them
+      0.03 (    47)  end
+      0.03 (     9)  literally
+      0.03 (    13)  ikea
+      0.03 (    13)  sound
+      0.03 (    19)  security
+      0.03 (     7)  soldiers
+      0.03 (    11)  staying
+      0.03 (    26)  came
+      0.03 (    51)  before
+      0.03 (    17)  destroyed
+      0.03 (    74)  way
+      0.03 (    57)  any
+      0.03 (    94)  still
+      0.03 (    46)  give
+      0.03 (    24)  strawberry
+      0.03 (    81)  why
+      0.03 (    66)  would
+      0.03 (    49)  find
+      0.03 (    48)  maybe
+      0.03 (    23)  shit
+      0.03 (    13)  west
+      0.03 (    32)  wow
+      0.03 (    12)  question
+      0.03 (    62)  bad
+      0.03 (    62)  😂
+      0.03 (    10)  ma
+      0.03 (     7)  wonder
+      0.03 (    36)  having
+      0.03 (    27)  red
+      0.03 (    42)  finally
+      0.03 (    22)  weeks
+      0.03 (    15)  fave
+      0.03 (     9)  farm
+      0.03 (    26)  😃
+      0.03 (    13)  standing
+      0.03 (    50)  follow
+      0.03 (    16)  walk
+      0.02 (    27)  three
+      0.02 (    27)  learning
+      0.02 (    12)  rts
+      0.02 (    12)  meant
+      0.02 (    15)  children
+      0.02 (     4)  raks
+      0.02 (    48)  guys
+      0.02 (    61)  their
+      0.02 (    91)  again
+      0.02 (    22)  talk
+      0.02 (    25)  outside
+      0.02 (    14)  june
+      0.02 (    11)  site
+      0.02 (     8)  fog
+      0.02 (    13)  band
+      0.02 (    45)  pretty
+      0.02 (    71)  been
+      0.02 (    62)  cool
+      0.02 (    13)  com
+      0.02 (    21)  hollyweed
+      0.02 (    54)  perfect
+      0.02 (    12)  taking
+      0.02 (    23)  hopefully
+      0.02 (    11)  alive
+      0.02 (     7)  rd
+      0.02 (     7)  scattered
+      0.02 (    20)  till
+      0.02 (     5)  idiot
+      0.02 (    35)  😍
+      0.02 (    13)  👏
+      0.02 (    19)  finnish
+      0.02 (     8)  takes
+      0.02 (    15)  loved
+      0.02 (    14)  players
+      0.02 (    71)  ever
+      0.02 (    15)  ⒊
+      0.02 (     5)  russia
+      0.02 (     3)  tao
+      0.02 (    24)  win
+      0.02 (    11)  ❤❤❤
+      0.02 (     9)  ive
+      0.02 (    44)  hair
+      0.02 (     6)  committed
+      0.02 (    47)  birthday
+      0.02 (    38)  e
+      0.02 (    35)  hour
+      0.02 (     9)  hand
+      0.02 (    23)  few
+      0.02 (     6)  worry
+      0.02 (     9)  💕
+      0.02 (    36)  dreams
+      0.02 (    10)  cry
+      0.02 (    12)  🇳🇴
+      0.02 (     9)  mr
+      0.02 (     7)  universe
+      0.02 (     3)  phoenix
+      0.02 (    21)  😂😂
+      0.02 (    16)  wnw
+      0.02 (    18)  shower
+      0.02 (    19)  car
+      0.02 (    17)  forever
+      0.02 (     9)  science
+      0.02 (    13)  issues
+      0.02 (    10)  l
+      0.02 (     5)  flow
+      0.02 (    13)  future
+      0.02 (    44)  sorry
+      0.02 (    71)  had
+      0.02 (    89)  look
+      0.02 (    69)  gonna
+      0.02 (     7)  touch
+      0.02 (     5)  delayed
+      0.02 (   151)  one
+      0.02 (    18)  above
+      0.02 (     9)  director
+      0.02 (    16)  country
+      0.02 (    85)  well
+      0.02 (    30)  believe
+      0.02 (    16)  problem
+      0.02 (    23)  g
+      0.02 (    74)  think
+      0.02 (    12)  slow
+      0.02 (    69)  being
+      0.02 (    62)  also
+      0.02 (    11)  ⒏
+      0.02 (    17)  article
+      0.02 (    10)  ne
+      0.02 (     6)  gave
+      0.02 (     6)  filled
+      0.02 (    21)  google
+      0.02 (   103)  same
+      0.02 (    86)  make
+      0.02 (    30)  myself
+      0.02 (     6)  collection
+      0.02 (    25)  mad
+      0.02 (    70)  even
+      0.02 (     4)  jared
+      0.02 (    44)  must
+      0.02 (     8)  ⒐
+      0.02 (     8)  eurajoki
+      0.02 (    41)  bit
+      0.02 (    19)  blue
+      0.02 (    11)  justin
+      0.02 (    19)  mind
+      0.02 (    15)  legal
+      0.02 (     7)  works
+      0.02 (    52)  feel
+      0.02 (    28)  o
+      0.02 (    14)  sight
+      0.02 (    26)  remember
+      0.02 (    56)  cold
+      0.02 (    17)  making
+      0.02 (    67)  fun
+      0.02 (    11)  either
+      0.02 (    45)  ❤
+      0.02 (     7)  joke
+      0.02 (    17)  dream
+      0.02 (     8)  happened
+      0.02 (    25)  sounds
+      0.02 (    24)  name
+      0.02 (    28)  😂😂😂
+      0.02 (    82)  god
+      0.02 (     9)  choice
+      0.02 (    10)  order
+      0.02 (    17)  y
+      0.02 (     5)  bitches
+      0.02 (    12)  stories
+      0.02 (    60)  every
+      0.02 (    11)  glory
+      0.02 (     3)  deny
+      0.02 (    13)  picture
+      0.02 (    18)  everyday
+      0.02 (     7)  wins
+      0.02 (    63)  watch
+      0.02 (     8)  ese
+      0.02 (    12)  draw
+      0.02 (    15)  half
+      0.02 (    15)  sister
+      0.02 (    14)  straight
+      0.02 (    11)  obama
+      0.02 (    19)  town
+      0.02 (    31)  month
+      0.02 (    20)  brain
+      0.02 (    14)  ocean
+      0.02 (    73)  ll
+      0.02 (     4)  nu
+      0.02 (    13)  tearing
+      0.02 (    28)  worst
+      0.02 (    33)  baby
+      0.02 (    25)  fake
+      0.02 (    24)  door
+      0.02 (   125)  back
+      0.02 (     4)  videos
+      0.02 (    10)  water
+      0.02 (     6)  🚨subscribe
+      0.02 (    54)  two
+      0.02 (    12)  haven
+      0.02 (    21)  lunch
+      0.02 (     7)  totally
+      0.02 (     5)  issue
+      0.02 (    27)  fact
+      0.02 (    29)  war
+      0.02 (     9)  princess
+      0.02 (    29)  single
+      0.02 (    34)  care
+      0.02 (    11)  sw
+      0.02 (     8)  shl
+      0.02 (    12)  bro
+      0.02 (    55)  amazing
+      0.02 (    20)  thinking
+      0.02 (    16)  bigger
+      0.02 (    10)  la
+      0.02 (     1)  lucy
+      0.02 (    12)  tears
+      0.02 (    24)  save
+      0.02 (    15)  bout
+      0.02 (     7)  steady
+      0.01 (    19)  watched
+      0.01 (    10)  silence
+      0.01 (    20)  rt
+      0.01 (    22)  ”
+      0.01 (   143)  they
+      0.01 (    15)  fat
+      0.01 (    22)  later
+      0.01 (     6)  runs
+      0.01 (     4)  monkey
+      0.01 (     4)  flachau
+      0.01 (    11)  tv
+      0.01 (    19)  daily
+      0.01 (    33)  keep
+      0.01 (    16)  spent
+      0.01 (    12)  nowhere
+      0.01 (    21)  value
+      0.01 (     9)  un
+      0.01 (    17)  experience
+      0.01 (    12)  smile
+      0.01 (     5)  laborant
+      0.01 (     9)  sake
+      0.01 (     8)  guilty
+      0.01 (    76)  oh
+      0.01 (    17)  putin
+      0.01 (    40)  open
+      0.01 (     6)  ericsbergs
+      0.01 (    14)  $number
+      0.01 (     2)  leah
+      0.01 (     5)  write
+      0.01 (     6)  sit
+      0.01 (    36)  president
+      0.01 (    47)  didn
+      0.01 (    13)  shaky
+      0.01 (    14)  moment
+      0.01 (    15)  degrees
+      0.01 (    18)  apple
+      0.01 (    17)  fall
+      0.01 (    19)  goal
+      0.01 (    41)  through
+      0.01 (     9)  gold
+      0.01 (    42)  p
+      0.01 (    25)  fighting
+      0.01 (    10)  woke
+      0.01 (    25)  goals
+      0.01 (    10)  az
+      0.01 (    16)  england
+      0.01 (    10)  bank
+      0.01 (    22)  |
+      0.01 (    11)  boss
+      0.01 (    38)  everything
+      0.01 (    69)  u
+      0.01 (    11)  hit
+      0.01 (    27)  whole
+      0.01 (     4)  eazy
+      0.01 (    13)  nne
+      0.01 (    10)  whit
+      0.01 (    17)  loving
+      0.01 (    32)  until
+      0.01 (    15)  post
+      0.01 (     3)  lose
+      0.01 (     7)  becomes
+      0.01 (     9)  add
+      0.01 (    53)  many
+      0.01 (    67)  ve
+      0.01 (    98)  who
+      0.01 (     3)  canumber
+      0.01 (     8)  international
+      0.01 (     4)  ecanumber
+      0.01 (    17)  near
+      0.01 (     6)  honestly
+      0.01 (    38)  doesn
+      0.01 (   107)  has
+      0.01 (     9)  malcolm
+      0.01 (    11)  certain
+      0.01 (    16)  stone
+      0.01 (     8)  united
+      0.01 (     6)  knew
+      0.01 (     7)  complete
+      0.01 (    71)  take
+      0.01 (     7)  largest
+      0.01 (     6)  nicola
+      0.01 (    98)  next
+      0.01 (    31)  fine
+      0.01 (     5)  pocket
+      0.01 (    12)  advice
+      0.01 (    10)  👍
+      0.01 (     9)  fully
+      0.01 (    10)  🚨
+      0.01 (    60)  because
+      0.01 (     5)  stuck
+      0.01 (     8)  term
+      0.01 (    53)  done
+      0.01 (     9)  tbh
+      0.01 (    33)  wish
+      0.01 (    21)  germany
+      0.01 (     4)  reality
+      0.01 (    18)  each
+      0.01 (    12)  send
+      0.01 (    21)  course
+      0.01 (    13)  women
+      0.01 (    39)  &lt
+      0.01 (     6)  frida
+      0.01 (    21)  music
+      0.01 (     2)  ave
+      0.01 (    41)  tho
+      0.01 (    13)  guitar
+      0.01 (    19)  beauty
+      0.01 (    16)  eve
+      0.01 (     9)  american
+      0.01 (    36)  hi
+      0.01 (     9)  swimming
+      0.01 (    15)  proud
+      0.01 (     4)  ⓖⓞⓞⓖⓛⓔ
+      0.01 (    81)  news
+      0.01 (    16)  bed
+      0.01 (    21)  rock
+      0.01 (     7)  build
+      0.01 (    19)  breaking
+      0.01 (    14)  drive
+      0.01 (     8)  funk
+      0.01 (     4)  wild
+      0.01 (    10)  isolation
+      0.01 (    21)  cause
+      0.01 (    23)  health
+      0.01 (    24)  count
+      0.01 (    16)  dog
+      0.01 (    11)  cup
+      0.01 (    16)  visit
+      0.01 (    12)  system
+      0.01 (    28)  dead
+      0.01 (    57)  stop
+      0.01 (    12)  politics
+      0.01 (    28)  full
+      0.01 (     6)  florida
+      0.01 (    13)  folks
+      0.01 (    14)  currently
+      0.01 (    28)  swedish
+      0.01 (    11)  facebook
+      0.01 (    11)  serve
+      0.01 (   104)  after
+      0.01 (    19)  minus
+      0.01 (     9)  bankers
+      0.01 (    14)  feeling
+      0.01 (    19)  ^^
+      0.01 (    32)  living
+      0.01 (    21)  focus
+      0.01 (     6)  raiders
+      0.01 (    13)  report
+      0.01 (    42)  yeah
+      0.01 (    15)  played
+      0.01 (    10)  london
+      0.01 (    11)  🚨like
+      0.01 (    25)  bitch
+      0.01 (     5)  gomez
+      0.01 (    11)  become
+      0.01 (    19)  likes
+      0.01 (    17)  training
+      0.01 (    15)  lots
+      0.01 (    15)  bring
+      0.01 (    34)  park
+      0.01 (    21)  f
+      0.01 (     3)  cancerfonden
+      0.01 (    39)  said
+      0.01 (     7)  whenever
+      0.01 (     4)  stabilize
+      0.01 (     7)  america
+      0.01 (     3)  adds
+      0.01 (    15)  death
+      0.01 (    11)  fifty
+      0.01 (    20)  makes
+      0.01 (     5)  morrowind
+      0.01 (    20)  twitter
+      0.01 (    37)  another
+      0.01 (     2)  oso
+      0.01 (    29)  boys
+      0.01 (     7)  ship
+      0.01 (    22)  hot
+      0.01 (    23)  min
+      0.01 (     4)  aanumber
+      0.01 (     8)  fb
+      0.01 (    23)  hate
+      0.01 (    84)  let
+      0.01 (    16)  shot
+      0.01 (    21)  lot
+      0.01 (    13)  apparently
+      0.01 (    19)  girl
+      0.01 (     8)  carry
+      0.01 (    18)  🤔
+      0.01 (     9)  okay
+      0.01 (    23)  internet
+      0.01 (    36)  against
+      0.01 (    27)  k
+      0.01 (    14)  technology
+      0.01 (    44)  food
+      0.01 (    14)  warm
+      0.01 (     5)  path
+      0.01 (    13)  😴
+      0.01 (    20)  stay
+      0.01 (    10)  meet
+      0.01 (    20)  past
+      0.01 (     6)  bbdnumber
+      0.01 (    21)  self
+      0.01 (     2)  enumber
+      0.01 (    10)  btw
+      0.01 (    13)  bc
+      0.01 (     2)  lazy
+      0.01 (    18)  guess
+      0.01 (    13)  green
+      0.01 (     9)  believer
+      0.01 (    20)  try
+      0.01 (    26)  sometimes
+      0.01 (    34)  sleep
+      0.01 (    12)  bless
+      0.01 (    11)  rose
+      0.01 (    13)  emotional
+      0.01 (    15)  trip
+      0.01 (   121)  he
+      0.01 (    38)  body
+      0.01 (    28)  mood
+      0.01 (    43)  looks
+      0.01 (    30)  yesterday
+      0.01 (    15)  forgetting
+      0.01 (    41)  boy
+      0.01 (    22)  million
+      0.01 (    66)  yes
+      0.01 (    13)  rapidly
+      0.01 (     9)  drop
+      0.01 (     5)  normal
+      0.01 (    13)  dude
+      0.01 (    31)  away
+      0.01 (     2)  tim
+      0.01 (     7)  lau
+      0.01 (    10)  starting
+      0.01 (    11)  eat
+      0.01 (     6)  low
+      0.01 (    12)  record
+      0.01 (    30)  weekend
+      0.01 (     4)  af
+      0.01 (    12)  🙂
+      0.01 (     9)  dnumber
+      0.01 (    20)  comes
+      0.01 (    15)  mine
+      0.01 (     7)  mike
+      0.01 (     6)  leave
+      0.01 (     7)  doubt
+      0.01 (     7)  nor
+      0.01 (    32)  awesome
+      0.01 (    13)  behind
+      0.01 (    11)  seriously
+      0.01 (     8)  sending
+      0.01 (    10)  respect
+      0.01 (     3)  spread
+      0.01 (    25)  peace
+      0.01 (     7)  liverpool
+      0.01 (    13)  cant
+      0.01 (     5)  meryl
+      0.01 (     7)  starboy
+      0.01 (    12)  calls
+      0.01 (     9)  uk
+      0.01 (    21)  tack
+      0.01 (     8)  language
+      0.01 (    14)  😅
+      0.01 (     3)  afrojack
+      0.01 (    15)  glad
+      0.01 (    13)  alexa
+      0.01 (    27)  available
+      0.01 (     9)  laboratory
+      0.01 (     4)  hourly
+      0.01 (     8)  names
+      0.01 (    66)  lol
+      0.01 (    21)  project
+      0.01 (     1)  worse
+      0.01 (    42)  which
+      0.01 (    70)  true
+      0.01 (    12)  wrong
+      0.01 (    15)  refuse
+      0.01 (    31)  use
+      0.01 (    16)  dont
+      0.01 (     6)  ccednumber
+      0.01 (     2)  sakte
+      0.01 (    12)  stalkers
+      0.01 (     4)  hockey
+      0.01 (     5)  arms
+      0.01 (    17)  used
+      0.01 (    28)  fan
+      0.01 (    18)  israel
+      0.01 (    61)  please
+      0.01 (     2)  fnumber
+      0.01 (    10)  thats
+      0.01 (     4)  sold
+      0.01 (    10)  nw
+      0.01 (    27)  cute
+      0.01 (    29)  hey
+      0.01 (     1)  aung
+      0.01 (    18)  mom
+      0.01 (    24)  ur
+      0.01 (    28)  fire
+      0.01 (    51)  everyone
+      0.01 (    13)  anything
+      0.01 (     3)  following
+      0.01 (     3)  cnumber
+      0.01 (    15)  ya
+      0.01 (    22)  gothenburg
+      0.01 (    14)  ssw
+      0.01 (    24)  x
+      0.01 (     1)  unsettled
+      0.01 (    14)  instagram
+      0.01 (    12)  ah
+      0    (     9)  sense
+      0    (    41)  damn
+      0    (    23)  testing
+      0    (    11)  gratulasjon
+      0    (    12)  lake
+      0    (    18)  story
+      0    (    15)  support
+      0    (     7)  block
+      0    (     8)  songs
+      0    (    22)  company
+      0    (    27)  alone
+      0    (    19)  bus
+      0    (    26)  haha
+      0    (    26)  sign
+      0    (    11)  anyway
+      0    (    30)  real
+      0    (    12)  under
+      0    (     9)  planning
+      0    (     9)  aren
+      0    (     4)  burma
+      0    (    11)  tom
+      0    (     5)  dreamin
+      0    (     8)  couldn
+      0    (     2)  💖
+      0    (     6)  stronger
+      0    (    39)  play
+      0    (    12)  others
+      0    (    13)  understand
+      0    (     6)  downeaster
+      0    (    16)  else
+      0    (    20)  thought
+      0    (    10)  funny
+      0    (    13)  less
+      0    (    20)  😘
+      0    (    14)  ways
+      0    (    25)  hear
+      0    (    11)  collapse
+      0    (     3)  koh
+      0    (    20)  shows
+      0    (     4)  unplugged
+      0    (    30)  says
+      0    (    24)  beach
+      0    (     5)  earlier
+      0    (     6)  crosses
+      0    (     7)  biscuits
+      0    (    15)  drunk
+      0    (    34)  john
+      0    (    20)  😁
+      0    (     5)  forbidden
+      0    (     4)  hastigt
+      0    (    19)  small
+      0    (     8)  oy
+      0    (    12)  data
+      0    (    15)  wasn
+      0    (     8)  catch
+      0    (    14)  lets
+      0    (     4)  vehicle
+      0    (     8)  sabotage
+      0    (     3)  san
+      0    (     6)  reason
+      0    (     6)  dcnumber
+      0    (    17)  castle
+      0    (     9)  berger
+      0    (     9)  creep
+      0    (    17)  added
+      0    (    15)  missing
+      0    (    16)  clean
+      0    (    25)  fight
+      0    (     7)  sitting
+      0    (     9)  darker
+      0    (     3)  materials
+      0    (     4)  bdnumber
+      0    (    12)  views
+      0    (     8)  state
+      0    (     9)  rainbow
+      0    (     9)  lights
+      0    (     5)  cassis
+      0    (    16)  se
+      0    (     3)  fucky
+      0    (    15)  dad
+      0    (    13)  during
+      0    (     4)  bnumber
+      0    (    16)  march
+      0    (     9)  learn
+      0    (     3)  nearer
+      0    (     6)  wake
+      0    (     9)  cutest
+      0    (    16)  saying
+      0    (     3)  card
+      0    (     4)  zzz
+      0    (     1)  murderous
+      0    (     8)  precipitation
+      0    (     8)  late
+      0    (    18)  global
+      0    (     4)  denumber
+      0    (     4)  pillow
+      0    (    10)  match
+      0    (     9)  lu
+      0    (    42)  hello
+      0    (     2)  lo
+      0    (     5)  baker
+      0    (     6)  bother
+      0    (     9)  stingy
+      0    (    27)  forward
+      0    (     9)  verso
+      0    (     5)  fantasmas
+      0    (     7)  strange
+      0    (    10)  everglow
+      0    (     3)  diamonds
+      0    (    21)  fireworks
+      0    (     7)  milkshake
+      0    (     5)  swim
+      0    (    13)  completely
+      0    (     4)  acnumber
+      0    (    30)  does
+      0    (    10)  loca
+      0    (     7)  lucky
+      0    (     5)  bass
+      0    (     7)  feraye
+      0    (    11)  cabello
+      0    (    11)  fell
+      0    (     6)  matter
+      0    (     7)  listening
+      0    (    17)  birds
+      0    (     9)  sentimental
+      0    (     8)  chukwu
+      0    (    12)  beyond
+      0    (    22)  kill
+      0    (     5)  prince
+      0    (    20)  change
+      0    (     4)  approves
+      0    (     9)  damselfly
+      0    (     4)  doors
+      0    (    21)  hahaha
+      0    (     4)  memories
+      0    (    12)  personal
+      0    (     3)  gets
+      0    (     7)  infinity
+      0    (    11)  xnumber
+      0    (    14)  dark
+      0    (     2)  rednecks
+      0    (     2)  inuit
+      0    (     9)  happiness
+      0    (     6)  kelly
+      0    (    12)  sober
+      0    (     5)  ko
+      0    (     5)  usually
+      0    (    12)  hammer
+      0    (     7)  codes
+      0    (     8)  blood
+      0    (     7)  teenage
+      0    (    10)  forgiven
+      0    (     1)  jvm
+      0    (     3)  mechanix
+      0    (    10)  liked
+      0    (    10)  🎉
+      0    (     6)  turbine
+      0    (     5)  flesh
+      0    (    12)  fin
+      0    (    22)  sad
+      0    (    19)  china
+      0    (    11)  changed
+      0    (     5)  wrongs
+      0    (    12)  touched
+      0    (    14)  starving
+      0    (    10)  palace
+      0    (    20)  between
+      0    (     7)  hug
+      0    (     3)  eanumber
+      0    (     8)  confident
+      0    (     9)  recovery
+      0    (    12)  infinite
+      0    (     2)  swing
+      0    (     8)  xd
+      0    (    10)  california
+      0    (    13)  summer
+      0    (    31)  •
+      0    (     2)  boo
+      0    (     7)  breath
+      0    (     7)  somewhere
+      0    (     4)  finish
+      0    (     8)  hmm
+      0    (     8)  desert
+      0    (    15)  often
+      0    (    10)  dm
+      0    (    11)  ka
+      0    (    27)  absolutely
+      0    (     3)  raskt
+      0    (     9)  special
+      0    (     4)  sakta
+      0    (    10)  reading
+      0    (    11)  blog
+      0    (     5)  sso
+      0    (    22)  enjoy
+      0    (     4)  omg😂
+      0    (    13)  seeing
+      0    (    10)  awwsome
+      0    (     4)  original
+      0    (     5)  snake
+      0    (    10)  diana
+      0    (    15)  once
+      0    (    12)  positive
+      0    (     9)  nnw
+      0    (     3)  hidden
+      0    (     3)  mot
+      0    (     5)  na
+      0    (    16)  angels
+      0    (    36)  kids
+      0    (     7)  awakening
+      0    (     4)  intensity
+      0    (    15)  sweet
+      0    (     7)  pumped
+      0    (     3)  ji
+      0    (    15)  killing
+      0    (     4)  wouldn
+      0    (    19)  inside
+      0    (     7)  edge
+      0    (     7)  piece
+      0    (     4)  flux
+      0    (    10)  swerve
+      0    (     5)  loads
+      0    (     6)  interlude
+      0    (     9)  among
+      0    (     8)  awakens
+      0    (     9)  comfortable
+      0    (     6)  share
+      0    (    11)  midnight
+      0    (     5)  wife
+      0    (    15)  norwegian
+      0    (     2)  ☺
+      0    (    10)  dance
+      0    (     5)  mtv
+      0    (    13)  stfu
+      0    (     1)  cos
+      0    (     3)  distance
+      0    (     5)  selena
+      0    (     4)  clip
+      0    (     8)  auto
+      0    (     4)  asker
+      0    (     6)  carga
+      0    (     1)  keeping
+      0    (     8)  ones
+      0    (    21)  congrats
+      0    (     4)  hold
+      0    (     6)  depreston
+      0    (     3)  indicates
+      0    (     6)  sin
+      0    (     4)  definitely
+      0    (     9)  spaces
+      0    (     2)  cuz
+      0    (    30)  probably
+      0    (     5)  weird
+      0    (     7)  consider
+      0    (    18)  modern
+      0    (     4)  😭
+      0    (     1)  theatre
+      0    (     9)  dirty
+      0    (    17)  actual
+      0    (     5)  raid
+      0    (     8)  nature
+      0    (     3)  falls
+      0    (     9)  ghost
+      0    (     6)  ppl
+      0    (     8)  list
+      0    (    14)  lady
+      0    (    11)  pay
+      0    (     8)  alright
+      0    (    24)  together
+      0    (    10)  worthy
+      0    (     8)  hur
+      0    (    13)  enjoying
+      0    (     7)  økende
+      0    (     1)  kimbra
+      0    (     5)  rollin
+      0    (     8)  rider
+      0    (    22)  crazy
+      0    (     2)  okike
+      0    (     9)  terso
+      0    (    19)  human
+      0    (     7)  serious
+      0    (    23)  truth
+      0    (     1)  por
+      0    (     3)  yo
+      0    (     9)  lmao
+      0    (     8)  needed
+      0    (     5)  narcisista
+      0    (     5)  imperfection
+      0    (     4)  poor
+      0    (    23)  ❤️
+      0    (     7)  imagine
+      0    (    24)  exactly
+      0    (     4)  herring
+      0    (     8)  knowing
+      0    (     6)  voices
+      0    (     6)  killpop
+      0    (    10)  blocked
+      0    (     7)  wants
+      0    (     4)  masters
+      0    (    19)  point
+      0    (     5)  undone
+      0    (     8)  partner
+      0    (     8)  raphael
+      0    (     5)  abima
+      0    (    18)  de
+      0    (     3)  heathens
+      0    (     1)  violin
+      0    (     8)  style
+      0    (     9)  deal
+      0    (    21)  heard
+      0    (    20)  jesus
+      0    (     7)  sparring
+      0    (     5)  golden
+      0    (    15)  hugs
+      0    (     4)  nots
+      0    (     9)  player
+      0    (     6)  joya
+      0    (    12)  holy
+      0    (    10)  means
+      0    (     3)  mutemath
+      0    (     5)  model
+      0    (    10)  kicks
+      0    (    13)  boom
+      0    (     8)  beginning
+      0    (     8)  😄
+      0    (     4)  plenty
+      0    (    17)  thread
+      0    (     3)  stigande
+      0    (     2)  whatever
+      0    (     4)  beat
+      0    (     5)  yuengling
+      0    (     5)  youtube
+      0    (     1)  moonage
+      0    (     8)  sv
+      0    (     7)  web
+      0    (    12)  bar
+      0    (     4)  😩
+      0    (     3)  nana
+      0    (     8)  lily
+      0    (    22)  grattis
+      0    (     5)  mayward
+      0    (     6)  wanted
+      0    (     1)  fallande
+      0    (     0)  stabilt
+      0    (     0)  verification
+      0    (     0)  excelencia
+      0    (     0)  inquest
+
+
+Time taken to build model: 22.08 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        4947               98.9598 %
+Incorrectly Classified Instances        52                1.0402 %
+Kappa statistic                          0.9698
+Mean absolute error                      0.0313
+Root mean squared error                  0.0974
+Relative absolute error                  8.9377 %
+Root relative squared error             23.2717 %
+Total Number of Instances             4999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1,000    0,045    0,987      1,000    0,993      0,970    0,996     0,998     0
+                 0,955    0,000    0,999      0,955    0,976      0,970    0,996     0,993     1
+Weighted Avg.    0,990    0,035    0,990      0,990    0,990      0,970    0,996     0,997     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3867    1 |    a = 0
+   51 1080 |    b = 1
+
