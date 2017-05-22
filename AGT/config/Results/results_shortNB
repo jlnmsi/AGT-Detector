@@ -1,0 +1,203 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     dmTraining
+Instances:    4999
+Attributes:   23
+              deviceType
+              textProbability
+              tweetsPerDay
+              favoritesPerDay
+              tweetRatio
+              chiSquaredMin
+              chiSquaredSec
+              entropyHours
+              entropyMin
+              entropySec
+              accountRep
+              urlRatio
+              hashtagRatio
+              mentionRatio
+              retweetRatio
+              replyRatio
+              mobileDevice
+              webDevice
+              appDevice
+              miscDevice
+              botDevice
+              otherDevice
+              class_attr
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                     Class
+Attribute                0        1
+                    (0.78)   (0.22)
+====================================
+deviceType
+  1                  2568.0      8.0
+  2                   906.0      5.0
+  3                   386.0    657.0
+  4                     6.0      9.0
+  5                     2.0    443.0
+  6                    17.0      4.0
+  [total]            3885.0   1126.0
+
+textProbability
+  mean               0.0179   0.9314
+  std. dev.          0.0298   0.1766
+  weight sum           3879     1120
+  precision           0.012    0.012
+
+tweetsPerDay
+  mean              21.1353 189.1847
+  std. dev.         39.5005 107.9812
+  weight sum           3879     1120
+  precision          0.1649   0.1649
+
+favoritesPerDay
+  mean              12.2721    0.211
+  std. dev.         27.7907   2.5373
+  weight sum           3879     1120
+  precision          0.0547   0.0547
+
+tweetRatio
+  mean               0.0613   0.0621
+  std. dev.          0.0071   0.0046
+  weight sum           3879     1120
+  precision          0.0006   0.0006
+
+chiSquaredMin
+  mean                0.263   0.2343
+  std. dev.          0.2935   0.3142
+  weight sum           3879     1120
+  precision          0.0015   0.0015
+
+chiSquaredSec
+  mean               0.5018   0.3081
+  std. dev.          0.2899   0.3811
+  weight sum           3879     1120
+  precision          0.0019   0.0019
+
+entropyHours
+  mean               0.2771   0.0716
+  std. dev.          0.1886   0.1503
+  weight sum           3879     1120
+  precision          0.0004   0.0004
+
+entropyMin
+  mean               0.7539   0.3657
+  std. dev.          0.2049   0.2705
+  weight sum           3879     1120
+  precision          0.0005   0.0005
+
+entropySec
+  mean               0.9468   0.6095
+  std. dev.          0.0517   0.3287
+  weight sum           3879     1120
+  precision          0.0004   0.0004
+
+accountRep
+  mean               0.5415   0.8988
+  std. dev.          0.2245   0.2127
+  weight sum           3879     1120
+  precision          0.0005   0.0005
+
+urlRatio
+  mean               0.3528   0.3954
+  std. dev.           0.309   0.4718
+  weight sum           3879     1120
+  precision          0.0012   0.0012
+
+hashtagRatio
+  mean               0.4476   0.2547
+  std. dev.          0.7982   0.7574
+  weight sum           3879     1120
+  precision          0.0042   0.0042
+
+mentionRatio
+  mean               0.8072   0.3276
+  std. dev.          0.7837   0.4455
+  weight sum           3879     1120
+  precision          0.0043   0.0043
+
+retweetRatio
+  mean               0.2864   0.0248
+  std. dev.          0.2501   0.0833
+  weight sum           3879     1120
+  precision          0.0019   0.0019
+
+replyRatio
+  mean               0.2998   0.2869
+  std. dev.          0.2477   0.4362
+  weight sum           3879     1120
+  precision          0.0019   0.0019
+
+mobileDevice
+  mean               0.6328   0.0546
+  std. dev.          0.3637   0.1769
+  weight sum           3879     1120
+  precision          0.0021   0.0021
+
+webDevice
+  mean               0.2486   0.0173
+  std. dev.          0.3217   0.0673
+  weight sum           3879     1120
+  precision          0.0023   0.0023
+
+appDevice
+  mean               0.0759   0.5505
+  std. dev.          0.2078   0.4769
+  weight sum           3879     1120
+  precision          0.0034   0.0034
+
+miscDevice
+  mean               0.0186   0.0172
+  std. dev.          0.0885   0.1124
+  weight sum           3879     1120
+  precision          0.0075   0.0075
+
+botDevice
+  mean               0.0179   0.3556
+  std. dev.          0.1201   0.4693
+  weight sum           3879     1120
+  precision          0.0204   0.0204
+
+otherDevice
+  mean               0.0062   0.0057
+  std. dev.          0.0394   0.0583
+  weight sum           3879     1120
+  precision           0.012    0.012
+
+
+
+Time taken to build model: 0.15 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        4905               98.1196 %
+Incorrectly Classified Instances        94                1.8804 %
+Kappa statistic                          0.9469
+Mean absolute error                      0.0187
+Root mean squared error                  0.1353
+Relative absolute error                  5.3718 %
+Root relative squared error             32.4425 %
+Total Number of Instances             4999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.980    0.016    0.995      0.980    0.988      0.947    0.995     0.997     0
+                 0.984    0.020    0.935      0.984    0.959      0.947    0.992     0.964     1
+Weighted Avg.    0.981    0.017    0.982      0.981    0.981      0.947    0.994     0.990     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3803   76 |    a = 0
+   18 1102 |    b = 1
+

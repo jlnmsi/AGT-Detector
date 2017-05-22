@@ -1,0 +1,51 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.CfsSubsetEval -P 1 -E 1
+Search:       weka.attributeSelection.GreedyStepwise -T -1.7976931348623157E308 -N -1 -num-slots 1
+Relation:     dmTraining
+Instances:    4999
+Attributes:   23
+              deviceType
+              textProbability
+              tweetsPerDay
+              favoritesPerDay
+              tweetRatio
+              chiSquaredMin
+              chiSquaredSec
+              entropyHours
+              entropyMin
+              entropySec
+              accountRep
+              urlRatio
+              hashtagRatio
+              mentionRatio
+              retweetRatio
+              replyRatio
+              mobileDevice
+              webDevice
+              appDevice
+              miscDevice
+              botDevice
+              otherDevice
+              class_attr
+Evaluation mode:    evaluate on all training data
+
+
+
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Greedy Stepwise (forwards).
+	Start set: no attributes
+	Merit of best subset found:    0.778
+
+Attribute Subset Evaluator (supervised, Class (nominal): 23 class_attr):
+	CFS Subset Evaluator
+	Including locally predictive attributes
+
+Selected attributes: 1,2,4,15 : 4
+                     deviceType
+                     textProbability
+                     favoritesPerDay
+                     retweetRatio
+

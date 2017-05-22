@@ -1,0 +1,60 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.CfsSubsetEval -P 1 -E 1
+Search:       weka.attributeSelection.GreedyStepwise -T -1.7976931348623157E308 -N -1 -num-slots 1
+Relation:     dmTraining
+Instances:    4999
+Attributes:   23
+              deviceType
+              textProbability
+              tweetsPerDay
+              favoritesPerDay
+              tweetRatio
+              chiSquaredMin
+              chiSquaredSec
+              entropyHours
+              entropyMin
+              entropySec
+              accountRep
+              urlRatio
+              hashtagRatio
+              mentionRatio
+              retweetRatio
+              replyRatio
+              mobileDevice
+              webDevice
+              appDevice
+              miscDevice
+              botDevice
+              otherDevice
+              class_attr
+Evaluation mode:    10-fold cross-validation
+
+
+
+=== Attribute selection 10 fold cross-validation (stratified), seed: 1 ===
+
+number of folds (%)  attribute
+          10(100 %)     1 deviceType
+          10(100 %)     2 textProbability
+           0(  0 %)     3 tweetsPerDay
+           5( 50 %)     4 favoritesPerDay
+           0(  0 %)     5 tweetRatio
+           0(  0 %)     6 chiSquaredMin
+          10(100 %)     7 chiSquaredSec
+           0(  0 %)     8 entropyHours
+           0(  0 %)     9 entropyMin
+           0(  0 %)    10 entropySec
+          10(100 %)    11 accountRep
+           0(  0 %)    12 urlRatio
+           0(  0 %)    13 hashtagRatio
+           0(  0 %)    14 mentionRatio
+           6( 60 %)    15 retweetRatio
+           2( 20 %)    16 replyRatio
+           2( 20 %)    17 mobileDevice
+          10(100 %)    18 webDevice
+           0(  0 %)    19 appDevice
+           0(  0 %)    20 miscDevice
+           0(  0 %)    21 botDevice
+           0(  0 %)    22 otherDevice
+

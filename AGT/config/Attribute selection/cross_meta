@@ -1,0 +1,36 @@
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.CfsSubsetEval -P 1 -E 1
+Search:       weka.attributeSelection.GreedyStepwise -T -1.7976931348623157E308 -N -1 -num-slots 1
+Relation:     metaDMTraining
+Instances:    4999
+Attributes:   11
+              textProbability
+              deviceType
+              isReply
+              isRetweet
+              hashtagDensity
+              urlDensity
+              mentionDensity
+              accountRep
+              statusesPerDay
+              favoritesPerDay
+              class_attr
+Evaluation mode:    10-fold cross-validation
+
+
+
+=== Attribute selection 10 fold cross-validation (stratified), seed: 1 ===
+
+number of folds (%)  attribute
+          10(100 %)    1 textProbability
+          10(100 %)    2 deviceType
+           0(  0 %)    3 isReply
+           0(  0 %)    4 isRetweet
+           0(  0 %)    5 hashtagDensity
+           0(  0 %)    6 urlDensity
+           0(  0 %)    7 mentionDensity
+          10(100 %)    8 accountRep
+           0(  0 %)    9 statusesPerDay
+          10(100 %)   10 favoritesPerDay
+

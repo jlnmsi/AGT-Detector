@@ -1,0 +1,75 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     dmTraining
+Instances:    4999
+Attributes:   23
+              deviceType
+              textProbability
+              tweetsPerDay
+              favoritesPerDay
+              tweetRatio
+              chiSquaredMin
+              chiSquaredSec
+              entropyHours
+              entropyMin
+              entropySec
+              accountRep
+              urlRatio
+              hashtagRatio
+              mentionRatio
+              retweetRatio
+              replyRatio
+              mobileDevice
+              webDevice
+              appDevice
+              miscDevice
+              botDevice
+              otherDevice
+              class_attr
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+textProbability <= 0.28
+|   favoritesPerDay <= 0.00109
+|   |   chiSquaredSec <= 0.067098: 1 (15.0/2.0)
+|   |   chiSquaredSec > 0.067098: 0 (37.0/2.0)
+|   favoritesPerDay > 0.00109: 0 (3856.0/15.0)
+textProbability > 0.28: 1 (1091.0/1.0)
+
+Number of Leaves  : 	4
+
+Size of the tree : 	7
+
+
+Time taken to build model: 1.54 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        4973               99.4799 %
+Incorrectly Classified Instances        26                0.5201 %
+Kappa statistic                          0.985 
+Mean absolute error                      0.0088
+Root mean squared error                  0.0703
+Relative absolute error                  2.5412 %
+Root relative squared error             16.8631 %
+Total Number of Instances             4999     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.998    0.018    0.995      0.998    0.997      0.985    0.990     0.994     0
+                 0.982    0.002    0.995      0.982    0.988      0.985    0.990     0.986     1
+Weighted Avg.    0.995    0.014    0.995      0.995    0.995      0.985    0.990     0.992     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3873    6 |    a = 0
+   20 1100 |    b = 1
+
