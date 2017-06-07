@@ -138,7 +138,7 @@ public class TweetText {
 		}
 		//regex cleaning
 		tmp = tmp.replaceAll("[()\\[\\]/%\\\\:#]", "")
-					.replaceAll("-?\\d*[.,]?\\d+", "number ")
+					.replaceAll("-?\\d*[.,]?\\d+", "xnumberx ")
 					.replaceAll("[°'´\"`.,’!?@-]", " ")
 					.replaceAll("[…]", " ")
 //					.replaceAll("\\d+", "number ")
